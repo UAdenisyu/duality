@@ -17,8 +17,8 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           Earn: {
             screens: {
-              EarnScreen: 'one',
-              InputCryptocurrency: 'two'
+              EarnScreen: 'earn/main',
+              InputCryptocurrency: 'earn/input'
             },
           },
           Trade: {
@@ -30,18 +30,18 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Orders: {
             screens: {
-              OpenOrders: 'one',
-              OrderHistory: 'two',
+              OpenOrders: 'four',
+              OrderHistory: 'five',
             },
           },
           Wallets: {
             screens: {
-              Market: 'one',
+              Mark: 'six',
             },
           },
           Profile: {
             screens: {
-              Market: 'one',
+              Marke: 'seven',
             },
           },
         },

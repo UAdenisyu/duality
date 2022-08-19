@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 
-export default function TabFourScreen() {
+export default function Earn() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Earn page</Text>
