@@ -15,14 +15,33 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Earn: {
             screens: {
-              TabOneScreen: 'one',
+              EarnScreen: 'one',
+              InputCryptocurrency: 'two'
             },
           },
-          TabTwo: {
+          Trade: {
             screens: {
-              TabTwoScreen: 'two',
+              Market: 'one',
+              Limit: 'two',
+              Stop: 'three',
+            },
+          },
+          Orders: {
+            screens: {
+              OpenOrders: 'one',
+              OrderHistory: 'two',
+            },
+          },
+          Wallets: {
+            screens: {
+              Market: 'one',
+            },
+          },
+          Profile: {
+            screens: {
+              Market: 'one',
             },
           },
         },
