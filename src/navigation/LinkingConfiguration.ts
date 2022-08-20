@@ -23,25 +23,29 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Trade: {
             screens: {
-              Market: 'one',
-              Limit: 'two',
-              Stop: 'three',
+              Market: 'trade/market',
+              Limit: 'trade/limit',
+              Stop: 'trade/stop',
             },
           },
           Orders: {
             screens: {
-              OpenOrders: 'four',
-              OrderHistory: 'five',
+              OpenOrders: 'orders/main',
+              OrderHistory: 'orders/history',
             },
           },
           Wallets: {
             screens: {
-              Mark: 'six',
+              Earn: 'wallets/earn',
+              SpotAccount: 'wallets/spot'
             },
           },
           Profile: {
             screens: {
-              Marke: 'seven',
+              LogOut: 'profile/logOut',
+              PrivacyPolicy: 'profile/privacy',
+              Settings: 'profile/settings',
+              TermsAndConditions: 'profile/terms'
             },
           },
         },
