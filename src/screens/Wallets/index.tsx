@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { Text, View , StyleSheet } from 'react-native';
 
-import { Text, View } from '../../components/Themed';
 
 export default function Wallets() {
     return (
