@@ -1,13 +1,13 @@
-import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ColorSchemeName, Image, Pressable } from 'react-native';
+import { ColorSchemeName, View } from 'react-native';
 
 
 import styles from './styles';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
+
 
 import SvgComponentEarn from '../assets/svgs/SvgComponentEarn';
 import SvgComponentTrade from '../assets/svgs/SvgComponentTrade';
@@ -47,39 +47,38 @@ function RootNavigator() {
     );
 }
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
     return (
-        
         <BottomTab.Navigator
             initialRouteName="Earn"
-            screenOptions={{
-                tabBarStyle: styles.navigationWrapper,
-                tabBarLabelStyle: { fontSize: 12 },
+            sceneContainerStyle={{ backgroundColor: '#0e1015'}}
+            screenOptions={({ route }) => ({
+                tabBarHideOnKeyboard: true,
                 tabBarActiveTintColor: '#E2FF9D',
-                tabBarInactiveTintColor: 'gray',
-            }}>
-                
+                tabBarInactiveTintColor: '#ffffff',
+                tabBarStyle: styles.navigationWrapper,
+                tabBarLabelStyle: { fontSize: 12, },
 
+            })}
+            >
             <BottomTab.Screen
                 name="Earn"
                 component={Earn}
                 options={{
                     title: 'Earn',
-                    tabBarIcon: ({color} : {color: string}) => <SvgComponentEarn color={color}/>
+                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentEarn color={color}/>,
                 }}
             /> 
             <BottomTab.Screen
                 name="Trade"
                 component={Trade}
+                
                 options={{
+                    
                     title: 'Trade',
                     tabBarIcon: ({ color } : {color: string}) => <SvgComponentTrade color={color}/>,
                 }}
