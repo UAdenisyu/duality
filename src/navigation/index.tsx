@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ColorSchemeName, View } from 'react-native';
+import { ColorSchemeName } from 'react-native';
+import * as NavigationBar from 'expo-navigation-bar';
 
-
-import styles from './styles';
+import styles, {navigatorOptions} from './styles';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
@@ -21,6 +21,7 @@ import Trade from '../screens/Trade';
 import Wallets from '../screens/Wallets';
 import Profile from '../screens/Profile';
 
+
 import { RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -36,79 +37,64 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     );
 }
 
-
 function RootNavigator() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-
         </Stack.Navigator>
     );
 }
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
     return (
-        <BottomTab.Navigator
-            initialRouteName="Earn"
-            sceneContainerStyle={{ backgroundColor: '#0e1015'}}
-            screenOptions={({ route }) => ({
-                tabBarHideOnKeyboard: true,
-                tabBarActiveTintColor: '#E2FF9D',
-                tabBarInactiveTintColor: '#ffffff',
-                tabBarStyle: styles.navigationWrapper,
-                tabBarLabelStyle: { fontSize: 12, },
-
-            })}
-            >
-            <BottomTab.Screen
-                name="Earn"
-                component={Earn}
-                options={{
-                    title: 'Earn',
-                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentEarn color={color}/>,
-                }}
-            /> 
-            <BottomTab.Screen
-                name="Trade"
-                component={Trade}
-                
-                options={{
-                    
-                    title: 'Trade',
-                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentTrade color={color}/>,
-                }}
-            />
-            <BottomTab.Screen
-                name="Orders"
-                component={Orders}
-                options={{
-                    title: 'Orders',
-                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentOrders color={color}/>,
-                }}
-            />
-            <BottomTab.Screen
-                name="Wallets"
-                component={Wallets}
-                options={{
-                    title: 'Wallets',
-                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentWallet color={color}/>,
-                }}
-            />
-            <BottomTab.Screen
-                name="Profile"
-                component={Profile}
-                options={{
-                    title: 'Profile',
-                    tabBarIcon: ({ color } : {color: string}) => <SvgComponentProfile color={color}/>,
-                }}
-            />
-        </BottomTab.Navigator>
+            <BottomTab.Navigator 
+                initialRouteName="Earn"
+                sceneContainerStyle={{ backgroundColor: '#0e1015', paddingHorizontal: 24 }}
+                screenOptions={navigatorOptions}>
+                <BottomTab.Screen
+                    name="Earn"
+                    component={Earn}
+                    options={{
+                        title: 'Earn',
+                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentEarn color={color}/>,
+                    }}
+                /> 
+                <BottomTab.Screen
+                    name="Trade"
+                    component={Trade}
+                    options={{
+                        title: 'Trade',
+                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentTrade color={color}/>,
+                    }}
+                />
+                <BottomTab.Screen
+                    name="Orders"
+                    component={Orders}
+                    options={{
+                        title: 'Orders',
+                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentOrders color={color}/>,
+                    }}
+                />
+                <BottomTab.Screen
+                    name="Wallets"
+                    component={Wallets}
+                    options={{
+                        title: 'Wallets',
+                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentWallet color={color}/>,
+                    }}
+                />
+                <BottomTab.Screen
+                    name="Profile"
+                    component={Profile}
+                    options={{
+                        title: 'Profile',
+                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentProfile color={color}/>,
+                    }}
+                />
+            </BottomTab.Navigator>
     );
 }
-
-

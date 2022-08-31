@@ -1,23 +1,14 @@
-import {  Text, View , StyleSheet } from 'react-native';
+import { ScrollView } from "react-native";
+import TotaLBalance from "../../components/TotalBalance";
+import InputCryptoInfo from "../../components/InputCryptoInfo";
+import TableList from "../../components/TableList";
 
 export default function Earn() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Earn page</Text>
-        </View>
+        <ScrollView>
+            <TotaLBalance/>
+            <InputCryptoInfo/>
+            <TableList/>
+        </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        
-    },
-    title: {
-        fontSize: 20,
-        color: 'white',
-        fontWeight: 'bold',
-    },
-});

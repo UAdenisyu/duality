@@ -1,20 +1,7 @@
-import {Text, View, StyleSheet } from 'react-native';
-export default function Profile() {
+import TotaLBalance from "../../components/TotalBalance";
+
+export default function Earn() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Profile page</Text>
-        </View>
+        <TotaLBalance/>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    }
-});
