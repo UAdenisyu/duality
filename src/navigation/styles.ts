@@ -1,4 +1,5 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, ImageBackground, View } from 'react-native';
+import SvgComponentProfile from '../assets/svgs/SvgComponentProfile';
 
 const styles = StyleSheet.create({
     navigationWrapper: {
@@ -7,19 +8,11 @@ const styles = StyleSheet.create({
         height: 73,
         backgroundColor: 'rgba(255, 255, 255, 0.07)',
         paddingBottom: 14,
-        // marginBottom: StatusBar.currentHeight ? 14 + StatusBar.currentHeight : 14,
         marginBottom: 14,
         borderColor: 'black',
         position: 'absolute',
         marginHorizontal: 14,
         borderTopWidth:0,
-        shadowColor : '#5bc4ff',
-        shadowOpacity: 0,
-        shadowOffset: {
-            height: 0,
-            width: 0
-        },
-        shadowRadius: 0,
         elevation: 0,
 
     },
@@ -45,6 +38,7 @@ export const navigatorOptions =  {
     tabBarInactiveTintColor: '#ffffff',
     tabBarStyle: styles.navigationWrapper,
     tabBarLabelStyle: { fontSize: 12, },
+    
     headerStyle: {
         height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
         backgroundColor: '#0e1015',
@@ -53,7 +47,8 @@ export const navigatorOptions =  {
     },
     headerTitleStyle: {
         color: 'white',
+        fontFamily: 'trap-semibold',
         fontSize: 40,
-        fonstWeight: '600',
+        marginLeft: -16,
     }
 } 

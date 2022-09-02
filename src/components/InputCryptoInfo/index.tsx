@@ -1,10 +1,17 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import EthLogo from '../../assets/svgs/EthLogo.svg';
 import ShowMoreBtn from '../ShowMoreBtn';
-import Arrow from '../../assets/svgs/arrow.svg';
 import styles from './styles';
+import Arrow from '../../assets/svgs/arrow.svg';
+import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
 
-export default function InputCryptoInfo() {
+type options = {
+    cryptoName: string,
+    yearIncomeMin: number, 
+    yearIncomeMax: number, 
+    showMoreBtn: boolean,
+}
+
+export default function InputCryptoInfo({ cryptoName = 'Eth', yearIncomeMin = 0, yearIncomeMax = 0, showMoreBtn = true} : options) {
     return (
         <View style={styles.container}>
             <View style={{
@@ -14,17 +21,15 @@ export default function InputCryptoInfo() {
                     borderBottomColor: '#4A4B4E',
                     borderBottomWidth: 1,
                 }}>
-                <EthLogo/>
-                <Text style={styles.title}>Input: ETH</Text>
+                <LogoNotFound/>
+                <Text style={styles.title}>Input: {cryptoName}</Text>
             </View>
             <View style={styles.block}>
                 <Text style={styles.persentsPerYearTitle}>% Per year</Text>
-                <Text style={styles.persentsPerYearValue}>5,51% -100,17%</Text>
+                <Text style={styles.persentsPerYearValue}>{yearIncomeMin} - {yearIncomeMax}</Text>
                 <Arrow color='#E2FF9D' style={styles.arrow}/>
             </View>
-            <View style={styles.block}>
-                <ShowMoreBtn/>
-            </View>
+            { showMoreBtn ? <View style={styles.block}><ShowMoreBtn/></View> : null }
         </View>
     );
 }

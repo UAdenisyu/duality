@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ColorSchemeName } from 'react-native';
-import * as NavigationBar from 'expo-navigation-bar';
+import { ColorSchemeName, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+// import * as NavigationBar from 'expo-navigation-bar';
 
-import styles, {navigatorOptions} from './styles';
+import {navigatorOptions} from './styles';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
@@ -20,7 +20,6 @@ import Orders from '../screens/Orders';
 import Trade from '../screens/Trade';
 import Wallets from '../screens/Wallets';
 import Profile from '../screens/Profile';
-
 
 import { RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -50,16 +49,69 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
+    function MyTabBar({ state, descriptors, navigation } : { state: any, descriptors: any, navigation: any}) {
+        return (
+            <View style={{ flexDirection: 'row' }}>
+                {state.routes.map((route: any, index : number) => {
+                    const { options } = descriptors[route.key];
+                    const label =
+                    options.tabBarLabel !== undefined
+                        ? options.tabBarLabel
+                        : options.title !== undefined
+                        ? options.title
+                        : route.name;
+
+                    const isFocused = state.index === index;
+
+                    const onPress = () => {
+                    const event = navigation.emit({
+                        type: 'tabPress',
+                        target: route.key,
+                        canPreventDefault: true,
+                    });
+
+                    if (!isFocused && !event.defaultPrevented) {
+                        // The `merge: true` option makes sure that the params inside the tab screen are preserved
+                        navigation.navigate({ name: route.name, merge: true });
+                    }
+                    };
+
+                    const onLongPress = () => {
+                        navigation.emit({
+                            type: 'tabLongPress',
+                            target: route.key,
+                        });
+                        };
+
+                        return (
+                            <TouchableOpacity
+                                accessibilityRole="button"
+                                accessibilityState={isFocused ? { selected: true } : {}}
+                                accessibilityLabel={options.tabBarAccessibilityLabel}
+                                testID={options.tabBarTestID}
+                                onPress={onPress}
+                                onLongPress={onLongPress}
+                                style={{ flex: 1 }}
+                            >
+                                <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
+                                {label}
+                                </Text>
+                            </TouchableOpacity>);
+                })}
+                </View>
+        );
+      }
     return (
             <BottomTab.Navigator 
                 initialRouteName="Earn"
                 sceneContainerStyle={{ backgroundColor: '#0e1015', paddingHorizontal: 24 }}
-                screenOptions={navigatorOptions}>
+                screenOptions={navigatorOptions}
+                >
                 <BottomTab.Screen
                     name="Earn"
                     component={Earn}
                     options={{
-                        title: 'Earn',
+                        title: 'Eean',
                         tabBarIcon: ({ color } : {color: string}) => <SvgComponentEarn color={color}/>,
                     }}
                 /> 
