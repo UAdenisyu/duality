@@ -3,17 +3,15 @@ import TotaLBalance from "../../components/TotalBalance";
 import InputCryptoInfo from "../../components/InputCryptoInfo";
 import TableList from "../../components/TableList";
 import React from 'react';
+import {TestBtn} from '../../components/TestBtn';
 
 export default function Earn() {
     return (
         <ScrollView>
             <TotaLBalance/>
-            <TableList/>
-            <TableList/>
-            <TableList/>
-            <TableList/>
-            <TableList/>
-
+            <InputCryptoInfo/>
+            <InputCryptoInfo/>
+            <TestBtn/>
         </ScrollView>
     );
 }

@@ -1,15 +1,28 @@
 import { View, Text } from "react-native";
 import styles from "./styles";
 
-export default function TotaLBalance() {
+import { observer } from 'mobx-react-lite';
+import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
+
+import NumberFormat from 'react-number-format';
+
+const TotalBalance = observer(() => {
+    const { totalBalance } = useCounterStore();
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Total balance:</Text>
             <View style={styles.body}>
-                <Text style={styles.numbers}>$23,000.00</Text>
+                <NumberFormat
+                    value={totalBalance.toFixed(2)}
+                    displayType="text"
+                    thousandSeparator
+                    prefix="$"
+                    renderText={(value) => <Text style={styles.numbers}>{value}</Text>}
+                />
                 <Text style={styles.currencyName}>USDT</Text>
             </View>
         </View>
     );
-}
+});
 
+export default TotalBalance;
