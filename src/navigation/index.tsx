@@ -2,9 +2,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ColorSchemeName, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import { BlurView } from 'expo-blur';
 // import * as NavigationBar from 'expo-navigation-bar';
 
-import {navigatorOptions} from './styles';
+import styles , { navigatorOptions} from './styles';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
@@ -20,6 +21,7 @@ import Orders from '../screens/Orders';
 import Trade from '../screens/Trade';
 import Wallets from '../screens/Wallets';
 import Profile from '../screens/Profile';
+import { SvgUri, SvgProps } from 'react-native-svg';
 
 import { RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -28,10 +30,23 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+    const MyTheme = {
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: 'transparent',
+        },
+      };
     return (
         <NavigationContainer
+            theme={MyTheme}
             linking={LinkingConfiguration}>
-            <RootNavigator />
+                <ImageBackground 
+                    source={require('../assets/images/mainBackground.png')}
+                    resizeMode="cover"
+                    style={{ width: '100%', height: '100%' }}>
+                    <RootNavigator />
+                </ImageBackground>
         </NavigationContainer>
     );
 }
@@ -49,70 +64,31 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
-    function MyTabBar({ state, descriptors, navigation } : { state: any, descriptors: any, navigation: any}) {
-        return (
-            <View style={{ flexDirection: 'row' }}>
-                {state.routes.map((route: any, index : number) => {
-                    const { options } = descriptors[route.key];
-                    const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                        ? options.title
-                        : route.name;
-
-                    const isFocused = state.index === index;
-
-                    const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
-
-                    if (!isFocused && !event.defaultPrevented) {
-                        // The `merge: true` option makes sure that the params inside the tab screen are preserved
-                        navigation.navigate({ name: route.name, merge: true });
-                    }
-                    };
-
-                    const onLongPress = () => {
-                        navigation.emit({
-                            type: 'tabLongPress',
-                            target: route.key,
-                        });
-                        };
-
-                        return (
-                            <TouchableOpacity
-                                accessibilityRole="button"
-                                accessibilityState={isFocused ? { selected: true } : {}}
-                                accessibilityLabel={options.tabBarAccessibilityLabel}
-                                testID={options.tabBarTestID}
-                                onPress={onPress}
-                                onLongPress={onLongPress}
-                                style={{ flex: 1 }}
-                            >
-                                <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-                                {label}
-                                </Text>
-                            </TouchableOpacity>);
-                })}
-                </View>
-        );
-      }
+    const navBarIcons = [
+        (color:string) => <SvgComponentEarn color={color}/>, 
+        (color:string) => <SvgComponentTrade color={color}/>,
+        (color:string) => <SvgComponentOrders color={color}/>,
+        (color:string) => <SvgComponentWallet color={color}/>,
+        (color:string) => <SvgComponentProfile color={color}/>,
+    ];
+    const setTabBarIcon = ({ focused, color, index } : {focused: boolean, color: string, index: number }) => (
+            <View>
+                {focused ? <View><View style={styles.activeTint}/><View style={styles.iconShadow}/></View> : null}
+                {navBarIcons[index] ? navBarIcons[index](color) : null}
+            </View>
+    );
     return (
             <BottomTab.Navigator 
                 initialRouteName="Earn"
-                sceneContainerStyle={{ backgroundColor: '#0e1015', paddingHorizontal: 24 }}
+                sceneContainerStyle={{ backgroundColor: 'transparent', paddingHorizontal: 24 }}
                 screenOptions={navigatorOptions}
                 >
                 <BottomTab.Screen
                     name="Earn"
                     component={Earn}
                     options={{
-                        title: 'Eean',
-                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentEarn color={color}/>,
+                        title: 'Earn',
+                        tabBarIcon: (props) => setTabBarIcon({...props, index: 0}),
                     }}
                 /> 
                 <BottomTab.Screen
@@ -120,7 +96,7 @@ function BottomTabNavigator() {
                     component={Trade}
                     options={{
                         title: 'Trade',
-                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentTrade color={color}/>,
+                        tabBarIcon: (props) => setTabBarIcon({...props, index: 1}),
                     }}
                 />
                 <BottomTab.Screen
@@ -128,7 +104,7 @@ function BottomTabNavigator() {
                     component={Orders}
                     options={{
                         title: 'Orders',
-                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentOrders color={color}/>,
+                        tabBarIcon: (props) => setTabBarIcon({...props, index: 2}),
                     }}
                 />
                 <BottomTab.Screen
@@ -136,7 +112,7 @@ function BottomTabNavigator() {
                     component={Wallets}
                     options={{
                         title: 'Wallets',
-                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentWallet color={color}/>,
+                        tabBarIcon: (props) => setTabBarIcon({...props, index: 3}),
                     }}
                 />
                 <BottomTab.Screen
@@ -144,7 +120,7 @@ function BottomTabNavigator() {
                     component={Profile}
                     options={{
                         title: 'Profile',
-                        tabBarIcon: ({ color } : {color: string}) => <SvgComponentProfile color={color}/>,
+                        tabBarIcon: (props) => setTabBarIcon({...props, index: 4}),
                     }}
                 />
             </BottomTab.Navigator>
