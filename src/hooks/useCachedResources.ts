@@ -1,11 +1,17 @@
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import useThemeColors from './useThemeColors';
+import { useCounterStore, CounterStoreContext } from '../mobx/stores/AppStore.store';
+import { ColorSchemeName, useColorScheme } from 'react-native';
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   // Load any resources or data that we need prior to rendering the app
+  //set color theme (dark or light device mode)
+  const { setAppTheme } = useCounterStore();
+  setAppTheme(useColorScheme());
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {

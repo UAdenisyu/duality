@@ -1,5 +1,4 @@
 import { View, Text, Pressable } from "react-native";
-import React, { useContext } from 'react';
 import styles from "./styles";
 import { observer } from 'mobx-react-lite';
 

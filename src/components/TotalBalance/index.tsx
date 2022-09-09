@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
+import { useCounterStore } from '../../mobx/stores/AppStore.store';
 
 import NumberFormat from 'react-number-format';
 

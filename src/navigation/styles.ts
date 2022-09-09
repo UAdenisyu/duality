@@ -1,21 +1,20 @@
 import { StyleSheet, StatusBar, ImageBackground, View } from 'react-native';
-
+import { Platform } from "react-native";
 
 const styles = StyleSheet.create({
     navigationWrapper: {
+        overflow: "hidden",
         display: "flex",  
         borderRadius: 29,
         height: 73,
-
+        // backgroundColor: '#4A4B4E',
         backgroundColor: 'rgba(32,34,38,0.96)',
-
         paddingBottom: 14,
         marginBottom: 14,
         borderColor: 'black',
         position: 'absolute',
         marginHorizontal: 14,
         borderTopWidth:0,
-        
     },
     activeTint: {
         height: 3,
@@ -27,25 +26,32 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginTop: -9,
         alignSelf: 'center',
-    },
-    iconShadow: {
-        height: 3,
-        width: 19,
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        position: 'absolute',
-        marginTop: -15,
-        alignSelf: 'center',
         shadowColor: '#E2FF9D',
         shadowOffset: {
             width: 0,
-            height: 12,
+            height: 5,
         },
         shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 12,
+        shadowRadius: 5.00,
+    },
+    iconShadow: {
+        ...Platform.select({
+            android: {
+                shadowColor: '#E2FF9D',
+                elevation: 10,
+                height: 3,
+                width: 19,
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+                borderBottomLeftRadius: 10,
+                borderBottomRightRadius: 10,
+                position: 'absolute',
+                marginTop: -15,
+                alignSelf: 'center',
+            },
+            ios: {
+            },
+        }),
     },
     flex: {
         flex: 1,
@@ -61,7 +67,6 @@ export const navigatorOptions =  {
     tabBarInactiveTintColor: '#ffffff',
     tabBarStyle: styles.navigationWrapper,
     tabBarLabelStyle: { fontSize: 12, },
-
     headerStyle: {
         height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
         backgroundColor: 'transparent',

@@ -2,11 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ColorSchemeName, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
-import { BlurView } from 'expo-blur';
-// import * as NavigationBar from 'expo-navigation-bar';
-
 import styles , { navigatorOptions} from './styles';
-import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
 
@@ -21,15 +17,14 @@ import Orders from '../screens/Orders';
 import Trade from '../screens/Trade';
 import Wallets from '../screens/Wallets';
 import Profile from '../screens/Profile';
-import { SvgUri, SvgProps } from 'react-native-svg';
+import EarnInput from '../screens/Earn/Input';
 
 import { RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const TabStack = createNativeStackNavigator<RootStackParamList>();
 
-
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation() {
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -41,29 +36,49 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
         <NavigationContainer
             theme={MyTheme}
             linking={LinkingConfiguration}>
-                <ImageBackground 
+                <ImageBackground
                     source={require('../assets/images/mainBackground.png')}
                     resizeMode="cover"
                     style={{ width: '100%', height: '100%' }}>
-                    <RootNavigator />
+                    <RootNavigator/>
                 </ImageBackground>
         </NavigationContainer>
     );
 }
 
+
+
+const EarnStackScreens = () => {
+    const EarnStack = createNativeStackNavigator();
+    return (
+      <EarnStack.Navigator>
+            <EarnStack.Screen
+                options={{ headerShown: false }}
+                name=' '
+                component={Earn}
+            />
+            <EarnStack.Screen
+                options={{ headerShown: false }}
+                name='Input'
+                component={EarnInput}
+            />
+      </EarnStack.Navigator>
+    );
+}
+
 function RootNavigator() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-            <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-        </Stack.Navigator>
+        <TabStack.Navigator>
+            <TabStack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+            <TabStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+        </TabStack.Navigator>
     );
 }
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-    const colorScheme = useColorScheme();
+    // const colorScheme = useColorScheme();
     const navBarIcons = [
         (color:string) => <SvgComponentEarn color={color}/>, 
         (color:string) => <SvgComponentTrade color={color}/>,
@@ -85,7 +100,7 @@ function BottomTabNavigator() {
                 >
                 <BottomTab.Screen
                     name="Earn"
-                    component={Earn}
+                    component={EarnStackScreens}
                     options={{
                         title: 'Earn',
                         tabBarIcon: (props) => setTabBarIcon({...props, index: 0}),

@@ -16,10 +16,15 @@ const linking: LinkingOptions<RootStackParamList> = {
       Root: {
         screens: {
           Earn: {
-            screens: {
-              EarnScreen: 'earn/main',
-              InputCryptocurrency: 'earn/input'
-            },
+              path: "earn",
+              screens: {
+                  EarnScreen: {
+                    path: 'main',
+                  },
+                  InputCryptocurrency: {
+                    path: 'input',
+                  },
+              },
           },
           Trade: {
             screens: {

@@ -1,39 +1,44 @@
-/**
- * Learn more about using TypeScript with React Navigation:
- * https://reactnavigation.org/docs/typescript/
- */
-
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {SvgProps} from 'react-native-svg';
 
 declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
+    namespace ReactNavigation {
+      interface RootParamList extends RootStackParamList {}
+    }
 };
 
 export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
-  NotFound: undefined;
+    Root: NavigatorScreenParams<RootTabParamList> | undefined;
+    Modal: undefined;
+    NotFound: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
-  Screen
+    RootStackParamList,
+    Screen
 >;
 
 export type RootTabParamList = {
-  Earn: undefined;
-  Trade: undefined;
-  Orders: undefined;
-  Wallets: undefined;
-  Profile: undefined;
+    Earn: undefined;
+    Trade: undefined;
+    Orders: undefined;
+    Wallets: undefined;
+    Profile: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<RootTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
+    BottomTabScreenProps<RootTabParamList, Screen>,
+    NativeStackScreenProps<RootStackParamList>
 >;
+
+export type CryptoCurrencyFullInfo = {
+    [key: string]: { 
+                    incomePerYear: number;
+                    targetPrice: number; 
+                    completionTime: Date 
+                } []
+}
+
+export type optionDarkMode = 'dark' | 'light' | undefined | null;

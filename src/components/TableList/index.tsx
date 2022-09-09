@@ -1,34 +1,12 @@
 import { View, Text } from "react-native";
 import styles from './styles';
-import TableListItem from '../TableListItem';
-
-type dataType = { incomePerYear: number; targetPrice: number; completionTime: Date }[];
-const dataSample: dataType = [
-    {
-        incomePerYear: 25.38,
-        targetPrice: 1200,
-        completionTime: new Date(),
-    },
-    {
-        incomePerYear: 25.38,
-        targetPrice: 1200,
-        completionTime: new Date(),
-    },
-    {
-        incomePerYear: 25.38,
-        targetPrice: 1200,
-        completionTime: new Date(),
-    },
-    {
-        incomePerYear: 25.38,
-        targetPrice: 1200,
-        completionTime: new Date(),
-    },
-]
+import TableListItem from './listItem';
+import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
 
 
-export default function TableList() {
-    const items = dataSample.map((item, i) => <TableListItem key={Math.random()} backgroundColor={i % 2 ? '#202226' : '#34363A'}/>);
+export default function TableList({ target }: {target: string}) {
+    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const items = cryptoCurrencyFullInfo[target].map((item, i) => <TableListItem key={Math.random()} backgroundColor={i % 2 ? '#202226' : '#34363A'} data={item}/>);
     return (
         <View style={styles.container}>
             <View style={styles.headerWrapper}>

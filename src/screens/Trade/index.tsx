@@ -1,7 +1,8 @@
 import TotaLBalance from "../../components/TotalBalance";
+import LinkButton from "../../navigation/LinkButton";
 
-export default function Earn() {
+export default () => {
     return (
-        <TotaLBalance/>
+        <LinkButton to={'/earn/input'}/>
     );
 }
