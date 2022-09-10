@@ -9,18 +9,23 @@ import BottomBordered from "../../styles/BottomBordered";
 
 import InfoIcon from "../../assets/svgs/infoIcon.svg"
 
-export default function TotalCryptoInfo() {
+export default function CryptocurrencyLifecycle({showDetails, titleLeft, titleRight = null} : {showDetails: boolean, titleLeft: string, titleRight?: string | number | null}) {
     const themeColors = useThemeColors();
-    
     const componentStyles = CommonComponentStyles();
     const componentSectionBottomBordered = BottomBordered();
 
+    const showDetailsClasslist_ = showDetails ? [componentSectionBottomBordered.bordered, styles.tableWrapper] : styles.tableWrapper
     return (
         <View style={componentStyles.wrapper}>
-            <Text style={[styles.componentTitle, {color: themeColors.grey}]}>
-                Total
-            </Text>
-            <View style={[componentSectionBottomBordered.bordered, styles.tableWrapper]}>
+            <View style={[styles.section, {justifyContent: 'space-between'}]}>
+                <Text style={[styles.componentTitle, {color: themeColors.grey}]}>
+                    {titleLeft}
+                </Text>
+                {titleRight ? <Text style={[styles.componentTitle, {color: themeColors.grey, textAlign: 'right'}]}>
+                    {titleLeft}
+                </Text> : null}
+            </View>
+            <View style={showDetailsClasslist_}>
                 <View style={styles.section}>
                     <View style={[styles.marker, {borderColor: themeColors.selectedItemColor}]}/>
                     <View style={styles.titles}>
@@ -63,7 +68,7 @@ export default function TotalCryptoInfo() {
                     </View>
                 </View>
             </View>
-            <View style={styles.bottomSection}>
+            {showDetails ? <View style={styles.bottomSection}>
                 <View style={[styles.section, styles.bottomSectionRow]}>
                     <Text style={[{color: themeColors.commonText}, styles.titlesText]}>
                         Spot price ETH
@@ -86,14 +91,15 @@ export default function TotalCryptoInfo() {
                             % Year
                         </Text>
                         <View style={{justifyContent: 'center'}}>
-                            <InfoIcon/>
+                            <InfoIcon color={themeColors.commonText}/>
                         </View>
                     </View>
                     <Text style={[{color: themeColors.selectedItemColor}, styles.valuesText]}>
                         112,32 %
                     </Text>
                 </View>
-            </View>
+            </View> : null}
+            
 
         </View>
     );

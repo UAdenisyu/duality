@@ -15,7 +15,9 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.0",
+    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/blur": "^4.2.0",
+    "@react-native-community/slider": "4.2.3",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/material-bottom-tabs": "^6.2.3",
     "@react-navigation/native": "^6.0.2",
@@ -24,6 +26,7 @@
     "expo": "~46.0.7",
     "expo-asset": "~8.6.1",
     "expo-blur": "~11.2.0",
+    "expo-checkbox": "~2.2.0",
     "expo-constants": "~13.2.3",
     "expo-dev-client": "~1.2.1",
     "expo-font": "~10.2.0",

@@ -11,6 +11,7 @@ export default function CommonComponentStyles() {
             justifyContent: 'center',
             borderRadius: 24,
             flexDirection: 'column',
+            marginTop: 8,
         }
     });
 } 

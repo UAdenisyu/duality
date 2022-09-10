@@ -4,16 +4,29 @@ import InputCryptoInfo from "../../components/InputCryptoInfo";
 import TableList from "../../components/TableList";
 import LinkButton from "../../navigation/LinkButton";
 import SetCryptocurrencyPrice from "../../components/SetCryptocurrencyPrice";
-import TotalCryptoInfo from "../../components/TotalCryptoInfo";
+import CryptocurrencyLifecycle from "../../components/CryptocurrencyLifecycle";
+import TermsOfServiceList from "../../components/TermsOfServiceList";
+import IncomeFromInvestments from "../../components/IncomeFromInvestments";
+
+
+const termsOfServiceList: Array<string> = [
+    'You can pay with your actives, free to your sport account',
+    'You can pay with your actives, free to your sport account',
+    'You can pay with your actives, free to your sport account',
+    'You can pay with your actives, free to your sport account',
+    'You can pay with your actives, free to your sport account',
+]
 
 export default function Earn() {
     return (
         <ScrollView>
-            {/* <TotaLBalance/>
+            <TotaLBalance/>
             <InputCryptoInfo cryptoName = 'Eth' yearIncomeMin={5.51} yearIncomeMax={100.17} showMoreBtn={true}/>
-            <InputCryptoInfo cryptoName = 'Usdt' yearIncomeMin={5.51} yearIncomeMax={100.17} showMoreBtn={true}/> */}
+            <InputCryptoInfo cryptoName = 'Usdt' yearIncomeMin={5.51} yearIncomeMax={100.17} showMoreBtn={true}/>
             <SetCryptocurrencyPrice/>
-            <TotalCryptoInfo/> 
+            <CryptocurrencyLifecycle showDetails={false} titleLeft={'Total'}/> 
+            <TermsOfServiceList terms={termsOfServiceList}/>
+            <IncomeFromInvestments/>
         </ScrollView>
     );
 }
