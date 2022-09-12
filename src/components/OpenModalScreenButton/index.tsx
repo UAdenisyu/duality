@@ -1,9 +1,9 @@
 import React, { JSXElementConstructor, useState, ReactElement } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle, PressableProps} from 'react-native';
+import { Alert, Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 import useThemeColors from "../../hooks/useThemeColors";
 
-import Arrow from '../assets/svgs/arrow.svg';
+import Arrow from '../../assets/svgs/arrow.svg';
 
 import { observer } from 'mobx-react-lite';
 
@@ -14,13 +14,13 @@ const OpenModalScreenButton = observer(({
     targetContentComponent,
     targetStyles,
     textContent,
-    cancelButton=false,
+    showCancelButton=false,
     confirmButtonOnPress,
     cancelButtonOnPress} :
         {   targetContentComponent: ReactElement
             targetStyles?: StyleProp<ViewStyle>, 
             textContent: string | string[], 
-            cancelButton?: boolean, 
+            showCancelButton?: boolean, 
             confirmButtonOnPress?: () => void, 
             cancelButtonOnPress?: () => void}) => {
 
@@ -35,10 +35,13 @@ const OpenModalScreenButton = observer(({
             </Text>
     });
 
-    // const Btn = React.cloneElement(targetContentComponent, { onPress: () => setModalVisible(true)});
 
-    const Btn = React.cloneElement(<Pressable/>, { ...targetContentComponent.props, onPress: () => setModalVisible(true)});
+    // doesn't copy component children 
+    // const Btn = React.cloneElement(<Pressable/>, { ...targetContentComponent.props, onPress: () => setModalVisible(true)});
 
+    const Btn = <Pressable onPress={() => setModalVisible(true)}>
+                    {targetContentComponent}
+                </Pressable>
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -65,8 +68,8 @@ const OpenModalScreenButton = observer(({
                                 <Arrow color={commonText}/>
                             </View>
                         </Pressable>
-                        {cancelButton ? <Pressable
-                                style={[styles.button, styles.cancelButton]}
+                        {showCancelButton ? <Pressable
+                                style={[styles.button, styles.showCancelButton]}
                                 onPress={() => {
                                     setModalVisible(false);
                                     if (cancelButtonOnPress){
@@ -104,7 +107,7 @@ const styles = StyleSheet.create({
         padding: 16,
         justifyContent: 'center',
     },
-    cancelButton: {
+    showCancelButton: {
         backgroundColor: 'transparent', 
         marginTop: 10,
     },
