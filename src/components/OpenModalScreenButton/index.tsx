@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import React, { JSXElementConstructor, useState, ReactElement } from 'react';
+import { Alert, Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle, PressableProps} from 'react-native';
 
-import useThemeColors from "../hooks/useThemeColors";
+import useThemeColors from "../../hooks/useThemeColors";
 
 import Arrow from '../assets/svgs/arrow.svg';
 
 import { observer } from 'mobx-react-lite';
 
-const ModalScreen = observer(({ 
+
+//targetContentComponent: React.ComponentType<TargetProps>
+
+const OpenModalScreenButton = observer(({
+    targetContentComponent,
+    targetStyles,
     textContent,
-    cancelButton=false, 
+    cancelButton=false,
     confirmButtonOnPress,
     cancelButtonOnPress} :
-        {textContent: string | string[], cancelButton?: boolean, confirmButtonOnPress?: ()=>void, cancelButtonOnPress?: ()=>void}) => {
+        {   targetContentComponent: ReactElement
+            targetStyles?: StyleProp<ViewStyle>, 
+            textContent: string | string[], 
+            cancelButton?: boolean, 
+            confirmButtonOnPress?: () => void, 
+            cancelButtonOnPress?: () => void}) => {
 
     const { commonText, modalBackgroud, modalWindowElementsColor, } = useThemeColors(); 
 
+    const [ modalVisible, setModalVisible ] = useState(false);
     const textContentBeautified = typeof textContent === 'string' ?
         <Text style={[styles.modalTextContent, {color: modalWindowElementsColor, textAlign: 'center'}]}>{textContent}</Text> :
         textContent.map((item, i) => {
@@ -24,12 +35,16 @@ const ModalScreen = observer(({
             </Text>
     });
 
+    // const Btn = React.cloneElement(targetContentComponent, { onPress: () => setModalVisible(true)});
+
+    const Btn = React.cloneElement(<Pressable/>, { ...targetContentComponent.props, onPress: () => setModalVisible(true)});
+
     return (
         <View style={styles.centeredView}>
             <Modal
                 animationType="fade"
                 transparent={true}
-                visible={true}
+                visible={modalVisible}
                 onRequestClose={() => console.warn('closed')}
                 statusBarTranslucent={true}>
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
@@ -39,7 +54,12 @@ const ModalScreen = observer(({
                         </View>
                         <Pressable
                             style={[styles.button, {backgroundColor: modalWindowElementsColor}]}
-                            onPress={confirmButtonOnPress}>
+                            onPress={() => {
+                                setModalVisible(false);
+                                if (confirmButtonOnPress){
+                                    confirmButtonOnPress();
+                                }
+                            }}>
                             <Text style={[styles.buttonText, {color: commonText}]}>OK</Text>
                             <View style={styles.arrowIcon}>
                                 <Arrow color={commonText}/>
@@ -47,13 +67,19 @@ const ModalScreen = observer(({
                         </Pressable>
                         {cancelButton ? <Pressable
                                 style={[styles.button, styles.cancelButton]}
-                                onPress={cancelButtonOnPress}>
+                                onPress={() => {
+                                    setModalVisible(false);
+                                    if (cancelButtonOnPress){
+                                        cancelButtonOnPress();
+                                    }
+                                }}>
                                 <Text style={[styles.buttonText, {color: modalWindowElementsColor}]}>Cancel</Text>
                             </Pressable> : null
                         }
                     </View>
                 </View>
             </Modal>
+            {Btn}
         </View>
     );
 });
@@ -103,4 +129,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ModalScreen;
+export default OpenModalScreenButton;

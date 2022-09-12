@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, StyleSheet, UIManager } from "react-native";
+import { ScrollView, Text, View, StyleSheet, UIManager, Pressable } from "react-native";
 import TotaLBalance from "../../components/TotalBalance";
 import InputCryptoInfo from "../../components/InputCryptoInfo";
 import TableList from "../../components/TableList";
@@ -7,8 +7,9 @@ import SetCryptocurrencyPrice from "../../components/SetCryptocurrencyPrice";
 import CryptocurrencyLifecycle from "../../components/CryptocurrencyLifecycle";
 import TermsOfServiceList from "../../components/TermsOfServiceList";
 import IncomeFromInvestments from "../../components/IncomeFromInvestments";
-import ModalScreen from "../ModalScreen";
+import OpenModalScreenButton from "../../components/OpenModalScreenButton";
 
+import ShowMoreBtn from "../../components/ShowMoreBtn";
 
 const termsOfServiceList: Array<string> = [
     'You can pay with your actives, free to your sport account',
@@ -32,11 +33,6 @@ export default function Earn() {
             <CryptocurrencyLifecycle showDetails={false} titleLeft={'Total'}/> 
             <TermsOfServiceList terms={termsOfServiceList}/>
             <IncomeFromInvestments/> */}
-            <ModalScreen 
-                textContent={modalText} 
-                cancelButton={true}
-                confirmButtonOnPress={() => console.log('confirm')}
-                cancelButtonOnPress={() => console.log('cancel')}/>
         </ScrollView>
     );
 }
