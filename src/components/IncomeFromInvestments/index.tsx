@@ -5,7 +5,7 @@ import styles from './styles';
 import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
 
 import CommonComponentStyles from '../../styles/CommonComponentStyles';
-import BottomBordered from "../../styles/BottomBordered";
+import BottomBordered from "../../styles/BottomBorderedStyle";
 
 import InfoIcon from '../../assets/svgs/infoIcon.svg';
 import EthLogo from '../../assets/svgs/EthLogo.svg';

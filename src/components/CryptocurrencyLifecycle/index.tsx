@@ -5,14 +5,14 @@ import useThemeColors from "../../hooks/useThemeColors";
 import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
 
 import CommonComponentStyles from "../../styles/CommonComponentStyles";
-import BottomBordered from "../../styles/BottomBordered";
+import BottomBorderedStyle from "../../styles/BottomBorderedStyle";
 
 import InfoIcon from "../../assets/svgs/infoIcon.svg"
 
 export default function CryptocurrencyLifecycle({showDetails, titleLeft, titleRight = null} : {showDetails: boolean, titleLeft: string, titleRight?: string | number | null}) {
     const themeColors = useThemeColors();
     const componentStyles = CommonComponentStyles();
-    const componentSectionBottomBordered = BottomBordered();
+    const componentSectionBottomBordered = BottomBorderedStyle();
 
     const showDetailsClasslist_ = showDetails ? [componentSectionBottomBordered.bordered, styles.tableWrapper] : styles.tableWrapper
     return (

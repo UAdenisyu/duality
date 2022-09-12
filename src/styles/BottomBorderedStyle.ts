@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import useThemeColors from '../hooks/useThemeColors';
 
-export default function BottomBordered() {
+export default function BottomBorderedStyle() {
     const colors = useThemeColors();
     return StyleSheet.create({
         bordered: {

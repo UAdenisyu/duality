@@ -10,7 +10,7 @@ import useThemeColors from "../../hooks/useThemeColors";
 
 
 export default function TermsOfServiceList({terms}: {terms: Array<string>}) {
-    const termList = terms.map((item, i) => <TermClause textContent={item} index={i}/>);
+    const termList = terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>);
     const componentStyles = CommonComponentStyles();
     const { selectedItemColor } = useThemeColors();
     const [isChecked, setChecked] = useState(false);

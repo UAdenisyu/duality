@@ -12,7 +12,7 @@ export default function App() {
     } else {
         return (
             <SafeAreaProvider >
-                <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true} />
+                <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true}/>
                 <Navigation/>
             </SafeAreaProvider>
         );
