@@ -95,7 +95,7 @@ function BottomTabNavigator() {
     return (
             <BottomTab.Navigator 
                 initialRouteName="Earn"
-                sceneContainerStyle={{ backgroundColor: 'transparent', paddingHorizontal: 24 }}
+                sceneContainerStyle={{ backgroundColor: 'transparent', paddingHorizontal: 24}}
                 screenOptions={navigatorOptions}
                 >
                 <BottomTab.Screen

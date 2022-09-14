@@ -1,10 +1,10 @@
 import Svg, { Path } from "react-native-svg";
 
-export default ({ color }: { color: string }, { ...props }) => (
+export default ({ color, size }: { color: string, size?: number }, { ...props }) => (
 
   <Svg
-    width={24}
-    height={24}
+    width={size ? size : 24}
+    height={size ? size : 24}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
