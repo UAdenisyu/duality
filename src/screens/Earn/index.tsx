@@ -7,7 +7,7 @@ import SetCryptocurrencyPrice from "../../components/SetCryptocurrencyPrice";
 import CryptocurrencyLifecycle from "../../components/CryptocurrencyLifecycle";
 import TermsOfServiceList from "../../components/TermsOfServiceList";
 import IncomeFromInvestments from "../../components/IncomeFromInvestments";
-import OpenModalScreenButton from "../../components/OpenModalScreenButton";
+import OpenModalScreenButton from "../../components/OpenCenterModalScreenButton";
 
 import ShowMoreBtn from "../../components/ShowMoreBtn";
 

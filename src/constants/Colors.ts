@@ -1,6 +1,7 @@
 export const LIGHT_COLORS = {
     commonText: '#fff',
     extraLight: '#fff',
+    extraDark: '#202226',
     componentBackgroud: 'rgba(255, 255, 255, 0.07)',
     modalBackgroud: '#fff',
     selectedItemColor: '#E2FF9D',
@@ -24,6 +25,7 @@ export const LIGHT_COLORS = {
 export const DARK_COLORS = {
     commonText: '#fff',
     extraLight: '#fff',
+    extraDark: '#202226',
     componentBackgroud: 'rgba(255, 255, 255, 0.07)',
     modalBackgroud: '#fff',
     selectedItemColor: '#E2FF9D',

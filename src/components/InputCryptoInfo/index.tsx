@@ -5,7 +5,7 @@ import Arrow from '../../assets/svgs/arrow.svg';
 import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
 import EthLogo from '../../assets/svgs/EthLogo.svg';
 import UsdtLogo from '../../assets/svgs/UsdtLogo.svg';
-import OpenModalScreenButton from "../OpenModalScreenButton";
+import OpenCenterModalScreenButton from "../OpenCenterModalScreenButton";
 
 type options = {
     cryptoName: string,
@@ -52,8 +52,7 @@ export default function InputCryptoInfo({ cryptoName = '', yearIncomeMin = 0, ye
                 <Arrow color='#E2FF9D' style={styles.arrow}/>
             </View>
             { showMoreBtn ? <View style={{ marginTop: 19 }}>
-                    <OpenModalScreenButton
-                        // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
+                    <OpenCenterModalScreenButton
                         targetContentComponent={<ShowMoreBtn/>}
                         textContent = {termsOfServiceList}
                         showCancelButton = {false}/>
