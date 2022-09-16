@@ -1,60 +1,62 @@
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View, Text, StyleSheet } from 'react-native';
 import styles from './styles';
-import { Platform } from 'react-native';
-
+import useThemeColors from "../../hooks/useThemeColors";
+import CommonComponentStyles from '../../styles/CommonComponentStyles';
 
 export default function SetCryptocurrencyPrice() {
-    const {container,
-            block,
-            blockWithBorder, 
-            title, 
-            inputArea, 
-            warning, 
-            text, 
-            highlightedText, 
-            availableValue,
-            dot
-        } = styles;
+
+    const { wrapper, titleLight, title, borderedSection, markeredText } = CommonComponentStyles();
+    const { plainText, warning, lightGrey, componentDividingLine } = useThemeColors();
+
+    const dynamicColors = StyleSheet.create({
+        warningText:{
+            color: warning,
+        },
+        input:{
+            borderColor: componentDividingLine,
+            color: plainText,
+        }
+    });
+    
     return (
-        <View style={container}>
-            <View style={blockWithBorder}>
+        <View style={wrapper}>
+            <View style={borderedSection}>
                 <Text style={title}>
                     Following price*
                 </Text>
                 <TextInput
-                    style={inputArea}
-                    selectionColor='#ffffff'
+                    style={[styles.inputArea, styles.availableValue, dynamicColors.input]}
+                    selectionColor={lightGrey}
                     keyboardType='decimal-pad'
-                    onChange={(text) => console.warn('')}
-                    />
-                <Text style={warning}>
+                    onChange={(text) => text.nativeEvent.text}/>
+                <Text style={[title, styles.warningText, dynamicColors.warningText]}>
                     {false ? ' ' : 'Please write the correct price*'}
                 </Text>
-                <Text style={[text, {marginTop: 8}]}>
+                <Text style={[styles.avaibleTitle, titleLight]}>
                     Available
                     &#160;
-                    <Text style={availableValue}>
+                    <Text style={styles.availableValue}>
                         {2.21}
                         &#160;
                         ETH
                     </Text>
                 </Text>
             </View>
-            <Text style={[text, { paddingTop: 16 }]}>
+            <Text style={[titleLight, styles.priceLimit]}>
                 Price limit
             </Text>
-            <View style={block}>
-                <Text style={[text, { color: '#767676' }]}>
+            <View style={styles.block}>
+                <Text style={title}>
                     Minimum
                 </Text>
-                <Text style={highlightedText}>
+                <Text style={[markeredText, styles.highlightedText]}>
                     0,01
                 </Text>
-                <View style={dot}/>
-                <Text style={[text, { color: '#767676' }]}>
+                <View style={styles.dot}/>
+                <Text style={title}>
                     Maximum
                 </Text>
-                <Text style={highlightedText}>
+                <Text style={[markeredText, styles.highlightedText]}>
                     2500
                 </Text>
             </View>

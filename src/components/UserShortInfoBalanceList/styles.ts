@@ -15,6 +15,9 @@ export default StyleSheet.create({
     logoContainer: {
         justifyContent: 'center',
     },
+    cryptoName:{
+        fontFamily: 'poppins-medium',
+    },
     valueCrypto: {
         textAlign: 'right',
         fontSize: 16,

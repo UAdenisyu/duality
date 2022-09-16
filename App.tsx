@@ -5,7 +5,11 @@ import useThemeColors from './src/hooks/useThemeColors';
 import Navigation from './src/navigation';
 import { StatusBar } from 'react-native';
 
-export default function App() {
+import { observer } from 'mobx-react-lite';
+
+
+
+const App = observer(() => {
     const isLoadingComplete = useCachedResources();
     if (!isLoadingComplete) {
         return null;
@@ -17,4 +21,6 @@ export default function App() {
             </SafeAreaProvider>
         );
     }
-}
+});
+
+export default App;

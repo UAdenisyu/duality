@@ -1,16 +1,21 @@
 import { View, ScrollView } from "react-native";
-import Portfolio from "../../components/Portfolio/Portfolio";
-import SummaryPrice from "../../components/SummaryPrice/SummaryPrice";
+import BalanceCryptoDetails from "../../components/BalanceCryptoDetails";
+import Portfolio from "../../components/Portfolio";
+import SummaryPrice from "../../components/SummaryPrice";
 import UserShortInfoBalanceList from "../../components/UserShortInfoBalanceList";
 
+
+import EthLogo from '../../assets/svgs/EthLogo.svg';
+import TotalBalanceListDetails from "../../components/TotalBalanceListDetails";
 
 export default () => {
     return (
         // <LinkButton to={'/earn/input'}/>
         <ScrollView>
-            <SummaryPrice showDetails={true}/>
-            <Portfolio/>
-            <UserShortInfoBalanceList/>
+            {/* <SummaryPrice format={'details'}/> */}
+            {/* <Portfolio/> */}
+            {/* <BalanceCryptoDetails currencyName={'Eth'}/> */}
+            {/* <TotalBalanceListDetails/> */}
             <View style={{height: 100}}></View>
         </ScrollView>
     );

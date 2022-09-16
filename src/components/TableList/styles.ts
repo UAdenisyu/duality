@@ -2,12 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        marginTop: 8,
-        justifyContent: 'center',
-        backgroundColor: "rgba(255, 255, 255, 0.07)",
-        borderRadius: 24,
+        padding: 0,
         overflow: 'hidden',
-        flexDirection: 'column',
     },
     headerWrapper: {
         paddingVertical: 12,
@@ -17,14 +13,15 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         borderWidth: 0.5,
         borderBottomColor: 'rgba(133, 133, 133, 0.26)',
-        elevation: 20,
         shadowColor: '#25272B',
+        elevation: 20,
         zIndex: 2,
     },
     headerText: {
-        color: "#888888",
+        fontFamily: 'poppins-regular',
         fontWeight: '400',
         fontSize: 12,
+        lineHeight: 18,
     }
 });
 
@@ -33,35 +30,20 @@ export const listItem = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 14,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-
+        alignItems: 'center',
     },
     income: {
-        justifyContent: 'flex-start',
-        color: '#E2FF9D',
-        fontWeight: '600',
-        fontSize: 14,
+        flex: 2,
     },
     price: {
-        justifyContent: 'flex-start',
-        color: '#FFFFFF',
-        fontWeight: '600',
-        fontSize: 14,
+        flex: 2,
     },
     date: {
-        mytextColor: {
-            color: '#FFFFFF',
-        },
-        justifyContent: 'center',
         flexDirection: 'row',
-        color: '#FFFFFF',
-        fontWeight: '600',
-        fontSize: 14,
+        flex: 2,
     },
     arrow: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 5,
+        alignSelf: 'center',
         marginLeft: 12,
     }
 });

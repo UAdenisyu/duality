@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import styles from './styles';
 import TermClause from './TermClause';
 import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
@@ -8,27 +8,47 @@ import Checkbox from 'expo-checkbox';
 import { useState } from 'react';
 import useThemeColors from "../../hooks/useThemeColors";
 
+import { observer } from 'mobx-react-lite';
 
-export default function TermsOfServiceList({terms}: {terms: Array<string>}) {
-    const termList = terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>);
-    const componentStyles = CommonComponentStyles();
-    const { selectedItemColor } = useThemeColors();
+const TermsOfServiceList = observer(({terms}: {terms: Array<string>}) => {
+
+    const { wrapper } = CommonComponentStyles();
+    const { selectedItemColor, plainText } = useThemeColors();
+
     const [isChecked, setChecked] = useState(false);
 
+    const termList = terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>);
+
+    const dynamicColors = StyleSheet.create({
+        plainText:{
+            color: plainText,
+        },
+        termsOfServiceListLink:{
+            color: selectedItemColor,
+        }
+    });
+
     return (
-        <View style={componentStyles.wrapper}>
+        <View style={wrapper}>
             {termList}
             <View style={styles.section}>
                 <Checkbox
-                    style={[styles.checkbox, {borderColor: selectedItemColor}]}
+                    style={styles.checkbox}
                     value={isChecked}
                     onValueChange={setChecked}
                     color={selectedItemColor}/>
-                <Text style={styles.agreeText}>
-                    I have read and I accept Duality's Terms of Service
+                <Text style={[styles.agreeText, { marginLeft: 8 }, dynamicColors.plainText]}>
+                    I have read and I accept Duality's
+                    <Pressable>
+                        <Text style={[styles.agreeText, dynamicColors.termsOfServiceListLink]}>
+                            Terms of Service
+                        </Text>
+                    </Pressable>
                 </Text>
+
             </View>
 
         </View>
     );
-}
+});
+export default TermsOfServiceList;

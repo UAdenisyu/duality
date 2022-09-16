@@ -16,10 +16,17 @@ export default StyleSheet.create({
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
     },
+
+    modalTitle: {
+        fontFamily: 'poppins-medium',
+        fontSize: 14,
+        textAlign: 'center',
+    },
     button: {
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 0,
+        marginHorizontal: 0,
     },
     buttonText: {
         fontFamily: 'poppins-medium',
@@ -35,9 +42,8 @@ export default StyleSheet.create({
         marginBottom: 24,
     },
     titlePrompt: {
-            marginTop: 8,
-            textAlign: 'center',
-            paddingHorizontal: 30,
+        marginTop: 8,
+        textAlign: 'center',
     },
 
     arrowIcon: {
@@ -45,11 +51,8 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginLeft: 7,
     },
-    modalTextContent: {
-        fontFamily: 'poppins-medium',
-        fontSize: 14,
-    },
-    
+
+
     closeIcon: {
         width: '100%',
         position: 'absolute',

@@ -15,9 +15,7 @@ export default StyleSheet.create({
         borderWidth: 1.5,
     },
     agreeText: {
-        marginLeft: 8,
         marginRight: 52,
-        color: 'white',
         fontFamily: 'poppins-regular',
         fontSize: 14,
         lineHeight: 20,

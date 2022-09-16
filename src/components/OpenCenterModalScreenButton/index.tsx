@@ -1,5 +1,5 @@
-import React, { JSXElementConstructor, useState, ReactElement } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import React, { useState, ReactElement } from 'react';
+import { Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle } from 'react-native';
 
 import useThemeColors from "../../hooks/useThemeColors";
 
@@ -15,7 +15,7 @@ const OpenCenterModalScreenButton = observer(({
     targetContentComponent,
     targetStyles,
     textContent,
-    showCancelButton=false,
+    showCancelButton=true,
     confirmButtonOnPress,
     cancelButtonOnPress} :
         {   targetContentComponent: ReactElement
@@ -25,17 +25,32 @@ const OpenCenterModalScreenButton = observer(({
             confirmButtonOnPress?: () => void, 
             cancelButtonOnPress?: () => void}) => {
 
-    const { commonText, modalBackgroud, modalWindowElementsColor, } = useThemeColors(); 
+    const { plainText, modalBackground, modalWindowElementsColor } = useThemeColors(); 
+    const dynamicColors = StyleSheet.create({
+        modalBackground: {
+            backgroundColor: modalBackground
+        },
+        btnText:{
+            color: plainText,
+        },
+        infoText:{
+            color: modalWindowElementsColor,
+        },
+        btnBackground: {
+            backgroundColor: modalWindowElementsColor
+        }
+    });
 
     const [ modalVisible, setModalVisible ] = useState(false);
+
+
     const textContentBeautified = typeof textContent === 'string' ?
-        <Text style={[styles.modalTextContent, {color: modalWindowElementsColor, textAlign: 'center'}]}>{textContent}</Text> :
+        <Text style={[styles.modalTextContent, dynamicColors.infoText, { textAlign: 'center'}]}>{textContent}</Text> :
         textContent.map((item, i) => {
-        return <Text key={i.toString()} style={[styles.modalTextContent, {color: modalWindowElementsColor, marginTop: i === 0 ? 0 : 16}]}>
+        return <Text key={i.toString()} style={[styles.modalTextContent, dynamicColors.infoText, { marginTop: i === 0 ? 0 : 16}]}>
                 {i+1}. {item}
             </Text>
     });
-
 
     // doesn't copy component children 
     // const Btn = React.cloneElement(<Pressable/>, { ...targetContentComponent.props, onPress: () => setModalVisible(true)});
@@ -52,21 +67,21 @@ const OpenCenterModalScreenButton = observer(({
                 onRequestClose={() => console.warn('closed')}
                 statusBarTranslucent={true}>
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
-                    <View style={[styles.modalView, {backgroundColor: modalBackgroud}]}>
+                    <View style={[styles.modalView, dynamicColors.modalBackground]}>
                         <View style={styles.modalTextWrapper}>
                             {textContentBeautified}
                         </View>
                         <Pressable
-                            style={[styles.button, {backgroundColor: modalWindowElementsColor}]}
+                            style={[styles.button, dynamicColors.btnBackground]}
                             onPress={() => {
                                 setModalVisible(false);
                                 if (confirmButtonOnPress){
                                     confirmButtonOnPress();
                                 }
                             }}>
-                            <Text style={[styles.buttonText, {color: commonText}]}>OK</Text>
+                            <Text style={[styles.buttonText, dynamicColors.btnText]}>OK</Text>
                             <View style={styles.arrowIcon}>
-                                <Arrow color={commonText}/>
+                                <Arrow color={plainText}/>
                             </View>
                         </Pressable>
                         {showCancelButton ? <Pressable
@@ -77,7 +92,7 @@ const OpenCenterModalScreenButton = observer(({
                                         cancelButtonOnPress();
                                     }
                                 }}>
-                                <Text style={[styles.buttonText, {color: modalWindowElementsColor}]}>Cancel</Text>
+                                <Text style={[styles.buttonText, dynamicColors.infoText]}>Cancel</Text>
                             </Pressable> : null
                         }
                     </View>

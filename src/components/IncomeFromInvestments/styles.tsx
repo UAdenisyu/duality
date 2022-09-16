@@ -26,10 +26,8 @@ export default StyleSheet.create({
 
     },
 
-
     markerItem: {
         position: 'absolute',
-        color: 'white',
     },
     markerTitle: {
         fontFamily: 'poppins-regular',
@@ -55,7 +53,6 @@ export default StyleSheet.create({
         borderLeftWidth: 4.5,
         borderTopColor: 'transparent',
         borderRightColor: 'transparent',
-        borderBottomColor: '#E2FF9D',
         borderLeftColor: 'transparent',
         transform: [{ rotate: '180deg'}],
         bottom: 50,
@@ -65,7 +62,6 @@ export default StyleSheet.create({
         fontFamily: 'poppins-regular',
         fontSize: 12,
         lineHeight: 18,
-        color: '#989898',
     },
     markerBottomIcon: {
         top: 75,
@@ -82,7 +78,7 @@ export default StyleSheet.create({
         marginHorizontal: 16,
         flex: 1,
     },
-    xIcon: {
+    icon: {
         justifyContent: 'center',
     },
 });

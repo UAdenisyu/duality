@@ -1,9 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ColorSchemeName, ImageBackground, View, Text, TouchableOpacity } from 'react-native';
+import { ImageBackground, Platform, StyleSheet, View } from 'react-native';
 import styles , { navigatorOptions} from './styles';
 import NotFoundScreen from '../screens/NotFoundScreen';
+
+import useThemeColors from '../hooks/useThemeColors';
 
 
 import SvgComponentEarn from '../assets/svgs/SvgComponentEarn';
@@ -78,7 +80,22 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-    // const colorScheme = useColorScheme();
+    const themeColors = useThemeColors();
+
+    const themeColorStyles = StyleSheet.create({
+        tint: {
+            backgroundColor: themeColors.selectedItemColor,
+            shadowColor: themeColors.selectedItemColor,
+        },
+        tintShadow: {
+            ...Platform.select({
+                android:{
+                    shadowColor: themeColors.selectedItemColor,
+                }
+            }),
+        }
+    });
+
     const navBarIcons = [
         (color:string) => <SvgComponentEarn color={color}/>, 
         (color:string) => <SvgComponentTrade color={color}/>,
@@ -88,15 +105,21 @@ function BottomTabNavigator() {
     ];
     const setTabBarIcon = ({ focused, color, index } : {focused: boolean, color: string, index: number }) => (
             <View>
-                {focused ? <View><View style={styles.activeTint}/><View style={styles.iconShadow}/></View> : null}
+                {focused ? <View><View style={[styles.activeTint, themeColorStyles.tint]}/><View style={[styles.iconShadow, themeColorStyles.tintShadow]}/></View> : null}
                 {navBarIcons[index] ? navBarIcons[index](color) : null}
             </View>
     );
+
     return (
             <BottomTab.Navigator 
                 initialRouteName="Earn"
-                sceneContainerStyle={{ backgroundColor: 'transparent', paddingHorizontal: 24}}
-                screenOptions={navigatorOptions}
+                sceneContainerStyle={{ backgroundColor: 'transparent',}}
+                screenOptions={{
+                    ...navigatorOptions,
+                    tabBarActiveTintColor: themeColors.selectedItemColor,
+                    tabBarInactiveTintColor: themeColors.extraLight,
+                }}
+
                 >
                 <BottomTab.Screen
                     name="Earn"

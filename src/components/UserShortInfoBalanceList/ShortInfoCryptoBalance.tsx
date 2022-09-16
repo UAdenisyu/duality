@@ -24,19 +24,21 @@ const data: Data = {
 
 
 const ShortInfoCryptoBalance = observer(({ cryptoName }: {cryptoName: string, }) => {
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+
     const { valueSmall, valueBig, title} = CommonComponentStyles();
 
-    const { grey, commonText } = useThemeColors();
+    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const item = cryptoCurrencyFullInfo[cryptoName][0];
+
 
     return (
         <View style={[styles.section, {flex: 0.1}]}>
             <View style={styles.logoContainer}>
-                {data[cryptoName]}
+                {item.logoSvgSmall()}
             </View>
             <View style={{flex: 0.45}}>
-                <Text style={[valueSmall, {fontFamily: 'poppins-medium'}]}>{cryptoName.toUpperCase()}</Text>
-                <Text style={[title, {fontSize: 10}]}>Etherium</Text>
+                <Text style={[valueSmall, styles.cryptoName]}>{cryptoName.toUpperCase()}</Text>
+                <Text style={[title, {fontSize: 10}]}>{cryptoName}</Text>
             </View>
             <View style={styles.values}>
                 <Text style={[valueBig, styles.valueCrypto]}>23,000.00</Text>

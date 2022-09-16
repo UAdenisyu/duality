@@ -7,24 +7,25 @@ import { useCounterStore } from '../../mobx/stores/AppStore.store';
 import useThemeColors from "../../hooks/useThemeColors";
 
 import NumberFormat from 'react-number-format';
+import CommonComponentStyles from "../../styles/CommonComponentStyles";
 
 const TotalBalance = observer(() => {
-    const { totalBalance } = useCounterStore();
 
-    const { grey, commonText } = useThemeColors();
+    const { totalBalance } = useCounterStore();
+    const { wrapper, title, valueBig, cryptoName } = CommonComponentStyles();
 
     return (
-        <View style={styles.container}>
-            <Text style={[styles.title, {color: grey}]}>Total balance:</Text>
+        <View style={wrapper}>
+            <Text style={title}>Total balance:</Text>
             <View style={styles.body}>
                 <NumberFormat
                     value={totalBalance.toFixed(2)}
                     displayType="text"
                     thousandSeparator
                     prefix="$"
-                    renderText={(value) => <Text style={[styles.numbers, {color: commonText}]}>{value}</Text>}
+                    renderText={(value) => <Text style={valueBig}>{value}</Text>}
                 />
-                <Text style={[styles.currencyName, {color: grey}]}>USDT</Text>
+                <Text style={cryptoName}>USDT</Text>
             </View>
         </View>
     );

@@ -1,5 +1,5 @@
-import React, { JSXElementConstructor, useState, ReactElement } from 'react';
-import { Modal, Text, Pressable, View, ScrollView } from 'react-native';
+import React, { useState, ReactElement } from 'react';
+import { Modal, Text, Pressable, View, ScrollView, StyleSheet } from 'react-native';
 
 import useThemeColors from "../../hooks/useThemeColors";
 
@@ -15,8 +15,6 @@ import { observer } from 'mobx-react-lite';
 import styles from './styles';
 import CommonComponentStyles from '../../styles/CommonComponentStyles';
 
-//targetContentComponent: React.ComponentType<TargetProps>
-
 const OpenBottomModalScreenButton = observer(({
     targetContentComponent,
     titleText,
@@ -27,12 +25,19 @@ const OpenBottomModalScreenButton = observer(({
             promptText?: string,
             confirmButtonOnPress?: () => void }) => {   
 
-    const { commonText, extraDark, selectedItemColor } = useThemeColors(); 
+    const { plainText, extraDark, selectedItemColor } = useThemeColors(); 
     const { wrapper, title } = CommonComponentStyles();
 
     const [ modalVisible, setModalVisible ] = useState(false);
 
-
+    const dynamicColors = StyleSheet.create({
+        plainText:{
+            color: plainText,
+        },
+        modalBackground: {
+            backgroundColor: extraDark
+        }
+    });
     
     const btnOpenModal = <Pressable onPress={() => setModalVisible(true)}>
                     {targetContentComponent}
@@ -46,15 +51,15 @@ const OpenBottomModalScreenButton = observer(({
                 onRequestClose={() => console.warn('closed')}
                 statusBarTranslucent={true}>
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
-                    <View style={[styles.modalView, {backgroundColor: extraDark}]}>
+                    <View style={[styles.modalView, dynamicColors.modalBackground]}>
                         <View style={styles.titleBlock}>
-                            <Text style={[styles.modalTextContent, {color: commonText, textAlign: 'center'}]}>
+                            <Text style={[styles.modalTitle, dynamicColors.plainText]}>
                                 {titleText}
                             </Text>
                             <Pressable style={styles.closeIcon}
                                 onPress={() => setModalVisible(!modalVisible)}>
                                 <Text>
-                                    <Ionicons name="close" size={24} color={commonText} />
+                                    <Ionicons name="close" size={24} color={plainText} />
                                 </Text>
                             </Pressable>
                             <Text style={[title, styles.titlePrompt]}>
@@ -73,7 +78,7 @@ const OpenBottomModalScreenButton = observer(({
                                 <View style={styles.cryptoLogo}>
                                     <EthLogo/>
                                 </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>Ethereum</Text>
+                                <Text style={[styles.buttonText, dynamicColors.plainText]}>Ethereum</Text>
                                 <View style={styles.arrowIcon}>
                                     <Arrow color={selectedItemColor}/>
                                 </View>
@@ -89,87 +94,7 @@ const OpenBottomModalScreenButton = observer(({
                                 <View style={styles.cryptoLogo}>
                                     <UsdtLogo/>
                                 </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
-                                <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
-                                </View>
-                            </Pressable>
-                            <Pressable
-                                style={[wrapper, styles.button, { marginTop: 8 }]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
-                                    }
-                                }}>
-                                <View style={styles.cryptoLogo}>
-                                    <UsdtLogo/>
-                                </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
-                                <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
-                                </View>
-                            </Pressable>
-                            <Pressable
-                                style={[wrapper, styles.button, { marginTop: 8 }]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
-                                    }
-                                }}>
-                                <View style={styles.cryptoLogo}>
-                                    <UsdtLogo/>
-                                </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
-                                <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
-                                </View>
-                            </Pressable>
-                            <Pressable
-                                style={[wrapper, styles.button, { marginTop: 8 }]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
-                                    }
-                                }}>
-                                <View style={styles.cryptoLogo}>
-                                    <UsdtLogo/>
-                                </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
-                                <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
-                                </View>
-                            </Pressable>
-                            <Pressable
-                                style={[wrapper, styles.button, { marginTop: 8 }]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
-                                    }
-                                }}>
-                                <View style={styles.cryptoLogo}>
-                                    <UsdtLogo/>
-                                </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
-                                <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
-                                </View>
-                            </Pressable>
-                            <Pressable
-                                style={[wrapper, styles.button, { marginTop: 8 }]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
-                                    }
-                                }}>
-                                <View style={styles.cryptoLogo}>
-                                    <UsdtLogo/>
-                                </View>
-                                <Text style={[styles.buttonText, {color: commonText}]}>USDT</Text>
+                                <Text style={[styles.buttonText, dynamicColors.plainText]}>USDT</Text>
                                 <View style={styles.arrowIcon}>
                                     <Arrow color={selectedItemColor}/>
                                 </View>

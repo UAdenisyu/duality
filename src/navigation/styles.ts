@@ -19,13 +19,11 @@ const styles = StyleSheet.create({
         height: 3,
         width: 19,
         justifyContent: 'center',
-        backgroundColor: '#E2FF9D',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         position: 'absolute',
         marginTop: -9,
         alignSelf: 'center',
-        shadowColor: '#E2FF9D',
         shadowOffset: {
             width: 0,
             height: 5,
@@ -36,7 +34,6 @@ const styles = StyleSheet.create({
     iconShadow: {
         ...Platform.select({
             android: {
-                shadowColor: '#E2FF9D',
                 elevation: 10,
                 height: 3,
                 width: 19,
@@ -60,10 +57,8 @@ const styles = StyleSheet.create({
 
 export default styles;
 
-export const navigatorOptions =  {
+export const navigatorOptions = {
     tabBarHideOnKeyboard: true,
-    tabBarActiveTintColor: '#E2FF9D',
-    tabBarInactiveTintColor: '#ffffff',
     tabBarStyle: styles.navigationWrapper,
     tabBarLabelStyle: { fontSize: 12, },
     headerStyle: {
@@ -76,6 +71,6 @@ export const navigatorOptions =  {
         color: 'white',
         fontFamily: 'trap-semibold',
         fontSize: 40,
-        marginLeft: -16,
+        marginLeft: 8,
     }
 } 

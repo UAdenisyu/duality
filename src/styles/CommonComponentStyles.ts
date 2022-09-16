@@ -3,10 +3,11 @@ import useThemeColors from '../hooks/useThemeColors';
 
 export default function CommonComponentStyles() {
     const colors = useThemeColors();
+    
     return StyleSheet.create({
         wrapper: {
-            color: colors.commonText,
-            backgroundColor: colors.componentBackgroud,
+            marginHorizontal: 24,
+            backgroundColor: colors.componentBackground,
             padding: 16,
             justifyContent: 'center',
             borderRadius: 24,
@@ -19,15 +20,22 @@ export default function CommonComponentStyles() {
             fontSize: 14,
             fontWeight: '400',
         },
+        titleLight:{
+            color: colors.plainText,
+            fontFamily: 'poppins-regular',
+            fontSize: 14,
+            fontWeight: '400',
+            lineHeight: 21,
+        },
         valueBig: {
-            color: colors.commonText,
+            color: colors.plainText,
             fontFamily: 'poppins-semibold',
             fontSize: 24,
             lineHeight: 28,
         },
         valueSmall: {
-            color: colors.commonText,
-            fontFamily: 'poppins-semibold',
+            color: colors.plainText,
+            fontFamily: 'poppins-regular',
             fontSize: 14,
             lineHeight: 28,
         },
@@ -41,6 +49,17 @@ export default function CommonComponentStyles() {
             textAlignVertical: 'center',
             fontFamily: 'poppins-regular',
             fontSize: 14,
+        },
+        borderedSection: {
+            paddingTop: 0,
+            paddingBottom: 16,
+            borderBottomColor: colors.componentDividingLine,
+            borderBottomWidth: 1,
+        },
+        markeredText:{
+            fontFamily: 'poppins-semibold',
+            fontSize: 14,
+            color: colors.selectedItemColor
         }
     });
 } 

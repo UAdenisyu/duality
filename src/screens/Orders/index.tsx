@@ -1,3 +1,4 @@
+import { View } from "react-native";
 import TermsOfServiceList from "../../components/TermsOfServiceList";
 import TotaLBalance from "../../components/TotalBalance";
 
@@ -12,6 +13,7 @@ const termsOfServiceList: Array<string> = [
 
 export default function Earn() {
     return (
-        <TermsOfServiceList terms={termsOfServiceList}/>
+        // <TermsOfServiceList terms={termsOfServiceList}/>
+        <View style={{height: 100}}></View>
     );
 }
