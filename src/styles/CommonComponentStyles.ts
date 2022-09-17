@@ -60,6 +60,14 @@ export default function CommonComponentStyles() {
             fontFamily: 'poppins-semibold',
             fontSize: 14,
             color: colors.selectedItemColor
+        },
+        input:{
+            borderWidth: 1,
+            borderRadius: 16,
+            borderColor: colors.lightGrey,
+            paddingVertical: 10,
+            paddingHorizontal: 32,
+            marginVertical: 8,
         }
     });
 } 

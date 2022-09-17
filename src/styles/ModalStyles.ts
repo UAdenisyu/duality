@@ -4,6 +4,7 @@ import useThemeColors from '../hooks/useThemeColors';
 export default function ModalStyles() {
     const colors = useThemeColors();
     return StyleSheet.create({
+
         center: {
             padding: 24,
             marginHorizontal: 24,
@@ -14,13 +15,12 @@ export default function ModalStyles() {
         bottom: {
             padding: 24,
             backgroundColor: colors.extraDark,
-            color: colors.commonText,
+            color: colors.plainText,
             alignSelf: 'center',
         },
         bottomModalItems: {
             padding: 16,
-            backgroundColor: colors.componentBackgroud,
+            backgroundColor: colors.componentBackground,
         }
-
     });
 } 
