@@ -4,7 +4,7 @@ import Arrow from '../../assets/svgs/arrow.svg';
 
 import useThemeColors from '../../hooks/useThemeColors';
 
-export default function ShowMoreBtn({onPressAction}:{onPressAction?: () => void} ) {
+export default function ShowMoreBtn({onPressAction, navigation}:{onPressAction?: () => void, navigation: any} ) {
 
     const { plainText } = useThemeColors();
     
@@ -17,10 +17,10 @@ export default function ShowMoreBtn({onPressAction}:{onPressAction?: () => void}
 
 
     return (
-        <View style={styles.wrapper}>
+        <Pressable style={styles.wrapper} onPress={() => navigation?.navigate('Earn/input')}>
             <Text style={[styles.text, dynamicColors.plainText]}>Show more</Text>
             <Arrow color={plainText} style={styles.arrow}/>
-        </View>
+        </Pressable>
     );
 }
 

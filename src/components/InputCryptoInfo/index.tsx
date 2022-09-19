@@ -15,7 +15,8 @@ type options = {
     cryptoName: string,
     yearIncomeMin: number, 
     yearIncomeMax: number, 
-    showMoreBtn: boolean,
+    showMoreBtn?: boolean,
+    navigation?: any
 }
 
 type Data = {
@@ -37,10 +38,10 @@ const termsOfServiceList: Array<string> = [
 ]
 
 
-export default function InputCryptoInfo({ cryptoName = '', yearIncomeMin = 0, yearIncomeMax = 0, showMoreBtn = true} : options) {
+export default function InputCryptoInfo({ cryptoName = '', yearIncomeMin = 0, yearIncomeMax = 0, showMoreBtn = false, navigation} : options) {
 
     const { componentDividingLine, plainText, selectedItemColor } = useThemeColors();
-    const { wrapper, valueBig, titleLight, valueSmall } = CommonComponentStyles();
+    const { wrapper, valueBig, titleLight } = CommonComponentStyles();
 
     const dynamicColors = StyleSheet.create({
         bordered: {
@@ -68,12 +69,10 @@ export default function InputCryptoInfo({ cryptoName = '', yearIncomeMin = 0, ye
                 <Text style={[styles.persentsPerYearValue, dynamicColors.marked]}>{yearIncomeMin} - {yearIncomeMax}</Text>
                 <Arrow color={selectedItemColor} style={styles.arrow}/>
             </View>
+
             { showMoreBtn ? <View style={{ marginTop: 19 }}>
-                    <OpenCenterModalScreenButton
-                        targetContentComponent={<ShowMoreBtn/>}
-                        textContent = {termsOfServiceList}
-                        showCancelButton = {false}/>
-                </View> : null }
+                                <ShowMoreBtn navigation={navigation}/>
+                            </View> : null }
         </View>
     );
 }

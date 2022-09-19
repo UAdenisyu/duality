@@ -30,9 +30,8 @@ const ShortInfoCryptoBalance = observer(({ cryptoName }: {cryptoName: string, })
     const { cryptoCurrencyFullInfo } = useCounterStore();
     const item = cryptoCurrencyFullInfo[cryptoName][0];
 
-
     return (
-        <View style={[styles.section, {flex: 0.1}]}>
+        <View style={[styles.section]}>
             <View style={styles.logoContainer}>
                 {item.logoSvgSmall()}
             </View>

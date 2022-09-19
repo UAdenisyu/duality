@@ -52,8 +52,7 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
             </View>
             <Text style={[title, styles.linesPadding, dynamicColors.warningText]}>-7,39 $/-0,03%</Text>
             <View style={[styles.section, styles.depositAndWithdraw]}>
-                <View>
-                    <OpenBottomModalScreenButton
+                <OpenBottomModalScreenButton
                         // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
                         targetContentComponent={
                             <View 
@@ -62,9 +61,7 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                             </View>
                         }
                         titleText = {'Choose a currency'}/>
-                </View>
-                <View>
-                    <OpenBottomModalScreenButton
+                <OpenBottomModalScreenButton
                         // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
                         targetContentComponent={
                             <View 
@@ -74,7 +71,6 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                         }
                         titleText = {'Choose a network'}
                         promptText = {'Make sure the network you choose for input matches the network for output\n Otherwise, all assets will be lost'}/>
-                </View>
             </View>
         </View>;
 

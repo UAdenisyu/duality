@@ -22,13 +22,23 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
     Screen
 >;
 
+
+
+export type EarnTabParamList = {
+    EarnMain: undefined;
+    EarnInput: undefined;
+}
+
 export type RootTabParamList = {
-    Earn: undefined;
+    Earn: EarnTabParamList;
     Trade: undefined;
     Orders: undefined;
     Wallets: undefined;
     Profile: undefined;
 };
+
+export type EarnStackParamList<Screen extends keyof EarnTabParamList> = NativeStackScreenProps<RootStackParamList>;
+
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
     BottomTabScreenProps<RootTabParamList, Screen>,

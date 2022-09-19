@@ -1,11 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ImageBackground, Platform, StyleSheet, View } from 'react-native';
-import styles , { navigatorOptions} from './styles';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+import { ImageBackground, Platform, StyleSheet, View, Text, Pressable, StatusBar } from 'react-native';
+import styles , { mainNavigatorOptions, mainNativeNavigatorOptions, childNavigatorOptions } from './styles';
 import NotFoundScreen from '../screens/NotFoundScreen';
 
 import useThemeColors from '../hooks/useThemeColors';
+
 
 
 import SvgComponentEarn from '../assets/svgs/SvgComponentEarn';
@@ -14,14 +18,21 @@ import SvgComponentOrders from '../assets/svgs/SvgComponentOrders';
 import SvgComponentWallet from '../assets/svgs/SvgComponentWallet';
 import SvgComponentProfile from '../assets/svgs/SvgComponentProfile';
 
-import Earn from '../screens/Earn';
-import Orders from '../screens/Orders';
-import Trade from '../screens/Trade';
-import Wallets from '../screens/Wallets';
-import Profile from '../screens/Profile';
+import EarnMain from '../screens/Earn';
 import EarnInput from '../screens/Earn/Input';
 
-import { RootStackParamList, RootTabParamList } from '../types';
+import Orders from '../screens/Orders';
+
+import Trade from '../screens/Trade';
+
+import WalletsMain from '../screens/Wallets';
+import WalletsSpotAccount from '../screens/Wallets/SpotAccount';
+import WalletsBalance from '../screens/Wallets/Balance';
+import WalletsEarn from '../screens/Wallets/Earn';
+
+import Profile from '../screens/Profile';
+
+import { RootStackParamList, RootTabParamList, EarnStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 const TabStack = createNativeStackNavigator<RootStackParamList>();
@@ -50,21 +61,89 @@ export default function Navigation() {
 
 
 
-const EarnStackScreens = () => {
-    const EarnStack = createNativeStackNavigator();
+const EarnStackScreens = ({ navigation }: { navigation: any }) => {
+    const EarnStack = createStackNavigator();
     return (
-      <EarnStack.Navigator>
+      <EarnStack.Navigator
+      >
             <EarnStack.Screen
-                options={{ headerShown: false }}
-                name=' '
-                component={Earn}
+                options={{
+                    ...mainNavigatorOptions,
+                    headerTitle: 'Earn',
+                }}
+                name='Earn/main'
+                component={EarnMain}
             />
             <EarnStack.Screen
-                options={{ headerShown: false }}
-                name='Input'
+                options={{
+                    ...childNavigatorOptions,
+                    headerTitleAlign: 'center',
+                    headerTitle: 'Input',
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Earn/main')}>
+                            <View style={styles.headerBackArrow}/>
+                        </Pressable>)
+                }}
+                name='Earn/input'
                 component={EarnInput}
             />
       </EarnStack.Navigator>
+    );
+}
+
+const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
+    const WalletsStackScreens = createStackNavigator();
+    return (
+      <WalletsStackScreens.Navigator>
+            <WalletsStackScreens.Screen
+                options={{
+                    ...mainNavigatorOptions,
+                    headerTitle: 'Wallets',
+                    headerLeft: () => <View/>,
+                }}
+                name='Wallets/main'
+                component={WalletsMain}
+            />
+            <WalletsStackScreens.Screen
+                options={{
+                    ...childNavigatorOptions,
+                    headerTitleAlign: 'center',
+                    headerTitle: 'Spot-account',
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Wallets/main')}>
+                            <View style={styles.headerBackArrow}/>
+                        </Pressable>)
+                }}
+                name='Wallets/spotAccount'
+                component={WalletsSpotAccount}
+            />
+            <WalletsStackScreens.Screen
+                options={{
+                    ...childNavigatorOptions,
+                    headerTitleAlign: 'center',
+                    headerTitle: 'Earn',
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Wallets/main')}>
+                            <View style={styles.headerBackArrow}/>
+                        </Pressable>)
+                }}
+                name='Wallets/earn'
+                component={WalletsEarn}
+            />
+            <WalletsStackScreens.Screen
+                options={{
+                    ...childNavigatorOptions,
+                    headerTitleAlign: 'center',
+                    headerTitle: 'Balance',
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Wallets/main')}>
+                            <View style={styles.headerBackArrow}/>
+                        </Pressable>)
+                }}
+                name='Wallets/balance'
+                component={WalletsBalance}
+            />
+      </WalletsStackScreens.Navigator>
     );
 }
 
@@ -115,7 +194,7 @@ function BottomTabNavigator() {
                 initialRouteName="Earn"
                 sceneContainerStyle={{ backgroundColor: 'transparent',}}
                 screenOptions={{
-                    ...navigatorOptions,
+                    ...mainNativeNavigatorOptions,
                     tabBarActiveTintColor: themeColors.selectedItemColor,
                     tabBarInactiveTintColor: themeColors.extraLight,
                 }}
@@ -125,6 +204,7 @@ function BottomTabNavigator() {
                     name="Earn"
                     component={EarnStackScreens}
                     options={{
+                        headerShown: false,
                         title: 'Earn',
                         tabBarIcon: (props) => setTabBarIcon({...props, index: 0}),
                     }}
@@ -147,8 +227,9 @@ function BottomTabNavigator() {
                 />
                 <BottomTab.Screen
                     name="Wallets"
-                    component={Wallets}
+                    component={WalletsStackScreens}
                     options={{
+                        headerShown: false,
                         title: 'Wallets',
                         tabBarIcon: (props) => setTabBarIcon({...props, index: 3}),
                     }}

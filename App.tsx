@@ -16,7 +16,7 @@ const App = observer(() => {
     } else {
         return (
             <SafeAreaProvider >
-                <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true}/>
+                <StatusBar translucent backgroundColor="transparent"/>
                 <Navigation/>
             </SafeAreaProvider>
         );

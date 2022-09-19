@@ -53,11 +53,22 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
+    headerBackArrow:{
+        borderColor: 'white',
+        marginLeft: 20,
+        borderLeftWidth: 3,
+        borderBottomWidth: 3,
+        height: 10,
+        width: 10,
+        borderRadius: 2,
+        transform:  [{ rotate: '45deg'}],
+    }
+
 });
 
 export default styles;
 
-export const navigatorOptions = {
+export const mainNativeNavigatorOptions = {
     tabBarHideOnKeyboard: true,
     tabBarStyle: styles.navigationWrapper,
     tabBarLabelStyle: { fontSize: 12, },
@@ -73,4 +84,34 @@ export const navigatorOptions = {
         fontSize: 40,
         marginLeft: 8,
     }
+} 
+
+export const mainNavigatorOptions = {
+    headerShown: true,
+    headerStyle: { 
+        backgroundColor: 'transparent',
+        height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
+    },
+    headerShadowVisible: false,
+    headerTitleStyle: {
+        color: 'white',
+        fontFamily: 'trap-semibold',
+        fontSize: 40,
+        marginLeft: 12,
+    }
+}
+
+
+export const childNavigatorOptions = {
+    headerShown: true,
+    headerStyle: { 
+        backgroundColor: 'transparent',
+        height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
+    },
+    headerShadowVisible: false,
+    headerTitleStyle: {
+        color: 'white',
+        fontFamily: 'trap-semibold',
+        fontSize: 24,
+    },
 } 

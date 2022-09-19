@@ -8,8 +8,8 @@ export default function EarnInput() {
     return (
         <ScrollView>
             <TotaLBalance/>
-            {/* <InputCryptoInfo cryptoName = 'Eth' yearIncomeMin={5.51} yearIncomeMax={100.17} showMoreBtn={true}/> */}
-            {/* <TableList target='Eth'/> */}
+            <InputCryptoInfo cryptoName='Eth' yearIncomeMin={5.51} yearIncomeMax={100.17}/>
+            <TableList target='Eth'/>
         </ScrollView>
     );
 }

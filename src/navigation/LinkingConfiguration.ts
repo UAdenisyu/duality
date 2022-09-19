@@ -16,7 +16,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       Root: {
         screens: {
           Earn: {
-              path: "earn",
+              path: "Earn",
               screens: {
                   EarnScreen: {
                     path: 'main',
@@ -27,35 +27,45 @@ const linking: LinkingOptions<RootStackParamList> = {
               },
           },
           Trade: {
-            screens: {
-              Market: 'trade/market',
-              Limit: 'trade/limit',
-              Stop: 'trade/stop',
-            },
+              screens: {
+                  Market: 'market',
+                  Limit: 'limit',
+                  Stop: 'stop',
+              },
           },
           Orders: {
             screens: {
-              OpenOrders: 'orders/main',
-              OrderHistory: 'orders/history',
+              OpenOrders: 'main',
+              OrderHistory: 'history',
             },
           },
           Wallets: {
+            path: "Wallets",
             screens: {
-              Earn: 'wallets/earn',
-              SpotAccount: 'wallets/spot'
+                WalletsScreen:{
+                  path: 'main',
+                },
+                Earn: {
+                  path: 'earn',
+                },
+                SpotAccount: {
+                  path: 'spotAccount',
+                },
+                Balance: {
+                  path: 'balance',
+                }
             },
           },
           Profile: {
             screens: {
-              LogOut: 'profile/logOut',
-              PrivacyPolicy: 'profile/privacy',
-              Settings: 'profile/settings',
-              TermsAndConditions: 'profile/terms'
+              LogOut: 'logOut',
+              PrivacyPolicy: 'privacy',
+              Settings: 'settings',
+              TermsAndConditions: 'terms'
             },
           },
         },
       },
-      Modal: 'modal',
       NotFound: '*',
     },
   },

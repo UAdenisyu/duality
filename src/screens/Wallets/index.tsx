@@ -1,7 +1,13 @@
-import TotaLBalance from "../../components/TotalBalance";
+import { View } from "react-native";
+import Portfolio from "../../components/Portfolio";
+import SummaryPrice from "../../components/SummaryPrice";
 
-export default function Earn() {
+
+export default function Wallets() {
     return (
-        <TotaLBalance/>
+        <View>
+            <SummaryPrice/>
+            <Portfolio/>
+        </View>
     );
 }

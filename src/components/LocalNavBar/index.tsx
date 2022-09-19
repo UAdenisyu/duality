@@ -15,7 +15,10 @@ const LocalNavBar = observer(({buttonTitles}: {buttonTitles: string[]}) => {
     return (
         <View style={[wrapper, styles.body]}>
             {buttonTitles.map(buttonTitle => (
-                <Pressable key={buttonTitle} style={[styles.btn]}>
+                <Pressable 
+                    key={buttonTitle} 
+                    style={[styles.btn]}
+                    onPress={() => {}}>
                     <Text style={[titleLight, styles.btnText, styles.btnActive]}>
                         {buttonTitle}
                     </Text>
