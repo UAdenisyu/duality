@@ -4,12 +4,6 @@ export default StyleSheet.create({
     section: {
         flexDirection: 'row',
     },
-    title: {
-        fontFamily: 'poppins-regular',
-        fontSize: 14,
-        lineHeight: 21,
-        justifyContent: 'flex-start'
-    },
     titleIcon: {
         marginLeft: 8,
         justifyContent: 'center',
@@ -20,27 +14,18 @@ export default StyleSheet.create({
     },
     sliderMarker: {
         width: 100,
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
-    enabledSliderMarker: {
-
-    },
-
-    markerItem: {
+    markerTitleTop:{
         position: 'absolute',
-    },
-    markerTitle: {
-        fontFamily: 'poppins-regular',
-        fontSize: 12,
-        lineHeight: 18,
-        alignSelf: 'center',
-        bottom: 80,
+        bottom: 115,
     },
     markerValue: {
         fontFamily: 'poppins-bold',
         fontSize: 14,
         lineHeight: 16,
-        bottom: 60,
+        marginTop: 10,
     },
     markerArrow: {
         width: 0,
@@ -55,19 +40,13 @@ export default StyleSheet.create({
         borderRightColor: 'transparent',
         borderLeftColor: 'transparent',
         transform: [{ rotate: '180deg'}],
-        bottom: 50,
+        marginTop: 4,
+        marginBottom: 8,
     },
-    markerBottomTitle: {
-        top: 50,
-        fontFamily: 'poppins-regular',
-        fontSize: 12,
-        lineHeight: 18,
+    markerTitleBottom: {
+        marginTop: 8,
+        marginBottom: 4,
     },
-    markerBottomIcon: {
-        top: 75,
-    },
-
-
     incomeInfo: {
         marginTop: 16,
     },

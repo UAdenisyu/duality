@@ -2,6 +2,7 @@ import { ScrollView, View } from "react-native";
 import TotaLBalance from "../../components/TotalBalance";
 import InputCryptoInfo from "../../components/InputCryptoInfo";
 import UserShortInfoBalanceList from "../../components/UserShortInfoBalanceList";
+import IncomeFromInvestments from "../../components/IncomeFromInvestments";
 
 
 

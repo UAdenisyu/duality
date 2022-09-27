@@ -5,8 +5,8 @@ import SummaryPrice from "../../../components/SummaryPrice";
 export default function WalletsEarn() {
     return (
         <View>
-            <SummaryPrice titleText="Estimated cost"/>
-            <Portfolio/>
+            {/* <SummaryPrice titleText="Estimated cost"/>
+            <Portfolio/> */}
         </View>
     );
 }

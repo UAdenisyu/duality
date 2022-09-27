@@ -3,20 +3,19 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     section: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
     },
-    componentTitle: {
-        fontFamily: 'poppins-regular',
-        fontSize: 14,
-        lineHeight: 21,
+    sectionNested: {
+        flexDirection: 'row',
     },
     tableWrapper: {
         marginTop: 12,
     },
     spaceFillingLine: {
-        marginVertical: -1,
         height: 22,
         borderLeftWidth: 1.5,
         marginLeft: 7.25,
+        marginVertical: -3,
     },
     marker: {
         backgroundColor: 'transparent',
@@ -25,33 +24,28 @@ export default StyleSheet.create({
         borderWidth: 3,
         borderRadius: 24,
         alignSelf: 'center',
+        marginRight: 10,
     },
     titles: {
         flex:1,
-        marginLeft: 10,
-        justifyContent: 'center',
-        padding: 0,
-        margin: 0,
-    },
-    titlesText:{
-        fontFamily: 'poppins-regular',
-        fontSize: 12,
-        lineHeight: 18,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
     values: {
+        flex: 1,
+        paddingTop: 5,
         justifyContent: 'center',
+        alignItems: 'flex-end',
     }, 
-    valuesText:{
-        fontFamily: 'poppins-semibold',
-        fontSize: 14,
-        lineHeight: 16,
-    },
-
     bottomSection: {
         marginTop: 8,
     },
-    bottomSectionRow: {
-        marginTop: 8,
-        justifyContent: 'space-between',
+    infoIcon: {
+        justifyContent: 'center',
+        marginLeft: 7,
     },
+    titlesBottom: {
+        marginTop: 8,
+    }
 });

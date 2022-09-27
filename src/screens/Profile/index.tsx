@@ -51,20 +51,20 @@ const profileButtonsList = [
 
 export default function Earn() {
 
-    const { extraLight, selectedItemColor } = useThemeColors();
+    const { plainTextColor, markedTextColor } = useThemeColors();
 
-    const mainPageComponentList = profileButtonsList.map(item => (
-        <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(extraLight)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
-    ));
+    // const mainPageComponentList = profileButtonsList.map(item => (
+    //     <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(extraLight)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
+    // ));
 
     return (
         <View>
-            <View style={styles.screenWrapper}>
+            {/* <View style={styles.screenWrapper}>
                 {mainPageComponentList}
                 <View style={styles.logOutButtonWrapper}>
                     <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={() => console.log('pressed')}/>
                 </View>
-            </View>
+            </View> */}
             <View style={{height: 100}}></View>
         </View>
     );

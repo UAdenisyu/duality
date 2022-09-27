@@ -5,13 +5,13 @@ import Arrow from '../../assets/svgs/arrow.svg';
 import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
 import EthLogo from '../../assets/svgs/EthLogo.svg';
 import UsdtLogo from '../../assets/svgs/UsdtLogo.svg';
-import OpenCenterModalScreenButton from "../OpenCenterModalScreenButton";
+ 
 import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
 
 
-type options = {
+interface componentProps {
     cryptoName: string,
     yearIncomeMin: number, 
     yearIncomeMax: number, 
@@ -29,49 +29,29 @@ const data: Data = {
     '': <LogoNotFound/>
 }
 
-const termsOfServiceList: Array<string> = [
-    'You can pay with your actives, free to your sport account',
-    'You can pay with your actives, free to your sport account',
-    'You can pay with your actives, free to your sport account',
-    'You can pay with your actives, free to your sport account',
-    'You can pay with your actives, free to your sport account',
-]
 
+export default function InputCryptoInfo({ cryptoName = '',
+                                          yearIncomeMin = 0, 
+                                          yearIncomeMax = 0, 
+                                          showMoreBtn = false, 
+                                          navigation} : componentProps) {
 
-export default function InputCryptoInfo({ cryptoName = '', yearIncomeMin = 0, yearIncomeMax = 0, showMoreBtn = false, navigation} : options) {
-
-    const { componentDividingLine, plainText, selectedItemColor } = useThemeColors();
-    const { wrapper, valueBig, titleLight } = CommonComponentStyles();
-
-    const dynamicColors = StyleSheet.create({
-        bordered: {
-            borderBottomColor: componentDividingLine,
-        },
-        plainText:{
-            color: plainText,
-        },
-        marked: {
-            color: selectedItemColor,
-        }
-    });
+    const { plainTextColor, markedItemBorderColor } = useThemeColors();
+    const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();
 
     return (
         <View style={wrapper}>
-            <View style={[
-                    styles.titleSection,
-                    dynamicColors.bordered
-                ]}>
+            <View style={[styles.titleSection, borderedSection]}>
                 {data[cryptoName]}
-                <Text style={[valueBig, styles.title, dynamicColors.plainText]}>Input: {cryptoName}</Text>
+                <Text style={[valueBig, styles.title, plainTextColor]}>Input: {cryptoName}</Text>
             </View>
             <View style={styles.section}>
-                <Text style={[titleLight, styles.persentsPerYearTitle]}>% Per year</Text>
-                <Text style={[styles.persentsPerYearValue, dynamicColors.marked]}>{yearIncomeMin} - {yearIncomeMax}</Text>
-                <Arrow color={selectedItemColor} style={styles.arrow}/>
+                <Text style={titleLight}>% Per year</Text>
+                <Text style={[markedText, styles.persentsPerYear]}>{yearIncomeMin} - {yearIncomeMax}</Text>
+                <Arrow color={markedItemBorderColor.borderColor} style={styles.arrow}/>
             </View>
-
             { showMoreBtn ? <View style={{ marginTop: 19 }}>
-                                <ShowMoreBtn navigation={navigation}/>
+                                <ShowMoreBtn/>
                             </View> : null }
         </View>
     );

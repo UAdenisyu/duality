@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import styles from "./styles";
 
+
 import React from 'react';
 import useThemeColors from "../../hooks/useThemeColors";
-
+import generalComponentStyles from '../../styles/generalComponentStyles';
 
 
 type Props = { logo: CallableFunction,
@@ -16,30 +17,19 @@ type Props = { logo: CallableFunction,
 
 export default function SliderMarker({ logo, enabled, title, value, footer, bottomIcon }: Props){
     
-    const { selectedItemColor, plainText, grey } = useThemeColors();
-
-    const dynamicColors = StyleSheet.create({
-        plainText: {
-            color: plainText
-        },
-        arrow: {
-            borderBottomColor: selectedItemColor
-        },
-        tipText: {
-            color: grey,
-        }
-    });
+    const { markedTextColor, plainTextColor } = useThemeColors();
+    const { titleSmall, markedText } = generalComponentStyles();
 
     return (
-        <View style={enabled ? [styles.sliderMarker, styles.enabledSliderMarker] : styles.sliderMarker}>
-            <Text style={[styles.markerItem, styles.markerTitle, dynamicColors.plainText]}>{title}</Text>
-            <Text style={[styles.markerItem, styles.markerValue, dynamicColors.plainText]}>{value}</Text>
-            <View style={[styles.markerItem, styles.markerArrow, dynamicColors.arrow]}></View>
-            {logo()}
-            <Text style={[styles.markerItem, styles.markerBottomTitle, dynamicColors.tipText]}>{footer}</Text>
-            <View style={[styles.markerItem, styles.markerBottomIcon]}>
-                {bottomIcon()}
+        <View style={styles.sliderMarker}>
+            <View style={styles.markerTitleTop}>
+                <Text style={[titleSmall, plainTextColor, { textAlign: 'center',}]}>{title}</Text>
             </View>
+            <Text style={[markedText, styles.markerValue, enabled ? plainTextColor : null]}>{value}</Text>
+            <View style={[styles.markerArrow, { borderBottomColor: markedTextColor.color }]}></View>
+            {logo()}
+            <Text style={[titleSmall, styles.markerTitleBottom]}>{footer}</Text>
+            {bottomIcon()}
         </View>
     );
 } 

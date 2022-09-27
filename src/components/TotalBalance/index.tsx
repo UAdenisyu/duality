@@ -7,12 +7,12 @@ import { useCounterStore } from '../../mobx/stores/AppStore.store';
 import useThemeColors from "../../hooks/useThemeColors";
 
 import NumberFormat from 'react-number-format';
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
 const TotalBalance = observer(() => {
 
     const { totalBalance } = useCounterStore();
-    const { wrapper, title, valueBig, cryptoName } = CommonComponentStyles();
+    const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
     return (
         <View style={wrapper}>

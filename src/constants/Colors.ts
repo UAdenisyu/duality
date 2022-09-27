@@ -1,10 +1,10 @@
 export const LIGHT_COLORS = {
-    plainText: '#fff',
+    plainText: 'yellow',
     extraLight: '#fff',
     extraDark: '#202226',
     componentBackground: 'rgba(255, 255, 255, 0.07)',
     modalBackground: '#fff',
-    selectedItemColor: '#E2FF9D',
+    selectedItemColor: 'red',
     modalWindowElementsColor: '#282A2F',
     componentDividingLine: '#4A4B4E',
     grey: '#767676',

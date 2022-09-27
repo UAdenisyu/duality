@@ -12,11 +12,11 @@ import EarnIcon from "../../assets/svgs/earn-small.svg";
 
 
 import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 
 
 const Portfolio = observer(() => {
-    const { wrapper, title, cryptoName, borderedSection } = CommonComponentStyles();
+    const { wrapper, title, cryptoName, borderedSection } = generalComponentStyles();
     const { grey, plainText, selectedItemColor } = useThemeColors();
     const [isChecked, setChecked] = useState(false);
 

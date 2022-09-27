@@ -6,7 +6,7 @@ import { useCounterStore } from '../../mobx/stores/AppStore.store';
 import useThemeColors from "../../hooks/useThemeColors";
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import CommonComponentStyles from "../../styles/generalComponentStyles";
 
 
 const UserShortInfoBalanceList = observer(() => {

@@ -159,17 +159,18 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-    const themeColors = useThemeColors();
+    const selectedItemColor = useThemeColors().markedTextColor.color;
+    const inActiveColor = useThemeColors().plainTextColor.color;
 
     const themeColorStyles = StyleSheet.create({
         tint: {
-            backgroundColor: themeColors.selectedItemColor,
-            shadowColor: themeColors.selectedItemColor,
+            backgroundColor: selectedItemColor,
+            shadowColor: selectedItemColor,
         },
         tintShadow: {
             ...Platform.select({
                 android:{
-                    shadowColor: themeColors.selectedItemColor,
+                    shadowColor: selectedItemColor,
                 }
             }),
         }
@@ -195,8 +196,8 @@ function BottomTabNavigator() {
                 sceneContainerStyle={{ backgroundColor: 'transparent',}}
                 screenOptions={{
                     ...mainNativeNavigatorOptions,
-                    tabBarActiveTintColor: themeColors.selectedItemColor,
-                    tabBarInactiveTintColor: themeColors.extraLight,
+                    tabBarActiveTintColor: selectedItemColor,
+                    tabBarInactiveTintColor: inActiveColor,
                 }}
 
                 >

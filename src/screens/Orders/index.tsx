@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import LocalNavBar from "../../components/LocalNavBar";
 import OrderItem from "../../components/OrderItem";
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import CommonComponentStyles from "../../styles/generalComponentStyles";
 import styles from './styles';
 
 const Orders = observer(() => {
@@ -15,7 +15,7 @@ const Orders = observer(() => {
     return (
         // <LocalNavBar buttonTitles={['Open orders', 'Order History']}/>
         <ScrollView>
-            <View style={[wrapper, styles.body]}>
+            {/* <View style={[wrapper, styles.body]}>
                 {buttonTitles.map(buttonTitle => (
                     <Pressable 
                         key={buttonTitle} 
@@ -67,7 +67,7 @@ const Orders = observer(() => {
                             price={1012}/>
                     </View>
             }
-            <View style={{height: 100}}/>
+            <View style={{height: 100}}/> */}
         </ScrollView>
     );
 });

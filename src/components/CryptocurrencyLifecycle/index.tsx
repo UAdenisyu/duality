@@ -4,100 +4,63 @@ import styles from "./styles";
 import useThemeColors from "../../hooks/useThemeColors";
 import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
 
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
-import InfoIcon from "../../assets/svgs/infoIcon.svg"
+import InfoIcon from "../../assets/svgs/infoIcon.svg";
 
-export default function CryptocurrencyLifecycle({showDetails, titleLeft, titleRight = null} : {showDetails: boolean, titleLeft: string, titleRight?: string | number | null}) {
+interface ComponentProps {
+    showDetails?: boolean,
+    titleLeft: string, 
+    titleRight?: string | number | null,
+}
 
-    const themeColors = useThemeColors();
-    const componentStyles = CommonComponentStyles();
+export default function CryptocurrencyLifecycle({ titleLeft, titleRight = null, showDetails = true } : ComponentProps) {
 
-    const showDetailsClasslist = showDetails ? [componentStyles.borderedSection, styles.tableWrapper] : styles.tableWrapper
+    const { markedItemBorderColor, plainTextColor } = useThemeColors();
+    const { wrapper, borderedSection, title, titleLight, markedText, titleSmall } = generalComponentStyles();
+
+    const showDetailsClasslist = showDetails ? [borderedSection, styles.tableWrapper] : styles.tableWrapper
+
+    const rowItem = (titleName: string, value: string, marker: boolean = true, titleYear: boolean = false) => (
+        <View style={styles.sectionNested}>
+            { marker ? <View style={[markedItemBorderColor, styles.marker]}/> : null}
+            <View style={[styles.titles, marker ? null : styles.titlesBottom]}>
+                <Text style={[titleSmall, plainTextColor]}>
+                    {titleName}
+                </Text>
+                { titleYear ? 
+                    <InfoIcon color={plainTextColor.color} style={styles.infoIcon}/>
+                    : null }
+            </View>
+            <View style={styles.values}>
+                <Text style={[markedText, titleYear ? null : plainTextColor]}>
+                    {value}
+                </Text>
+            </View>
+        </View>
+    );
 
     return (
-        <View style={componentStyles.wrapper}>
-            <View style={[styles.section, {justifyContent: 'space-between'}]}>
-                <Text style={[styles.componentTitle, {color: themeColors.grey}]}>
+        <View style={wrapper}>
+            <View style={styles.section}>
+                <Text style={title}>
                     {titleLeft}
                 </Text>
-                {titleRight ? <Text style={[styles.componentTitle, {color: themeColors.grey, textAlign: 'right'}]}>
-                    {titleLeft}
+                {titleRight ? <Text style={titleLight}>
+                    {titleRight}
                 </Text> : null}
             </View>
             <View style={showDetailsClasslist}>
-                <View style={styles.section}>
-                    <View style={[styles.marker, {borderColor: themeColors.selectedItemColor}]}/>
-                    <View style={styles.titles}>
-                        <Text style={[{color: themeColors.plainText}, styles.titlesText]}>
-                            Following date
-                        </Text>
-                    </View>
-                    <View style={styles.values}>
-                        <Text style={[{color: themeColors.plainText}, styles.valuesText]}>
-                            2022-07-05
-                        </Text>
-                    </View>
-                </View>
-                <View style={[styles.spaceFillingLine, {borderColor: themeColors.selectedItemColor}]}/>
-                <View style={styles.section}>
-                    <View style={[styles.marker, {borderColor: themeColors.selectedItemColor}]}/>
-                    <View style={styles.titles}>
-                        <Text style={[{color: themeColors.plainText}, styles.titlesText]}>
-                            Settlement date
-                        </Text>
-                    </View>
-                    <View style={styles.values}>
-                        <Text style={[{color: themeColors.plainText}, styles.valuesText]}>
-                            2022-07-08 10:00
-                        </Text>
-                    </View>
-                </View>
-                <View style={[styles.spaceFillingLine, {borderColor: themeColors.selectedItemColor}]}/>
-                <View style={styles.section}>
-                    <View style={[styles.marker, {borderColor: themeColors.selectedItemColor}]}/>
-                    <View style={styles.titles}>
-                        <Text style={[{color: themeColors.plainText}, styles.titlesText]}>
-                            Distribution
-                        </Text>
-                    </View>
-                    <View style={styles.values}>
-                        <Text style={[{color: themeColors.plainText}, styles.valuesText]}>
-                            2022-07-08 16:00
-                        </Text>
-                    </View>
-                </View>
+                {rowItem('Following date', '2022-07-05')}
+                <View style={[styles.spaceFillingLine, markedItemBorderColor]}/>
+                {rowItem('Settlement date', '2022-07-08 10:00')}
+                <View style={[styles.spaceFillingLine, markedItemBorderColor]}/>
+                {rowItem('Distribution', '2022-07-08 16:00')}
             </View>
             {showDetails ? <View style={styles.bottomSection}>
-                <View style={[styles.section, styles.bottomSectionRow]}>
-                    <Text style={[{color: themeColors.plainText}, styles.titlesText]}>
-                        Spot price ETH
-                    </Text>
-                    <Text style={[{color: themeColors.plainText}, styles.valuesText]}>
-                        1104,15
-                    </Text>
-                </View>
-                <View style={[styles.section, styles.bottomSectionRow]}>
-                    <Text style={[{color: themeColors.plainText}, styles.titlesText]}>
-                        Target price
-                    </Text>
-                    <Text style={[{color: themeColors.plainText}, styles.valuesText]}>
-                        1050
-                    </Text>
-                </View>
-                <View style={[styles.section, styles.bottomSectionRow]}>
-                    <View style={styles.section}>
-                        <Text style={[{color: themeColors.plainText}, styles.titlesText, { marginRight: 7 }]}>
-                            % Year
-                        </Text>
-                        <View style={{justifyContent: 'center'}}>
-                            <InfoIcon color={themeColors.plainText}/>
-                        </View>
-                    </View>
-                    <Text style={[{color: themeColors.selectedItemColor}, styles.valuesText]}>
-                        112,32 %
-                    </Text>
-                </View>
+                {rowItem('Spot price ETH', '1104,15', false)}
+                {rowItem('Target price', '1050', false)}
+                {rowItem('% Year', '112,32 %', false, true)}
             </View> : null}
             
 
