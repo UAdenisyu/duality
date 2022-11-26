@@ -4,12 +4,10 @@ import styles from "./styles";
 import { observer } from 'mobx-react-lite';
 import { useCounterStore } from '../../mobx/stores/AppStore.store';
 
-import useThemeColors from "../../hooks/useThemeColors";
-
 import NumberFormat from 'react-number-format';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
-const TotalBalance = observer(() => {
+const TotalBalance = () => {
 
     const { totalBalance } = useCounterStore();
     const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
@@ -29,6 +27,6 @@ const TotalBalance = observer(() => {
             </View>
         </View>
     );
-});
+};
 
-export default TotalBalance;
+export default observer(TotalBalance);

@@ -4,8 +4,7 @@ import styles from "./styles";
 import { observer } from 'mobx-react-lite';
 import { useCounterStore } from '../../mobx/stores/AppStore.store';
 
-import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
 import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
 import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
@@ -22,10 +21,14 @@ const data: Data = {
     '': <LogoNotFound/>
 }
 
+type Props = {
+    cryptoName: string,
+}
 
-const ShortInfoCryptoBalance = observer(({ cryptoName }: {cryptoName: string, }) => {
 
-    const { valueSmall, valueBig, title} = CommonComponentStyles();
+const ShortInfoCryptoBalance = ({ cryptoName }: Props) => {
+
+    const { valueSmall, valueBig, title} = generalComponentStyles();
 
     const { cryptoCurrencyFullInfo } = useCounterStore();
     const item = cryptoCurrencyFullInfo[cryptoName][0];
@@ -45,6 +48,6 @@ const ShortInfoCryptoBalance = observer(({ cryptoName }: {cryptoName: string, })
             </View>
         </View>
     );
-});
+};
 
-export default ShortInfoCryptoBalance;
+export default observer(ShortInfoCryptoBalance);

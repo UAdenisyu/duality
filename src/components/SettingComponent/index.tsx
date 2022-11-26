@@ -2,21 +2,22 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import styles from './styles';
 
 import useThemeColors from '../../hooks/useThemeColors';
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 import React from 'react';
 
 import {SvgProps} from 'react-native-svg';
 
+type Props = {
+    leftItem: React.ReactElement<SvgProps>, 
+    rightItem?: React.ReactElement, 
+    titleText: string,
+    onPressAction: Function,
+}
 
-export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressAction}: {leftItem: React.ReactElement<SvgProps>, rightItem?: React.ReactElement, titleText: string, onPressAction: Function}) {
-    const { plainText, extraLight, selectedItemColor } = useThemeColors();
-    const { wrapper } = CommonComponentStyles();
 
-    const dynamicColors = StyleSheet.create({
-        plainText:{
-            color: plainText,
-        },
-    });
+export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressAction}: Props) {
+    const { plainTextColor } = useThemeColors();
+    const { wrapper } = generalComponentStyles();
 
     return (
         <Pressable style={[wrapper, styles.wrapper, rightItem ? null : styles.logOutBackGround]}
@@ -25,7 +26,7 @@ export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressActi
                 {leftItem}
             </View>
             <View style={rightItem ? styles.generalText : styles.logOutText}>
-                <Text style={[styles.text, dynamicColors.plainText, rightItem ? null : {alignSelf: 'center'}]}>{titleText}</Text>
+                <Text style={[styles.text, plainTextColor, rightItem ? null : {alignSelf: 'center'}]}>{titleText}</Text>
             </View>
             {rightItem}
         </Pressable>

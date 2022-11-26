@@ -1,25 +1,34 @@
 import { View, Text } from "react-native";
 import styles from './styles';
-import TableListItem from './listItem';
-import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import TableListItem from './TableListItem';
+import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import generalComponentStyles from "../../styles/generalComponentStyles";
 import useThemeColors from "../../hooks/useThemeColors";
 
+type Props = {
+    target: string,
+}
 
-export default function TableList({ target }: { target: string }) {
+export default function TableList({ target }: Props) {
 
-    const { lightGrey, extraDark } = useThemeColors();
+    const { tableColumnTitleColor, darkTextColor } = useThemeColors();
     const { cryptoCurrencyFullInfo } = useCounterStore();
-    const items = cryptoCurrencyFullInfo[target].map((item, i) => <TableListItem key={Math.random()} backgroundColor={i % 2 ? extraDark : '#34363A'} data={item}/>);
+    const items = cryptoCurrencyFullInfo[target].map((item, i) => (
+        <TableListItem key={Math.random()} backgroundColor={i % 2 ? darkTextColor.color : '#34363A'} data={item}/>
+    ));
 
-    const { wrapper, markeredText } = CommonComponentStyles();
+    const { wrapper } = generalComponentStyles();
+
+    const columnTitle = (textContent: string) => (
+        <Text style={[styles.headerText, tableColumnTitleColor]}>{textContent}</Text>
+    );
 
     return (
         <View style={[wrapper, styles.container]}>
             <View style={styles.headerWrapper}>
-                <Text style={[styles.headerText, {color: lightGrey}]}>% Per year</Text>
-                <Text style={[styles.headerText, {color: lightGrey}]}>Target price</Text>
-                <Text style={[styles.headerText, {color: lightGrey}]}>Completion time</Text>
+                {columnTitle('% Per year')}
+                {columnTitle('Target price')}
+                {columnTitle('Completion time')}
             </View>
             {items}
         </View>

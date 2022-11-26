@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
@@ -6,58 +6,36 @@ import { observer } from 'mobx-react-lite';
 import InfoIcon from '../../assets/svgs/infoIcon.svg';
 
 import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 import OpenBottomModalScreenButton from "../OpenBottomModalScreenButton";
 
 import Arrow from '../../assets/svgs/arrow.svg';
 
+type Props = {
+    titleText?: 'Summary price' | 'Estimated cost' | 'Calculated total cost'
+}
 
-const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summary price' | 'Estimated cost' | 'Calculated total cost'}) => {
+const SummaryPrice = ({ titleText='Summary price' }: Props) => {
 
-    const { wrapper, title, infoIcon, borderedSection, valueBig, valueSmall, cryptoName } = CommonComponentStyles();
-    const { grey, warning, selectedItemColor, extraDark, plainText } = useThemeColors();
-
-
-    const dynamicColors = StyleSheet.create({
-        warningText:{
-            color: warning,
-        },
-        depositBtn: {
-            backgroundColor: selectedItemColor,
-        },
-        depositBtnText:{
-            color: extraDark
-        },
-        withdrawBtn:{
-            backgroundColor: 'rgba(100, 100, 104, 0.34)'
-        },
-        plainText:{
-            color: plainText
-        },
-        markedText:{
-            color: selectedItemColor
-        },
-        transactionsHistoryBnt:{
-            borderColor: plainText,
-        }
-    });
+    const { wrapper, title, infoIcon, borderedSection, valueBig, valueSmall, cryptoName } = generalComponentStyles();
+    const { warningText, markedItemBackgroundColor, darkTextColor, plainTextColor, titleTextColor, markedTextColor, lightBorderedItem } = useThemeColors();
 
 
     const actionsBlock = <View style={styles.detailsWrapper}>            
             <View style={styles.section}>
                 <Text style={[title, styles.detailsTitle]}>PnL for today</Text>
                 <View style={infoIcon}>
-                    <InfoIcon color={grey}/>
+                    <InfoIcon color={titleTextColor.color}/>
                 </View>
             </View>
-            <Text style={[title, styles.linesPadding, dynamicColors.warningText]}>-7,39 $/-0,03%</Text>
+            <Text style={[title, styles.linesPadding, warningText]}>-7,39 $/-0,03%</Text>
             <View style={[styles.section, styles.depositAndWithdraw]}>
                 <OpenBottomModalScreenButton
                         // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
                         targetContentComponent={
                             <View 
-                                style={[styles.button, dynamicColors.depositBtn]}>
-                                <Text style={[styles.buttonText, dynamicColors.depositBtnText]}>Deposit</Text>
+                                style={[styles.button, markedItemBackgroundColor]}>
+                                <Text style={[styles.buttonText, darkTextColor]}>Deposit</Text>
                             </View>
                         }
                         titleText = {'Choose a currency'}/>
@@ -65,8 +43,8 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                         // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
                         targetContentComponent={
                             <View 
-                                style={[styles.button, dynamicColors.withdrawBtn]}>
-                                <Text style={[styles.buttonText, dynamicColors.plainText]}>Withdraw</Text>
+                                style={[styles.button, styles.withdrawBtn]}>
+                                <Text style={[styles.buttonText, plainTextColor]}>Withdraw</Text>
                             </View>
                         }
                         titleText = {'Choose a network'}
@@ -81,15 +59,15 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                 <Text style={[title, styles.detailsTitle2]}>PnL for last day...</Text>
             </View>
             <View style={styles.section}>
-                <Text style={[title, styles.linesPadding, dynamicColors.markedText]}>+0,17431341</Text>
-                <Text style={[title, styles.linesPadding, dynamicColors.markedText, { marginLeft: 32 }]}>+0,000231</Text>            
+                <Text style={[title, styles.linesPadding, markedTextColor]}>+0,17431341</Text>
+                <Text style={[title, styles.linesPadding, markedTextColor, { marginLeft: 32 }]}>+0,000231</Text>            
             </View>
             <Pressable style={[wrapper, styles.subscribeToEarnBtn, styles.section]}>
-                <Text style={[styles.buttonText, dynamicColors.plainText]}>Subcribe to Earn</Text>
-                <View style={styles.arrow}><Arrow color={plainText}/></View>
+                <Text style={[styles.buttonText, plainTextColor]}>Subcribe to Earn</Text>
+                <View style={styles.arrow}><Arrow color={plainTextColor.color}/></View>
             </Pressable>
-            <Pressable style={[styles.transactionsHistory, dynamicColors.transactionsHistoryBnt]}>
-                <Text style={[styles.buttonText, dynamicColors.plainText]}>Transactions history</Text>
+            <Pressable style={[styles.transactionsHistory, lightBorderedItem]}>
+                <Text style={[styles.buttonText, plainTextColor]}>Transactions history</Text>
             </Pressable>
         </View>;
 
@@ -105,7 +83,7 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                 <View style={styles.section}>
                     <Text style={valueSmall}>21 727,23 $</Text>
                     <View style={infoIcon}>
-                        <InfoIcon color={grey}/>
+                        <InfoIcon color={titleTextColor.color}/>
                     </View>
                 </View>
             </View>
@@ -114,6 +92,6 @@ const SummaryPrice = observer(({ titleText='Summary price' }: {titleText?: 'Summ
                 titleText === 'Calculated total cost' ? detailsBlock : null}
         </View>
     );
-});
+};
 
-export default SummaryPrice;
+export default observer(SummaryPrice);

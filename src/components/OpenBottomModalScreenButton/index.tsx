@@ -13,35 +13,29 @@ import UsdtLogo from '../../assets/svgs/UsdtLogoSmall.svg';
 import { observer } from 'mobx-react-lite';
 
 import styles from './styles';
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 
-const OpenBottomModalScreenButton = observer(({
+interface componentProps {
+    targetContentComponent: ReactElement
+    titleText: string, 
+    promptText?: string,
+    confirmButtonOnPressAction?: () => void 
+}
+
+const OpenBottomModalScreenButton = ({
     targetContentComponent,
     titleText,
     promptText,
-    confirmButtonOnPress} :
-        {   targetContentComponent: ReactElement
-            titleText: string, 
-            promptText?: string,
-            confirmButtonOnPress?: () => void }) => {   
+    confirmButtonOnPressAction}:
+        componentProps) => { 
 
-    const { plainText, extraDark, selectedItemColor } = useThemeColors(); 
-    const { wrapper, title } = CommonComponentStyles();
-
+    const { wrapper, title } = generalComponentStyles();
+    const { modalBottomFillColor, plainTextColor } = useThemeColors();
     const [ modalVisible, setModalVisible ] = useState(false);
-
-    const dynamicColors = StyleSheet.create({
-        plainText:{
-            color: plainText,
-        },
-        modalBackground: {
-            backgroundColor: extraDark
-        }
-    });
     
     const btnOpenModal = <Pressable onPress={() => setModalVisible(true)}>
-                    {targetContentComponent}
-                </Pressable>
+                            {targetContentComponent}
+                        </Pressable>
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -51,15 +45,15 @@ const OpenBottomModalScreenButton = observer(({
                 onRequestClose={() => console.warn('closed')}
                 statusBarTranslucent={true}>
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
-                    <View style={[styles.modalView, dynamicColors.modalBackground]}>
+                    <View style={[styles.modalView, modalBottomFillColor]}>
                         <View style={styles.titleBlock}>
-                            <Text style={[styles.modalTitle, dynamicColors.plainText]}>
+                            <Text style={[styles.modalTitle]}>
                                 {titleText}
                             </Text>
                             <Pressable style={styles.closeIcon}
                                 onPress={() => setModalVisible(!modalVisible)}>
                                 <Text>
-                                    <Ionicons name="close" size={24} color={plainText} />
+                                    <Ionicons name="close" size={24} color={plainTextColor.color} />
                                 </Text>
                             </Pressable>
                             <Text style={[title, styles.titlePrompt]}>
@@ -71,32 +65,32 @@ const OpenBottomModalScreenButton = observer(({
                                 style={[wrapper, styles.button]}
                                 onPress={() => {
                                     setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
+                                    if (confirmButtonOnPressAction){
+                                        confirmButtonOnPressAction();
                                     }
                                 }}>
                                 <View style={styles.cryptoLogo}>
                                     <EthLogo/>
                                 </View>
-                                <Text style={[styles.buttonText, dynamicColors.plainText]}>Ethereum</Text>
+                                <Text style={[styles.buttonText]}>Ethereum</Text>
                                 <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
+                                    <Arrow color={plainTextColor.color}/>
                                 </View>
                             </Pressable>
                             <Pressable
                                 style={[wrapper, styles.button, { marginTop: 8 }]}
                                 onPress={() => {
                                     setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPress){
-                                        confirmButtonOnPress();
+                                    if (confirmButtonOnPressAction){
+                                        confirmButtonOnPressAction();
                                     }
                                 }}>
                                 <View style={styles.cryptoLogo}>
                                     <UsdtLogo/>
                                 </View>
-                                <Text style={[styles.buttonText, dynamicColors.plainText]}>USDT</Text>
+                                <Text style={[styles.buttonText]}>USDT</Text>
                                 <View style={styles.arrowIcon}>
-                                    <Arrow color={selectedItemColor}/>
+                                    <Arrow color={plainTextColor}/>
                                 </View>
                             </Pressable>
                         </ScrollView>
@@ -106,7 +100,7 @@ const OpenBottomModalScreenButton = observer(({
             {btnOpenModal}
         </View>
     );
-});
+}
 
 
-export default OpenBottomModalScreenButton;
+export default observer(OpenBottomModalScreenButton);

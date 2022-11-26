@@ -3,11 +3,11 @@ import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
 
-import CommonComponentStyles from "../../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../../styles/generalComponentStyles";
 
-const BuySellButtons = observer(() => {
+const BuySellButtons = () => {
 
-    const { wrapper, valueBig, titleLight } = CommonComponentStyles();
+    const { wrapper, valueBig, titleLight } = generalComponentStyles();
 
     return (
         <View style={[wrapper, styles.section]}>
@@ -29,6 +29,6 @@ const BuySellButtons = observer(() => {
             </Pressable>
         </View>
     );
-});
+};
 
-export default BuySellButtons;
+export default observer(BuySellButtons);

@@ -1,17 +1,11 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import styles from './styles';
 import Arrow from '../../assets/svgs/arrow.svg';
 
 import useThemeColors from '../../hooks/useThemeColors';
 import { useNavigation } from '@react-navigation/native';
 
-
-
-interface componentProps {
-    onPressAction?: () => void,
-}
-
-export default function ShowMoreBtn({onPressAction}: componentProps) {
+export default function ShowMoreBtn() {
     const { plainTextColor } = useThemeColors();
     const navigation = useNavigation();
     

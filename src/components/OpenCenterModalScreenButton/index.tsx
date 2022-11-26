@@ -1,5 +1,5 @@
 import React, { useState, ReactElement } from 'react';
-import { Modal, StyleSheet, Text, Pressable, View, StyleProp, ViewStyle } from 'react-native';
+import { Modal, Text, Pressable, View, StyleProp, ViewStyle } from 'react-native';
 
 import useThemeColors from "../../hooks/useThemeColors";
 
@@ -11,7 +11,7 @@ import styles from './styles';
 
 //targetContentComponent: React.ComponentType<TargetProps>
 
-const OpenCenterModalScreenButton = observer(({
+const OpenCenterModalScreenButton = ({
     targetContentComponent,
     targetStyles,
     textContent,
@@ -25,29 +25,15 @@ const OpenCenterModalScreenButton = observer(({
             confirmButtonOnPress?: () => void, 
             cancelButtonOnPress?: () => void}) => {
 
-    const { plainText, modalBackground, modalWindowElementsColor } = useThemeColors(); 
-    const dynamicColors = StyleSheet.create({
-        modalBackground: {
-            backgroundColor: modalBackground
-        },
-        btnText:{
-            color: plainText,
-        },
-        infoText:{
-            color: modalWindowElementsColor,
-        },
-        btnBackground: {
-            backgroundColor: modalWindowElementsColor
-        }
-    });
+    const { plainTextColor, modalOkButtonDarkColor, modalTextDarkColor, modalLightBackgroundColor } = useThemeColors(); 
 
     const [ modalVisible, setModalVisible ] = useState(false);
 
 
     const textContentBeautified = typeof textContent === 'string' ?
-        <Text style={[styles.modalTextContent, dynamicColors.infoText, { textAlign: 'center'}]}>{textContent}</Text> :
+        <Text style={[styles.modalTextContent, modalTextDarkColor, { textAlign: 'center'}]}>{textContent}</Text> :
         textContent.map((item, i) => {
-        return <Text key={i.toString()} style={[styles.modalTextContent, dynamicColors.infoText, { marginTop: i === 0 ? 0 : 16}]}>
+        return <Text key={i.toString()} style={[styles.modalTextContent, modalTextDarkColor, { marginTop: i === 0 ? 0 : 16}]}>
                 {i+1}. {item}
             </Text>
     });
@@ -67,21 +53,21 @@ const OpenCenterModalScreenButton = observer(({
                 onRequestClose={() => console.warn('closed')}
                 statusBarTranslucent={true}>
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
-                    <View style={[styles.modalView, dynamicColors.modalBackground]}>
+                <View style={[styles.modalView, modalLightBackgroundColor]}>
                         <View style={styles.modalTextWrapper}>
                             {textContentBeautified}
                         </View>
                         <Pressable
-                            style={[styles.button, dynamicColors.btnBackground]}
+                            style={[styles.button, modalOkButtonDarkColor]}
                             onPress={() => {
                                 setModalVisible(false);
                                 if (confirmButtonOnPress){
                                     confirmButtonOnPress();
                                 }
                             }}>
-                            <Text style={[styles.buttonText, dynamicColors.btnText]}>OK</Text>
+                            <Text style={[styles.buttonText]}>OK</Text>
                             <View style={styles.arrowIcon}>
-                                <Arrow color={plainText}/>
+                                <Arrow color={plainTextColor.color}/>
                             </View>
                         </Pressable>
                         {showCancelButton ? <Pressable
@@ -92,7 +78,7 @@ const OpenCenterModalScreenButton = observer(({
                                         cancelButtonOnPress();
                                     }
                                 }}>
-                                <Text style={[styles.buttonText, dynamicColors.infoText]}>Cancel</Text>
+                                <Text style={styles.buttonText}>Cancel</Text>
                             </Pressable> : null
                         }
                     </View>
@@ -101,7 +87,7 @@ const OpenCenterModalScreenButton = observer(({
             {Btn}
         </View>
     );
-});
+};
 
 
-export default OpenCenterModalScreenButton;
+export default observer(OpenCenterModalScreenButton);

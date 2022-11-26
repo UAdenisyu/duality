@@ -5,15 +5,15 @@ import { observer } from 'mobx-react-lite';
 import { useCounterStore } from '../../mobx/stores/AppStore.store';
 
 import ListItem from './ListItem';
-import CommonComponentStyles from "../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
-const TotalBalanceListDetails = observer(() => {
+const TotalBalanceListDetails = () => {
     const { cryptoCurrencyFullInfo } = useCounterStore();
 
-    const componentStyles = CommonComponentStyles();
+    const componentStyles = generalComponentStyles();
 
     const cryptoNames = Object.keys(cryptoCurrencyFullInfo);
-
+    // TODO: add useMemo
     return (
         <View style={[componentStyles.wrapper, styles.container]}>
             {cryptoNames.map((cryptoName, i) => (
@@ -21,6 +21,6 @@ const TotalBalanceListDetails = observer(() => {
             ))}
         </View>
     );
-});
+};
 
-export default TotalBalanceListDetails;
+export default observer(TotalBalanceListDetails);

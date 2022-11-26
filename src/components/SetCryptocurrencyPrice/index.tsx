@@ -1,23 +1,13 @@
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 import styles from './styles';
 import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 
 export default function SetCryptocurrencyPrice() {
 
-    const { wrapper, titleLight, title, borderedSection, markeredText } = CommonComponentStyles();
-    const { plainText, warning, lightGrey, componentDividingLine } = useThemeColors();
+    const { wrapper, titleLight, title, borderedSection, markedText } = generalComponentStyles();
+    const { inputColors, inputBorderColor } = useThemeColors();
 
-    const dynamicColors = StyleSheet.create({
-        warningText:{
-            color: warning,
-        },
-        input:{
-            borderColor: componentDividingLine,
-            color: plainText,
-        }
-    });
-    
     return (
         <View style={wrapper}>
             <View style={borderedSection}>
@@ -25,11 +15,11 @@ export default function SetCryptocurrencyPrice() {
                     Following price*
                 </Text>
                 <TextInput
-                    style={[styles.inputArea, styles.availableValue, dynamicColors.input]}
-                    selectionColor={lightGrey}
+                    style={[styles.inputArea, styles.availableValue, inputColors]}
+                    selectionColor={inputBorderColor.borderColor}
                     keyboardType='decimal-pad'
                     onChange={(text) => text.nativeEvent.text}/>
-                <Text style={[title, styles.warningText, dynamicColors.warningText]}>
+                <Text style={[title, styles.warningText, inputColors]}>
                     {false ? ' ' : 'Please write the correct price*'}
                 </Text>
                 <Text style={[styles.avaibleTitle, titleLight]}>
@@ -49,14 +39,14 @@ export default function SetCryptocurrencyPrice() {
                 <Text style={title}>
                     Minimum
                 </Text>
-                <Text style={[markeredText, styles.highlightedText]}>
+                <Text style={[markedText, styles.highlightedText]}>
                     0,01
                 </Text>
                 <View style={styles.dot}/>
                 <Text style={title}>
                     Maximum
                 </Text>
-                <Text style={[markeredText, styles.highlightedText]}>
+                <Text style={[markedText, styles.highlightedText]}>
                     2500
                 </Text>
             </View>

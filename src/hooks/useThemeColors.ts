@@ -14,12 +14,19 @@ export default function useThemeColors() {
             selectedItemColor,
             modalWindowElementsColor,
             extraDark,
-            lightGrey
+            lightGrey,
+            extraLight,
+            cancel,
+            buttonBackground,
+            warning
              } = useColorScheme() === 'dark' ? DARK_COLORS : LIGHT_COLORS;
     
     const coloredItem = StyleSheet.create({
         plainTextColor: {
             color: plainText,
+        },
+        lightBorderedItem:{
+            borderColor: plainText,
         },
         componentBackgroundColor: {
             backgroundColor: componentBackground,
@@ -27,11 +34,23 @@ export default function useThemeColors() {
         titleTextColor:{
             color: grey,
         },
+        tableColumnTitleColor: {
+            color: lightGrey,
+        },
+        darkTextColor:{
+            color: extraDark,
+        },
         dividingLineColor: {
             borderBottomColor: componentDividingLine,
         },
         markedTextColor: {
             color: selectedItemColor,
+        },
+        markedItemBorderColor: {
+            borderColor: selectedItemColor,
+        },
+        markedItemBackgroundColor: {
+            backgroundColor: selectedItemColor,
         },
         modalTextDarkColor: {
             color: modalWindowElementsColor,
@@ -42,12 +61,25 @@ export default function useThemeColors() {
         modalBottomFillColor: {
             backgroundColor: extraDark,
         },
+        modalLightBackgroundColor: {
+            backgroundColor: extraLight,
+        },
         inputBorderColor: {
             borderColor: lightGrey,
         },
-        markedItemBorderColor: {
-            borderColor: selectedItemColor,
+        cancelText: {
+            color: cancel,
         },
+        cancelButton: {
+            backgroundColor: buttonBackground.danger,
+        },
+        warningText:{
+            color: warning,
+        },
+        inputColors:{
+            borderColor: componentDividingLine,
+            color: plainText,
+        }
     });
     
     return coloredItem ;

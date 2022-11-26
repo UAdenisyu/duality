@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import LocalNavBar from "../../components/LocalNavBar";
 import OrderItem from "../../components/OrderItem";
-import CommonComponentStyles from "../../styles/generalComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 import styles from './styles';
 
 const Orders = observer(() => {
-    const { wrapper, titleLight } = CommonComponentStyles();
+    const { wrapper, titleLight } = generalComponentStyles();
     const buttonTitles=['Open orders', 'Order History'];
 
     const [ localScreen, setLocalScreen ] = useState(buttonTitles[0]);

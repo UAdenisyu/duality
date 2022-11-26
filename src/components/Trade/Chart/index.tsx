@@ -7,7 +7,7 @@ import { useCounterStore } from '../../../mobx/stores/AppStore.store';
 import useThemeColors from "../../../hooks/useThemeColors";
 
 
-import CommonComponentStyles from "../../../styles/CommonComponentStyles";
+import generalComponentStyles from "../../../styles/generalComponentStyles";
 
 import { CandlestickChart } from 'react-native-wagmi-charts';
 
@@ -45,10 +45,10 @@ const data = [
 
 const wrapperHeight = Dimensions.get('window').width - 48;
 
-const Chart = observer(() => {
+const Chart = () => {
 
     const { totalBalance } = useCounterStore();
-    const { wrapper, title, valueBig, cryptoName } = CommonComponentStyles();
+    const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
     return (
 
@@ -60,6 +60,6 @@ const Chart = observer(() => {
             </CandlestickChart.Provider>
         </View>
     );
-});
+};
 
-export default Chart;
+export default observer(Chart);

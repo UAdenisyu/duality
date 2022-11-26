@@ -1,17 +1,15 @@
-import { View,Text } from "react-native";
-import styles from "./styles";
+import { View } from "react-native";
 
 import { observer } from 'mobx-react-lite';
 import { useCounterStore } from '../../mobx/stores/AppStore.store';
-import useThemeColors from "../../hooks/useThemeColors";
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
-import CommonComponentStyles from "../../styles/generalComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
 
-const UserShortInfoBalanceList = observer(() => {
+const UserShortInfoBalanceList = () => {
     const { cryptoCurrencyFullInfo } = useCounterStore();
-    const { wrapper, borderedSection } = CommonComponentStyles();
+    const { wrapper, borderedSection } = generalComponentStyles();
 
     const cryptoNames = Object.keys(cryptoCurrencyFullInfo);
 
@@ -26,6 +24,6 @@ const UserShortInfoBalanceList = observer(() => {
             {cryptoCurrencyList}
         </View>
     );
-});
+};
 
-export default UserShortInfoBalanceList;
+export default observer(UserShortInfoBalanceList);

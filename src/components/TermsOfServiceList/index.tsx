@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import styles from './styles';
 import TermClause from './TermClause';
-import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
-import CommonComponentStyles from '../../styles/CommonComponentStyles';
+import generalComponentStyles from '../../styles/generalComponentStyles';
 
 import Checkbox from 'expo-checkbox';
 import { useState } from 'react';
@@ -10,23 +9,19 @@ import useThemeColors from "../../hooks/useThemeColors";
 
 import { observer } from 'mobx-react-lite';
 
-const TermsOfServiceList = observer(({terms}: {terms: Array<string>}) => {
+type Props = {
+    terms: Array<string>
+}
 
-    const { wrapper } = CommonComponentStyles();
-    const { selectedItemColor, plainText } = useThemeColors();
+const TermsOfServiceList = ({terms}: Props) => {
+
+    const { wrapper } = generalComponentStyles();
+    const { markedTextColor, plainTextColor } = useThemeColors();
 
     const [isChecked, setChecked] = useState(false);
 
+    //TODO: add useMemo
     const termList = terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>);
-
-    const dynamicColors = StyleSheet.create({
-        plainText:{
-            color: plainText,
-        },
-        termsOfServiceListLink:{
-            color: selectedItemColor,
-        }
-    });
 
     return (
         <View style={wrapper}>
@@ -36,11 +31,11 @@ const TermsOfServiceList = observer(({terms}: {terms: Array<string>}) => {
                     style={styles.checkbox}
                     value={isChecked}
                     onValueChange={setChecked}
-                    color={selectedItemColor}/>
-                <Text style={[styles.agreeText, { marginLeft: 8 }, dynamicColors.plainText]}>
+                    color={markedTextColor.color}/>
+                <Text style={[styles.agreeText, { marginLeft: 8 }, plainTextColor]}>
                     I have read and I accept Duality's
                     <Pressable>
-                        <Text style={[styles.agreeText, dynamicColors.termsOfServiceListLink]}>
+                        <Text style={[styles.agreeText, markedTextColor]}>
                             Terms of Service
                         </Text>
                     </Pressable>
@@ -50,5 +45,6 @@ const TermsOfServiceList = observer(({terms}: {terms: Array<string>}) => {
 
         </View>
     );
-});
-export default TermsOfServiceList;
+};
+
+export default observer(TermsOfServiceList);

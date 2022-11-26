@@ -55,5 +55,9 @@ export default StyleSheet.create({
 
     linesPadding: {
         marginTop: 4,
-    }
+    },
+
+    withdrawBtn:{
+        backgroundColor: 'rgba(100, 100, 104, 0.34)',
+    },
 });

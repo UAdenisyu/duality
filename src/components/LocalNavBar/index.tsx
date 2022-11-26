@@ -1,11 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import styles from "./styles";
-
-import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
-
-import useThemeColors from "../../hooks/useThemeColors";
-import CommonComponentStyles from "../../styles/generalComponentStyles";
+import generalComponentStyles from "../../styles/generalComponentStyles";
 
 interface componentProps {
     buttonTitles: string[],
@@ -13,7 +8,7 @@ interface componentProps {
 
 const LocalNavBar = ({buttonTitles}: componentProps) => {
 
-    const { wrapper, titleLight } = CommonComponentStyles();
+    const { wrapper, titleLight } = generalComponentStyles();
 
     return (
         <View style={[wrapper, styles.body]}>
