@@ -52,7 +52,7 @@ export default function Navigation() {
                 <ImageBackground
                     source={require('../assets/images/mainBackground.png')}
                     resizeMode="cover"
-                    style={{ width: '100%', height: '100%' }}>
+                    style={{ width: '100%', height: '100%' }}>                    
                     <RootNavigator/>
                 </ImageBackground>
         </NavigationContainer>

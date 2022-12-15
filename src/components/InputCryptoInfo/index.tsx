@@ -16,7 +16,6 @@ interface componentProps {
     yearIncomeMin: number, 
     yearIncomeMax: number, 
     showMoreBtn?: boolean,
-    navigation?: any
 }
 
 type Data = {
@@ -33,8 +32,7 @@ const data: Data = {
 export default function InputCryptoInfo({ cryptoName = '',
                                           yearIncomeMin = 0, 
                                           yearIncomeMax = 0, 
-                                          showMoreBtn = false, 
-                                          navigation} : componentProps) {
+                                          showMoreBtn = false} : componentProps) {
 
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();

@@ -2,7 +2,7 @@ import { View, Text, Dimensions } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../../mobx/stores/AppStore.store';
 
 import useThemeColors from "../../../hooks/useThemeColors";
 
@@ -47,7 +47,7 @@ const wrapperHeight = Dimensions.get('window').width - 48;
 
 const Chart = () => {
 
-    const { totalBalance } = useCounterStore();
+      
     const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
     return (

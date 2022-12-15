@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import styles from './styles';
 import TableListItem from './TableListItem';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 import useThemeColors from "../../hooks/useThemeColors";
 
@@ -12,7 +12,7 @@ type Props = {
 export default function TableList({ target }: Props) {
 
     const { tableColumnTitleColor, darkTextColor } = useThemeColors();
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const { cryptoCurrencyFullInfo } = useDualityStore();
     const items = cryptoCurrencyFullInfo[target].map((item, i) => (
         <TableListItem key={Math.random()} backgroundColor={i % 2 ? darkTextColor.color : '#34363A'} data={item}/>
     ));

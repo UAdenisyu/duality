@@ -2,7 +2,7 @@ import { View,Text } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
@@ -30,7 +30,7 @@ const ShortInfoCryptoBalance = ({ cryptoName }: Props) => {
 
     const { valueSmall, valueBig, title} = generalComponentStyles();
 
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const { cryptoCurrencyFullInfo } = useDualityStore();
     const item = cryptoCurrencyFullInfo[cryptoName][0];
 
     return (

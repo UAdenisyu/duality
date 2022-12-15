@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 
 import InfoIcon from '../../assets/svgs/infoIcon.svg';
 import Arrow from '../../assets/svgs/arrow.svg';
@@ -17,7 +17,7 @@ type Props = {
 
 const ListItem = ({ cryptoName, bottomBorder = true }: Props) => {
     
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const { cryptoCurrencyFullInfo } = useDualityStore();
     const cryptoInfo = cryptoCurrencyFullInfo[cryptoName][0];
     const cryptoNameBeautified = cryptoName.toUpperCase();
 

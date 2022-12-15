@@ -2,14 +2,13 @@ import { View, Text } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 
 import NumberFormat from 'react-number-format';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
 const TotalBalance = () => {
-
-    const { totalBalance } = useCounterStore();
+    const dualityStore = useDualityStore();
     const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
     return (
@@ -17,7 +16,7 @@ const TotalBalance = () => {
             <Text style={title}>Total balance:</Text>
             <View style={styles.body}>
                 <NumberFormat
-                    value={totalBalance.toFixed(2)}
+                    value={dualityStore.totalBalance}
                     displayType="text"
                     thousandSeparator
                     prefix="$"

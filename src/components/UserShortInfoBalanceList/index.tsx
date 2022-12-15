@@ -1,14 +1,14 @@
 import { View } from "react-native";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
 
 const UserShortInfoBalanceList = () => {
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const { cryptoCurrencyFullInfo } = useDualityStore();
     const { wrapper, borderedSection } = generalComponentStyles();
 
     const cryptoNames = Object.keys(cryptoCurrencyFullInfo);

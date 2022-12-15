@@ -2,7 +2,6 @@ import { View, Text } from "react-native";
 import styles from "./styles";
 
 import useThemeColors from "../../hooks/useThemeColors";
-import { useCounterStore, CounterStoreContext } from '../../mobx/stores/AppStore.store';
 
 import generalComponentStyles from "../../styles/generalComponentStyles";
 

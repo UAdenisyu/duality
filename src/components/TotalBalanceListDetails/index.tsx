@@ -2,13 +2,13 @@ import { View } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useCounterStore } from '../../mobx/stores/AppStore.store';
+import { useDualityStore } from '../../mobx/appStoreContext';
 
 import ListItem from './ListItem';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
 const TotalBalanceListDetails = () => {
-    const { cryptoCurrencyFullInfo } = useCounterStore();
+    const { cryptoCurrencyFullInfo } = useDualityStore();
 
     const componentStyles = generalComponentStyles();
 
