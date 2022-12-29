@@ -6,6 +6,8 @@ import WarningSvg from "../../assets/svgs/settingsScreen/Warning.svg";
 import LogoutSvg from "../../assets/svgs/settingsScreen/Logout.svg";
 
 import useThemeColors from "../../hooks/useThemeColors";
+import { observer } from "mobx-react-lite";
+import { useDualityStore } from "../../mobx/appStoreContext";
 
 const screenHeight = Dimensions.get('window').height
 
@@ -49,27 +51,28 @@ const profileButtonsList = [
 ]
 
 
-export default function Earn() {
+function Earn() {
 
     const { plainTextColor, markedTextColor } = useThemeColors();
 
-    // const mainPageComponentList = profileButtonsList.map(item => (
-    //     <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(extraLight)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
-    // ));
+    const { toggleIsLoggedIn } = useDualityStore();
+
+    const mainPageComponentList = profileButtonsList.map(item => (
+        <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(plainTextColor.color)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
+    ));
 
     return (
         <View>
-            {/* <View style={styles.screenWrapper}>
+            <View style={styles.screenWrapper}>
                 {mainPageComponentList}
                 <View style={styles.logOutButtonWrapper}>
-                    <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={() => console.log('pressed')}/>
+                    <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={toggleIsLoggedIn}/>
                 </View>
-            </View> */}
+            </View>
             <View style={{height: 100}}></View>
         </View>
     );
 }
 
 
-
-
+export default observer(Earn);

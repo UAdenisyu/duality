@@ -10,15 +10,15 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 const TotalBalanceListDetails = () => {
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
-    const componentStyles = generalComponentStyles();
+    const {wrapper} = generalComponentStyles();
 
     const cryptoNames = Object.keys(cryptoCurrencyFullInfo);
-    // TODO: add useMemo
+
     return (
-        <View style={[componentStyles.wrapper, styles.container]}>
+        <View style={[wrapper, styles.container]}>
             {cryptoNames.map((cryptoName, i) => (
                 <ListItem key={cryptoName} cryptoName={cryptoName} bottomBorder={i + 1 < cryptoNames.length}/>
-            ))}
+            ), [cryptoNames])}
         </View>
     );
 };

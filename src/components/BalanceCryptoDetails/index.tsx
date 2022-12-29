@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 
 import generalComponentStyles from "../../styles/generalComponentStyles";
 import React, { useMemo } from "react";
+import { useDualityStore } from "../../mobx/appStoreContext";
 
 interface ComponentProps {
     currencyName: string
@@ -16,7 +17,7 @@ const BalanceCryptoDetails = ({ currencyName }: ComponentProps) => {
 
     const { wrapper, valueBig, valueSmall, title } = generalComponentStyles();
 
-    // const { cryptoCurrencyFullInfo } = useDualityStore(); 
+    const { cryptoCurrencyFullInfo } = useDualityStore(); 
 
     const info = Object.entries(cryptoCurrencyFullInfo[currencyName][0]);
     const logo = cryptoCurrencyFullInfo[currencyName][0].logoSvgBig();

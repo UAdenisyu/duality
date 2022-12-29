@@ -13,9 +13,9 @@ const Orders = observer(() => {
     const [ localScreen, setLocalScreen ] = useState(buttonTitles[0]);
 
     return (
-        // <LocalNavBar buttonTitles={['Open orders', 'Order History']}/>
+
         <ScrollView>
-            {/* <View style={[wrapper, styles.body]}>
+            <View style={[wrapper, styles.body]}>
                 {buttonTitles.map(buttonTitle => (
                     <Pressable 
                         key={buttonTitle} 
@@ -67,7 +67,7 @@ const Orders = observer(() => {
                             price={1012}/>
                     </View>
             }
-            <View style={{height: 100}}/> */}
+            <View style={{height: 100}}/>
         </ScrollView>
     );
 });

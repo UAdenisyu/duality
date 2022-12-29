@@ -19,7 +19,7 @@ interface componentProps {
     targetContentComponent: ReactElement
     titleText: string, 
     promptText?: string,
-    confirmButtonOnPressAction?: () => void 
+    confirmButtonOnPressAction?: () => void,
 }
 
 const OpenBottomModalScreenButton = ({
@@ -47,7 +47,7 @@ const OpenBottomModalScreenButton = ({
                 <View style={[styles.centeredView, styles.modalViewWrapper]}>
                     <View style={[styles.modalView, modalBottomFillColor]}>
                         <View style={styles.titleBlock}>
-                            <Text style={[styles.modalTitle]}>
+                            <Text style={[styles.modalTitle, plainTextColor]}>
                                 {titleText}
                             </Text>
                             <Pressable style={styles.closeIcon}
@@ -65,14 +65,12 @@ const OpenBottomModalScreenButton = ({
                                 style={[wrapper, styles.button]}
                                 onPress={() => {
                                     setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPressAction){
-                                        confirmButtonOnPressAction();
-                                    }
+                                    confirmButtonOnPressAction ? confirmButtonOnPressAction() : null;
                                 }}>
                                 <View style={styles.cryptoLogo}>
                                     <EthLogo/>
                                 </View>
-                                <Text style={[styles.buttonText]}>Ethereum</Text>
+                                <Text style={[styles.buttonText, plainTextColor]}>Ethereum</Text>
                                 <View style={styles.arrowIcon}>
                                     <Arrow color={plainTextColor.color}/>
                                 </View>
@@ -81,16 +79,14 @@ const OpenBottomModalScreenButton = ({
                                 style={[wrapper, styles.button, { marginTop: 8 }]}
                                 onPress={() => {
                                     setModalVisible(!modalVisible);
-                                    if (confirmButtonOnPressAction){
-                                        confirmButtonOnPressAction();
-                                    }
+                                    confirmButtonOnPressAction ? confirmButtonOnPressAction() : null;
                                 }}>
                                 <View style={styles.cryptoLogo}>
                                     <UsdtLogo/>
                                 </View>
-                                <Text style={[styles.buttonText]}>USDT</Text>
+                                <Text style={[styles.buttonText, plainTextColor]}>USDT</Text>
                                 <View style={styles.arrowIcon}>
-                                    <Arrow color={plainTextColor}/>
+                                    <Arrow color={plainTextColor.color}/>
                                 </View>
                             </Pressable>
                         </ScrollView>

@@ -4,7 +4,7 @@ import TermClause from './TermClause';
 import generalComponentStyles from '../../styles/generalComponentStyles';
 
 import Checkbox from 'expo-checkbox';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import useThemeColors from "../../hooks/useThemeColors";
 
 import { observer } from 'mobx-react-lite';
@@ -19,9 +19,7 @@ const TermsOfServiceList = ({terms}: Props) => {
     const { markedTextColor, plainTextColor } = useThemeColors();
 
     const [isChecked, setChecked] = useState(false);
-
-    //TODO: add useMemo
-    const termList = terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>);
+    const termList = useMemo(() => terms.map((item, i) => <TermClause key={i.toString()} textContent={item} index={i}/>), [terms]);
 
     return (
         <View style={wrapper}>

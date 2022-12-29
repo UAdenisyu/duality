@@ -23,9 +23,9 @@ const ListItem = ({ cryptoName, bottomBorder = true }: Props) => {
 
     const { title, infoIcon, valueSmall, borderedSection } = generalComponentStyles();
 
-    const { titleTextColor, markedTextColor, plainTextColor } = useThemeColors();
+    const { titleTextColor, markedTextColor, plainTextColor, dividingLineColor } = useThemeColors();
     
-    const borderedItemStyle = bottomBorder ? {...borderedSection, paddingTop: 0, paddingBottom: 0 } : {}
+    const borderedItemStyle = bottomBorder ? [dividingLineColor, {borderBottomWidth: 1}] : null
 
     return (
         <View style={[styles.itemContainer, borderedItemStyle]}>

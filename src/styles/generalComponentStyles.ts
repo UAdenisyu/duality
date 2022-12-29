@@ -11,6 +11,11 @@ export default function generalComponentStyles() {
             inputBorderColor } = useThemeColors();
     
     return StyleSheet.create({
+        _testStyle: {
+            height: 100,
+            width: 100,
+            backgroundColor: 'red',
+        },
         wrapper: {
             marginHorizontal: 24,
             padding: 16,
@@ -71,9 +76,11 @@ export default function generalComponentStyles() {
             ...dividingLineColor,
         },
         markedText:{
+            includeFontPadding: false,
             fontFamily: 'poppins-semibold',
             fontSize: 14,
-            lineHeight: 16,
+            lineHeight: 17,
+            height: 13,
             ...markedTextColor,
         },
         input:{

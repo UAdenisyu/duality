@@ -6,6 +6,7 @@ export default StyleSheet.create({
     section: {
         flexDirection: 'row',
         paddingTop: 16,
+        alignItems: 'center',
     },
     titleSection:{
         flexDirection: 'row',
@@ -17,7 +18,6 @@ export default StyleSheet.create({
     },
     persentsPerYear: {
         marginLeft: 18,
-        lineHeight: 21,
     },
     arrow: {
         marginLeft: 12,

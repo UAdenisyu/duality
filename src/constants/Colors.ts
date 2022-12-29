@@ -4,7 +4,7 @@ export const LIGHT_COLORS = {
     extraDark: '#202226',
     componentBackground: 'rgba(255, 255, 255, 0.07)',
     modalBackground: '#fff',
-    selectedItemColor: 'red',
+    selectedItemColor: "#E2FF9D",
     modalWindowElementsColor: '#282A2F',
     componentDividingLine: '#4A4B4E',
     grey: '#767676',

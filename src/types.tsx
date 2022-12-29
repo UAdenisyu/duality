@@ -59,3 +59,6 @@ export type CryptoCurrencyFullInfo = {
 }
 
 export type optionDarkMode = 'dark' | 'light' | undefined | null;
+
+export type StyleValue = {[key: string]: Object} | number | false | null;
+export type StyleProp = StyleValue | Array<StyleValue>;

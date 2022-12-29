@@ -1,11 +1,6 @@
 import { View, Text, Dimensions } from "react-native";
-import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-import { useDualityStore } from '../../../mobx/stores/AppStore.store';
-
-import useThemeColors from "../../../hooks/useThemeColors";
-
 
 import generalComponentStyles from "../../../styles/generalComponentStyles";
 
@@ -48,7 +43,7 @@ const wrapperHeight = Dimensions.get('window').width - 48;
 const Chart = () => {
 
       
-    const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
+    const { wrapper } = generalComponentStyles();
 
     return (
 

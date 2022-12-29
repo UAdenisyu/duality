@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { GestureResponderEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import styles from './styles';
 
 import useThemeColors from '../../hooks/useThemeColors';
@@ -11,7 +11,7 @@ type Props = {
     leftItem: React.ReactElement<SvgProps>, 
     rightItem?: React.ReactElement, 
     titleText: string,
-    onPressAction: Function,
+    onPressAction: (event: GestureResponderEvent) => void,
 }
 
 
@@ -21,7 +21,7 @@ export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressActi
 
     return (
         <Pressable style={[wrapper, styles.wrapper, rightItem ? null : styles.logOutBackGround]}
-            onPress={onPressAction()}>
+            onPress={onPressAction}>
             <View style={[styles.leftIconWrapper, rightItem ? null : styles.logOutIcon]}>
                 {leftItem}
             </View>

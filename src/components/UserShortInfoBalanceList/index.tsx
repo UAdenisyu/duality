@@ -5,6 +5,7 @@ import { useDualityStore } from '../../mobx/appStoreContext';
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
 import generalComponentStyles from "../../styles/generalComponentStyles";
+import { useMemo } from "react";
 
 
 const UserShortInfoBalanceList = () => {
@@ -13,11 +14,11 @@ const UserShortInfoBalanceList = () => {
 
     const cryptoNames = Object.keys(cryptoCurrencyFullInfo);
 
-    const cryptoCurrencyList = cryptoNames.map((cryptoName, i) => (
+    const cryptoCurrencyList = useMemo(() => cryptoNames.map((cryptoName, i) => (
         <View key={cryptoName} style={[ i + 1 >= cryptoNames.length ? null : borderedSection, i === 0 ? null : {paddingTop: 16}]}>
             <ShortInfoCryptoBalance cryptoName={cryptoName}/>
         </View>
-    ));
+    )), [cryptoNames]);
 
     return (
         <View style={wrapper}>

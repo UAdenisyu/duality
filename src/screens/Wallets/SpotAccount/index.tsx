@@ -5,8 +5,8 @@ import TotalBalanceListDetails from "../../../components/TotalBalanceListDetails
 export default function WalletsSpotAccount() {
     return (
         <View>
-            {/* <SummaryPrice titleText="Calculated total cost"/>
-            <TotalBalanceListDetails/> */}
+            <SummaryPrice titleText="Calculated total cost"/>
+            <TotalBalanceListDetails/>
         </View>
     );
 }

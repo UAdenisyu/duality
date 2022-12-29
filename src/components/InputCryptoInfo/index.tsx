@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Button } from "react-native";
 import ShowMoreBtn from '../ShowMoreBtn';
 import styles from './styles';
 import Arrow from '../../assets/svgs/arrow.svg';
@@ -8,6 +8,9 @@ import UsdtLogo from '../../assets/svgs/UsdtLogo.svg';
  
 import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from "../../styles/generalComponentStyles";
+import { SvgProps } from "react-native-svg";
+import OpenBottomModalScreenButton from "../OpenBottomModalScreenButton";
+import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -18,11 +21,11 @@ interface componentProps {
     showMoreBtn?: boolean,
 }
 
-type Data = {
+type SvgArray = {
     [key: string]: JSX.Element,
 }
 
-const data: Data = {
+const cryptoNamesvgArray: SvgArray = {
     'Eth': <EthLogo/>,
     'Usdt': <UsdtLogo/>,
     '': <LogoNotFound/>
@@ -40,7 +43,7 @@ export default function InputCryptoInfo({ cryptoName = '',
     return (
         <View style={wrapper}>
             <View style={[styles.titleSection, borderedSection]}>
-                {data[cryptoName]}
+                {cryptoNamesvgArray[cryptoName]}
                 <Text style={[valueBig, styles.title, plainTextColor]}>Input: {cryptoName}</Text>
             </View>
             <View style={styles.section}>
@@ -48,9 +51,7 @@ export default function InputCryptoInfo({ cryptoName = '',
                 <Text style={[markedText, styles.persentsPerYear]}>{yearIncomeMin} - {yearIncomeMax}</Text>
                 <Arrow color={markedItemBorderColor.borderColor} style={styles.arrow}/>
             </View>
-            { showMoreBtn ? <View style={{ marginTop: 19 }}>
-                                <ShowMoreBtn/>
-                            </View> : null }
+            {!showMoreBtn || <ShowMoreBtn wrapperStyle={{ marginTop: 19 }}/>}
         </View>
     );
 }

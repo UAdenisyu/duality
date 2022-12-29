@@ -1,7 +1,7 @@
 import React from 'react';
 import { useObserver } from 'mobx-react-lite';
 
-import { optionDarkMode } from '../../types';
+import { CryptoCurrencyFullInfo, optionDarkMode } from '../../types';
 
 import EthLogoBig from '../../assets/svgs/EthLogo.svg';
 import EthLogoSmall from '../../assets/svgs/EthLogoSmall.svg';
@@ -9,15 +9,31 @@ import UsdtLogoBig from '../../assets/svgs/UsdtLogo.svg';
 import UsdtLogoSmall from '../../assets/svgs/UsdtLogoSmall.svg';
 
 
+
+
+interface DualityStore {
+    appTheme: 'dark' | 'light',
+    setAppTheme: (value: 'dark' | 'light') => void,
+    totalBalance: number,
+    setTotalBalance: (value: number) => void,
+    cryptoCurrencyFullInfo : CryptoCurrencyFullInfo,
+    isLoggedIn: boolean,
+    toggleIsLoggedIn: () => void,
+}
+
 export function createDualityStore() {
-    return {
+    const data : DualityStore = {
         appTheme: 'light',
-        setAppTheme(value: string) {
+        setAppTheme(value) {
             this.appTheme = value;
         },
         totalBalance: 23000,
         setTotalBalance(value: number) {
             this.totalBalance = value;
+        },
+        isLoggedIn: false,
+        toggleIsLoggedIn() {
+            this.isLoggedIn = !this.isLoggedIn;
         },
         cryptoCurrencyFullInfo: {
             'Eth': [
@@ -99,7 +115,8 @@ export function createDualityStore() {
                 },
             ],
         }
-    }
+    };
+    return data;
 }
 
 export type TStore = ReturnType<typeof createDualityStore>;

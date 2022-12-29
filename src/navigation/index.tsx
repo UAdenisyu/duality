@@ -34,10 +34,12 @@ import Profile from '../screens/Profile';
 
 import { RootStackParamList, RootTabParamList, EarnStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { useDualityStore } from '../mobx/appStoreContext';
+import { observer } from 'mobx-react-lite';
 
 const TabStack = createNativeStackNavigator<RootStackParamList>();
 
-export default function Navigation() {
+function Navigation() {
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -45,20 +47,25 @@ export default function Navigation() {
           background: 'transparent',
         },
       };
+
+    
+    const {isLoggedIn} = useDualityStore();
     return (
         <NavigationContainer
             theme={MyTheme}
             linking={LinkingConfiguration}>
-                <ImageBackground
+                {isLoggedIn ? <ImageBackground
                     source={require('../assets/images/mainBackground.png')}
                     resizeMode="cover"
                     style={{ width: '100%', height: '100%' }}>                    
                     <RootNavigator/>
-                </ImageBackground>
+                </ImageBackground> : <NotFoundScreen/>}
+
         </NavigationContainer>
     );
 }
 
+export default observer(Navigation);
 
 
 const EarnStackScreens = ({ navigation }: { navigation: any }) => {
