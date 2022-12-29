@@ -4,7 +4,6 @@ import useCachedResources from './src/hooks/useCachedResources';
 import Navigation from './src/navigation';
 import { StatusBar } from 'react-native';
 import { DualityProvider } from './src/mobx/appStoreContext';
-import { observer } from 'mobx-react-lite';
 
 
 // useMemo везде, где map и conditional rendering (условный рендеринг)
@@ -16,16 +15,16 @@ import { observer } from 'mobx-react-lite';
 //     setSliderLength(e.nativeEvent.layout.width)
 // }, [setSliderLength]);
 
-// динамические стайлы хранить в хуках 
+// динамические стайлы хранить в хуках - [done]
 
-// оборачивать функции в observer в другом месте;
-// export default observer(OpenCenterModalScreenButton);
+// оборачивать функции в observer в другом месте; - [done]
+// export default observer(OpenCenterModalScreenButton); - [done]
 
 // OrderItem переделать
 
 // SummaryPrice 
-// const actionsBlock в useMemo
-// const detailsBlock в useMemo
+// const actionsBlock в useMemo - [done]
+// const detailsBlock в useMemo - [done]
 
 // TableList - переделать с использованием FlatList
 
@@ -34,7 +33,7 @@ import { observer } from 'mobx-react-lite';
 // Использовать useWindowDimensions вместо Dimensions
 // Ніколи не задавай висоту блока використовуючи height отриманий через windowDimension
 
-// не использовать классы из mobx
+// не использовать классы из mobx - [done]
 // разбить на state на каждую задачу
 
 // useNavigation вместо передачи navigation
@@ -45,6 +44,7 @@ import { observer } from 'mobx-react-lite';
 
 const App:FC = () => {
     const isLoadingComplete = useCachedResources();
+
     if (!isLoadingComplete) {
         return null;
     } else {
@@ -52,7 +52,7 @@ const App:FC = () => {
             <DualityProvider>
                 <SafeAreaProvider >
                     <StatusBar translucent backgroundColor="transparent"/>
-                        <Navigation/>
+                    <Navigation/>
                 </SafeAreaProvider>
             </DualityProvider>
         );
