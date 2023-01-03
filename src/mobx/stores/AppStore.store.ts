@@ -1,7 +1,7 @@
 import React from 'react';
 import { useObserver } from 'mobx-react-lite';
 
-import { CryptoCurrencyFullInfo, optionDarkMode } from '../../types';
+import { CryptoCurrencyFullInfo } from '../../types';
 
 import EthLogoBig from '../../assets/svgs/EthLogo.svg';
 import EthLogoSmall from '../../assets/svgs/EthLogoSmall.svg';
@@ -18,7 +18,7 @@ interface DualityStore {
     setTotalBalance: (value: number) => void,
     cryptoCurrencyFullInfo : CryptoCurrencyFullInfo,
     isLoggedIn: boolean,
-    toggleIsLoggedIn: () => void,
+    setIsLoggedIn: (newLoggedInValue: boolean) => void,
 }
 
 export function createDualityStore() {
@@ -32,8 +32,8 @@ export function createDualityStore() {
             this.totalBalance = value;
         },
         isLoggedIn: false,
-        toggleIsLoggedIn() {
-            this.isLoggedIn = !this.isLoggedIn;
+        setIsLoggedIn(newLoggedInValue) {
+            this.isLoggedIn = newLoggedInValue;
         },
         cryptoCurrencyFullInfo: {
             'Eth': [

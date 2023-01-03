@@ -7,11 +7,11 @@ import { RootStackScreenProps } from '../types';
 //TODO: make this screen more custom. Create login screen
 
 function NotFoundScreen() {
-  const { toggleIsLoggedIn } = useDualityStore();
+  const { setIsLoggedIn } = useDualityStore();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
-      <TouchableOpacity onPress={toggleIsLoggedIn} style={styles.link}>
+      <TouchableOpacity onPress={() => setIsLoggedIn(true)} style={styles.link}>
         <Text style={styles.linkText}>Go to home screen!</Text>
       </TouchableOpacity>
     </View>

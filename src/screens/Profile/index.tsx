@@ -55,7 +55,7 @@ function Earn() {
 
     const { plainTextColor, markedTextColor } = useThemeColors();
 
-    const { toggleIsLoggedIn } = useDualityStore();
+    const { setIsLoggedIn } = useDualityStore();
 
     const mainPageComponentList = profileButtonsList.map(item => (
         <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(plainTextColor.color)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
@@ -66,7 +66,7 @@ function Earn() {
             <View style={styles.screenWrapper}>
                 {mainPageComponentList}
                 <View style={styles.logOutButtonWrapper}>
-                    <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={toggleIsLoggedIn}/>
+                    <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={() => setIsLoggedIn(false)}/>
                 </View>
             </View>
             <View style={{height: 100}}></View>

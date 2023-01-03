@@ -36,6 +36,7 @@ import { RootStackParamList, RootTabParamList, EarnStackParamList } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import { useDualityStore } from '../mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
+import GetStarted from '../screens/SignUp';
 
 const TabStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -59,7 +60,7 @@ function Navigation() {
                     resizeMode="cover"
                     style={{ width: '100%', height: '100%' }}>                    
                     <RootNavigator/>
-                </ImageBackground> : <NotFoundScreen/>}
+                </ImageBackground> : <GetStarted/>}
 
         </NavigationContainer>
     );
