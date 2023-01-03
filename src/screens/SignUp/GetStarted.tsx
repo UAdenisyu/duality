@@ -39,7 +39,12 @@ const GetStarted = () => {
             Get started
           </Text>
         </Pressable>
-        <Pressable style={styles.loginLink} onPress={() => setIsLoggedIn(true)}>
+        <Pressable 
+          style={styles.loginLink} 
+          onPress={() => {
+            setIsLoggedIn(true);
+            navigation.navigate("Root");
+          }}>
           <Text style={generalStyles.titleLight}>
             Already have an account?{' '}
           </Text>

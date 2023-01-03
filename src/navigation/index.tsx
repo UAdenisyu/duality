@@ -37,6 +37,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import { useDualityStore } from '../mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
 import GetStarted from '../screens/SignUp';
+import Login from '../screens/Login';
 
 const TabStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -50,17 +51,17 @@ function Navigation() {
       };
 
     
-    const {isLoggedIn} = useDualityStore();
+
     return (
         <NavigationContainer
             theme={MyTheme}
             linking={LinkingConfiguration}>
-                {isLoggedIn ? <ImageBackground
+                <ImageBackground
                     source={require('../assets/images/mainBackground.png')}
                     resizeMode="cover"
                     style={{ width: '100%', height: '100%' }}>                    
                     <RootNavigator/>
-                </ImageBackground> : <GetStarted/>}
+                </ImageBackground>
 
         </NavigationContainer>
     );
@@ -156,9 +157,14 @@ const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
 }
 
 function RootNavigator() {
+
+    const {isLoggedIn} = useDualityStore();
+
     return (
-        <TabStack.Navigator>
+        <TabStack.Navigator initialRouteName={isLoggedIn ? "Root" : "GetStarted"}>
             <TabStack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+            <TabStack.Screen name="GetStarted" component={GetStarted} options={{ headerShown: false }} />
+            <TabStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
             <TabStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </TabStack.Navigator>
     );

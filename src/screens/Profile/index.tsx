@@ -8,6 +8,7 @@ import LogoutSvg from "../../assets/svgs/settingsScreen/Logout.svg";
 import useThemeColors from "../../hooks/useThemeColors";
 import { observer } from "mobx-react-lite";
 import { useDualityStore } from "../../mobx/appStoreContext";
+import { useNavigation } from "@react-navigation/native";
 
 const screenHeight = Dimensions.get('window').height
 
@@ -61,12 +62,20 @@ function Earn() {
         <SettingComponent key={item.title} leftItem={item.logoIcon} rightItem={item.rightItem(plainTextColor.color)} titleText={item.title} onPressAction={() => console.log('pressed')}/>
     ));
 
+    const navigation = useNavigation();
+
     return (
         <View>
             <View style={styles.screenWrapper}>
                 {mainPageComponentList}
                 <View style={styles.logOutButtonWrapper}>
-                    <SettingComponent leftItem={<LogoutSvg/>} titleText={'Logout'} onPressAction={() => setIsLoggedIn(false)}/>
+                    <SettingComponent 
+                        leftItem={<LogoutSvg/>} 
+                        titleText={'Logout'} 
+                        onPressAction={() =>{ 
+                            setIsLoggedIn(false);
+                            navigation.navigate("GetStarted");
+                        }}/>
                 </View>
             </View>
             <View style={{height: 100}}></View>
