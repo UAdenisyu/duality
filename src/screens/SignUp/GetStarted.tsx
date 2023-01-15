@@ -43,7 +43,7 @@ const GetStarted = () => {
           style={styles.loginLink} 
           onPress={() => {
             setIsLoggedIn(true);
-            navigation.navigate("Root");
+            navigation.navigate("Login");
           }}>
           <Text style={generalStyles.titleLight}>
             Already have an account?{' '}

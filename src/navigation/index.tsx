@@ -73,8 +73,7 @@ export default observer(Navigation);
 const EarnStackScreens = ({ navigation }: { navigation: any }) => {
     const EarnStack = createStackNavigator();
     return (
-      <EarnStack.Navigator
-      >
+      <EarnStack.Navigator>
             <EarnStack.Screen
                 options={{
                     ...mainNavigatorOptions,
