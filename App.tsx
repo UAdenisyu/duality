@@ -41,6 +41,10 @@ import { DualityProvider } from './src/mobx/appStoreContext';
 // реализовать логику
 
 
+// 🚨 The following packages were not updated. You should check the READMEs for those repositories to determine what version is compatible with your new set of packages:
+// @ptomasroos/react-native-multi-slider, @react-native-community/blur, @react-navigation/bottom-tabs, @react-navigation/material-bottom-tabs, @react-navigation/native, @react-navigation/native-stack, @react-navigation/stack, immutability-helper, lodash, mobx-react-lite, react-native-animated-loader, react-native-charts-wrapper, react-native-drop-shadow, react-native-haptic-feedback, react-native-linear-gradient, react-native-vector-icons, react-native-vector-image, react-native-wagmi-charts, react-number-format, @babel/plugin-proposal-export-namespace-from, babel-plugin-transform-decorators-legacy, react-native-svg-transformer, react-test-renderer
+
+
 
 const App:FC = () => {
     const isLoadingComplete = useCachedResources();
