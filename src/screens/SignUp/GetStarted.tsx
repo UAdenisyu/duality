@@ -15,6 +15,15 @@ const GetStarted = () => {
 
   const { setIsLoggedIn } = useDualityStore();
 
+  const loginPressed = () => {
+    setIsLoggedIn(true);
+    navigation.navigate("Login");
+  }
+
+  const signUpPressed = () => {
+    navigation.navigate('NotFound');
+  }
+
   return (
     <SafeAreaView style={styles.screenWrapper}>
       <View style={styles.previewWrapper}>
@@ -34,17 +43,16 @@ const GetStarted = () => {
         <Text style={[plainTextColor, styles.screenTitle]}>
           Start your crypto portfolio
         </Text>
-        <Pressable style={[markedItemBackgroundColor, styles.getStartedButton]} onPress={() => navigation.navigate('NotFound')}>
+        <Pressable 
+          style={[markedItemBackgroundColor, styles.getStartedButton]} 
+          onPress={signUpPressed}>
           <Text style={styles.getStartedButtonText}>
             Get started
           </Text>
         </Pressable>
         <Pressable 
           style={styles.loginLink} 
-          onPress={() => {
-            setIsLoggedIn(true);
-            navigation.navigate("Login");
-          }}>
+          onPress={loginPressed}>
           <Text style={generalStyles.titleLight}>
             Already have an account?{' '}
           </Text>

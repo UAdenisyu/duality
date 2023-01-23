@@ -160,7 +160,8 @@ function RootNavigator() {
     const {isLoggedIn} = useDualityStore();
 
     return (
-        <TabStack.Navigator initialRouteName={isLoggedIn ? "Root" : "GetStarted"}>
+        <TabStack.Navigator 
+            initialRouteName={isLoggedIn ? "Root" : "GetStarted"}>
             <TabStack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
             <TabStack.Screen name="GetStarted" component={GetStarted} options={{ headerShown: false }} />
             <TabStack.Screen name="Login" component={Login} options={{ headerShown: false }} />

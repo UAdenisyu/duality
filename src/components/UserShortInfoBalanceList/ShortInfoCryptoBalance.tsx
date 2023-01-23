@@ -21,12 +21,12 @@ const data: Data = {
     '': <LogoNotFound/>
 }
 
-type Props = {
+type ComponentProps = {
     cryptoName: string,
 }
 
 
-const ShortInfoCryptoBalance = ({ cryptoName }: Props) => {
+const ShortInfoCryptoBalance = ({ cryptoName }: ComponentProps) => {
 
     const { valueSmall, valueBig, title} = generalComponentStyles();
 

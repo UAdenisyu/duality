@@ -1,22 +1,52 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { observer } from "mobx-react-lite";
+import { Image, StyleSheet, View } from "react-native";
+import Modal from 'react-native-modal';
+import { useDualityStore } from "../../mobx/appStoreContext";
+import AnimatedTitle from "./AnimatedTitle";
 
 //usex LinearGradient for background colors
 
+
+// type ScreenProps = {
+//   isLoading: boolean,
+//   toggleLoading: (isLoading: boolean) => void, 
+// } 
+
 const Loading = () => {
 
+  const { isLoading } = useDualityStore();
+
   return (
-    <SafeAreaView style={styles.screenWrapper}>
-      <Text>Loading, please wait</Text>
-    </SafeAreaView>
+    <Modal
+      isVisible={isLoading}
+      style={{ margin: 0 }}
+      useNativeDriver={true}
+      animationIn={'fadeIn'}
+      animationInTiming={500}
+      animationOut={'fadeOut'}
+      animationOutTiming={800}>
+      <View style={styles.modal}>
+        <Image source={require('../../assets/images/SplashScreenBackground.png')} style={styles.splashScreenImage}/>
+        <AnimatedTitle/>
+      </View>
+    </Modal>
   );
 }
 
 const styles = StyleSheet.create({
-  screenWrapper: {
-    marginHorizontal: 24,
-    height: '100%',
+  modal: {
+    // flex: 1,
+    // backgroundColor: 'green',
     justifyContent: 'center',
+    alignItems: 'center',
   },
+  splashScreenImage: {
+    width: '110%',
+    height: '100%',
+  },
+  splashScreenTitle: {
+    position: 'absolute',
+  }
 });
 
-export default Loading;
+export default observer(Loading);

@@ -12,11 +12,11 @@ import ActionsBlock from "./ActionsBlock";
 import DetailsBlock from "./DetailsBlock";
 import { useMemo } from "react";
 
-type Props = {
+type ComponentProps = {
     titleText?: 'Summary price' | 'Estimated cost' | 'Calculated total cost'
 }
 
-const SummaryPrice = ({ titleText='Summary price' }: Props) => {
+const SummaryPrice = ({ titleText='Summary price' }: ComponentProps) => {
 
     const { wrapper, title, infoIcon, borderedSection, valueBig, valueSmall, cryptoName } = generalComponentStyles();
     const { titleTextColor } = useThemeColors();

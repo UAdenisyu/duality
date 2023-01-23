@@ -3,13 +3,13 @@ import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from "../../styles/generalComponentStyles";
 import styles from "./styles";
 
-type Props = {
+type ComponentProps = {
   titleName: string,
   value: string,
   alignRight?: boolean,
 }
 
-const InfoBlock = ({titleName, value, alignRight} : Props) => {
+const InfoBlock = ({titleName, value, alignRight} : ComponentProps) => {
 
   const { title } = generalComponentStyles();
   const { cancelText, plainTextColor } = useThemeColors();

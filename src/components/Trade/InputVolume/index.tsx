@@ -9,12 +9,12 @@ import { TextInput } from "react-native-gesture-handler";
 import Checkbox from "expo-checkbox";
 import { useState } from "react";
 
-type Props = {
+type ComponentProps = {
     titleText: 'Volume' | 'Price',
     fullScreenWidth?: boolean
 }
 
-const InputVolume = ({ titleText, fullScreenWidth=true } : Props) => {
+const InputVolume = ({ titleText, fullScreenWidth=true } : ComponentProps) => {
 
     const { wrapper, title, titleLight, input } = generalComponentStyles();
 

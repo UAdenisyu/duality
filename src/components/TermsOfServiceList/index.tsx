@@ -9,11 +9,11 @@ import useThemeColors from "../../hooks/useThemeColors";
 
 import { observer } from 'mobx-react-lite';
 
-type Props = {
+type ComponentProps = {
     terms: Array<string>
 }
 
-const TermsOfServiceList = ({terms}: Props) => {
+const TermsOfServiceList = ({terms}: ComponentProps) => {
 
     const { wrapper } = generalComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();

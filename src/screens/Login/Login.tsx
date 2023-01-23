@@ -9,28 +9,32 @@ import Loading from "../Loading";
 
   //use LinearGradient for background colors
 
+
 const Login = () => {
 
-  const { isLoading, toggleLoading, isLoggedIn, setIsLoggedIn, registeredUsers } = useDualityStore();
+  const { isLoading, toggleLoading, setIsLoggedIn, registeredUsers } = useDualityStore();
   const navigation = useNavigation();
   const {markedItemBackgroundColor, inputColors, inputBorderColor} = useThemeColors();
 
-  const [inputUserName, setInputUserName] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
+  const [inputUserName, setInputUserName] = useState('Demo Trader 1');
+  const [inputPassword, setInputPassword] = useState('trademe1');
 
-  type checkFunction = () => boolean
+  type checkFunction = () => Promise<boolean>;
 
   const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-  const checkIfUserRegistered: checkFunction = () => {
+  const checkIfUserRegistered: checkFunction = async () => {
+    // api fetch simulation. async actions
     return registeredUsers.some(user => user.userName === inputUserName && user.password === inputPassword);
   }
 
   const loginPressed = async () => {
     toggleLoading(true);
-    if (checkIfUserRegistered()) {
-      await sleep(4000);
+    await sleep(100); // wait untill animation starts
+    const isUserExists = await checkIfUserRegistered()
+    if (isUserExists) {
       navigation.navigate('Root');
+      await sleep(100); // wait untill animation finishes
       setIsLoggedIn(true);
     } else {
       console.log(inputUserName);
@@ -43,10 +47,6 @@ const Login = () => {
 
   const signUpPressed = () => {
     navigation.navigate('NotFound');
-  }
-
-  if (isLoading) {
-    return <Loading/>
   }
 
   return (

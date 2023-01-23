@@ -4,6 +4,7 @@ import useCachedResources from './src/hooks/useCachedResources';
 import Navigation from './src/navigation';
 import { StatusBar } from 'react-native';
 import { DualityProvider } from './src/mobx/appStoreContext';
+import Loading from './src/screens/Loading';
 
 
 // useMemo везде, где map и conditional rendering (условный рендеринг)
@@ -53,10 +54,12 @@ const App:FC = () => {
         return null;
     } else {
         return (
+
             <DualityProvider>
                 <SafeAreaProvider >
                     <StatusBar translucent backgroundColor="transparent"/>
                     <Navigation/>
+                    <Loading/>
                 </SafeAreaProvider>
             </DualityProvider>
         );

@@ -7,7 +7,7 @@ import React from 'react';
 
 import {SvgProps} from 'react-native-svg';
 
-type Props = {
+type ComponentProps = {
     leftItem: React.ReactElement<SvgProps>, 
     rightItem?: React.ReactElement, 
     titleText: string,
@@ -15,7 +15,7 @@ type Props = {
 }
 
 
-export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressAction}: Props) {
+export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressAction}: ComponentProps) {
     const { plainTextColor } = useThemeColors();
     const { wrapper } = generalComponentStyles();
 

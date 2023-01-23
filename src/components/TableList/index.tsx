@@ -6,11 +6,11 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 import useThemeColors from "../../hooks/useThemeColors";
 import { useMemo } from "react";
 
-type Props = {
+type ComponentProps = {
     target: string,
 }
 
-export default function TableList({ target }: Props) {
+export default function TableList({ target }: ComponentProps) {
 
     const { tableColumnTitleColor, darkTextColor } = useThemeColors();
     const { cryptoCurrencyFullInfo } = useDualityStore();

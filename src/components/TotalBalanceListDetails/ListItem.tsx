@@ -10,12 +10,12 @@ import Arrow from '../../assets/svgs/arrow.svg';
 import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
-type Props = {
+type ComponentProps = {
     cryptoName: string, 
     bottomBorder?: boolean,
 }
 
-const ListItem = ({ cryptoName, bottomBorder = true }: Props) => {
+const ListItem = ({ cryptoName, bottomBorder = true }: ComponentProps) => {
     
     const { cryptoCurrencyFullInfo } = useDualityStore();
     const cryptoInfo = cryptoCurrencyFullInfo[cryptoName][0];

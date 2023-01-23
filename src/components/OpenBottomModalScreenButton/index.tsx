@@ -33,7 +33,7 @@ const OpenBottomModalScreenButton = ({
     const { modalBottomFillColor, plainTextColor } = useThemeColors();
     const [ modalVisible, setModalVisible ] = useState(false);
     
-    const btnOpenModal = <Pressable onPress={() => setModalVisible(true)}>
+    const btnOpenModal = <Pressable style={{height: 100, width: 100, backgroundColor: 'green'}} onPress={() => setModalVisible(true)}>
                             {targetContentComponent}
                         </Pressable>
     return (

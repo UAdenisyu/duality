@@ -11,12 +11,12 @@ type dataProp = {
     completionTime: Date, 
 }
 
-type Props = {
+type ComponentProps = {
     backgroundColor : string,
     data : dataProp,
 }
 
-export default function TableListItem({ backgroundColor, data } : Props) {
+export default function TableListItem({ backgroundColor, data } : ComponentProps) {
 
     const { markedText } = generalComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();

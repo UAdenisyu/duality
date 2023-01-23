@@ -7,7 +7,7 @@ import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from '../../styles/generalComponentStyles';
 
 
-type Props = { logo: CallableFunction,
+type ComponentProps = { logo: CallableFunction,
     enabled: boolean,
     title: string,
     value: number,
@@ -15,7 +15,7 @@ type Props = { logo: CallableFunction,
     bottomIcon: CallableFunction 
 }
 
-export default function SliderMarker({ logo, enabled, title, value, footer, bottomIcon }: Props){
+export default function SliderMarker({ logo, enabled, title, value, footer, bottomIcon }: ComponentProps){
     
     const { markedTextColor, plainTextColor } = useThemeColors();
     const { titleSmall, markedText } = generalComponentStyles();

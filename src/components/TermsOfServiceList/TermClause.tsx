@@ -2,12 +2,12 @@ import { Text } from "react-native";
 import styles from './styles';
 import useThemeColors from "../../hooks/useThemeColors";
 
-type Props = {
+type ComponentProps = {
     textContent: string, 
     index: number,
 }
 
-export default function TermClause({ textContent, index }: Props) {
+export default function TermClause({ textContent, index }: ComponentProps) {
 
     const { plainTextColor } = useThemeColors();
 

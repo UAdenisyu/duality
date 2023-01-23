@@ -8,7 +8,7 @@ import generalComponentStyles from '../../styles/generalComponentStyles';
 import InfoBlock from "./InfoBlock";
 
 
-type Props = {
+type ComponentProps = {
     contentType: 'list' | 'history'
     cryptoNameTitle: string,
     dateTime: string,
@@ -17,7 +17,7 @@ type Props = {
     price: number,
 }
 
-const OrderItem = ({contentType, cryptoNameTitle, dateTime, limitBuy, sum, price}: Props) => {
+const OrderItem = ({contentType, cryptoNameTitle, dateTime, limitBuy, sum, price}: ComponentProps) => {
 
     const { wrapper, title } = generalComponentStyles();
     const { dividingLineColor, plainTextColor, cancelButton } = useThemeColors();
