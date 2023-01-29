@@ -9,7 +9,7 @@ import Loading from './src/screens/Loading';
 
 // useMemo везде, где map и conditional rendering (условный рендеринг)
 
-// navigation порезать на куски в src/stacks
+// navigation порезать на куски - [done]
 
 // создавать функции отдельно и заворачивать в useCallback
 // onLayout = useCallback((e) => {
