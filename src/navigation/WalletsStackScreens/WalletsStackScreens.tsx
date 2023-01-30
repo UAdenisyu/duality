@@ -17,7 +17,6 @@ const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
               options={{
                   ...mainNavigatorOptions,
                   headerTitle: 'Wallets',
-                  headerLeft: () => <View/>,
               }}
               name='Wallets/main'
               component={WalletsMain}

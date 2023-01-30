@@ -40,6 +40,12 @@ export default function InputCryptoInfo({ cryptoName = '',
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();
 
+    const { navigate } = useNavigation();
+
+    const showMorePressed : () => void = () => {
+        navigate('Earn/Input', {cryptoName: cryptoName});
+    }
+
     return (
         <View style={wrapper}>
             <View style={[styles.titleSection, borderedSection]}>
@@ -51,7 +57,7 @@ export default function InputCryptoInfo({ cryptoName = '',
                 <Text style={[markedText, styles.persentsPerYear]}>{yearIncomeMin} - {yearIncomeMax}</Text>
                 <Arrow color={markedItemBorderColor.borderColor} style={styles.arrow}/>
             </View>
-            {!showMoreBtn || <ShowMoreBtn wrapperStyle={{ marginTop: 19 }}/>}
+            {!showMoreBtn || <ShowMoreBtn onPress={showMorePressed} wrapperStyle={{ marginTop: 19 }}/>}
         </View>
     );
 }

@@ -19,9 +19,9 @@ import { RootTabParamList } from '../../types';
 import EarnStackScreens from '../EarnStackScreens';
 import WalletsStackScreens from '../WalletsStackScreens';
 
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
-
 const BottomTabNavigator = () => {
+  const BottomTab = createBottomTabNavigator<RootTabParamList>();
+
   const selectedItemColor = useThemeColors().markedTextColor.color;
   const inActiveColor = useThemeColors().plainTextColor.color;
 
@@ -61,9 +61,7 @@ const BottomTabNavigator = () => {
                   ...mainNativeNavigatorOptions,
                   tabBarActiveTintColor: selectedItemColor,
                   tabBarInactiveTintColor: inActiveColor,
-              }}
-
-              >
+              }}>
               <BottomTab.Screen
                   name="Earn"
                   component={EarnStackScreens}

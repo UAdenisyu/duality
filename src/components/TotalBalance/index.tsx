@@ -7,7 +7,7 @@ import { useDualityStore } from '../../mobx/appStoreContext';
 import NumberFormat from 'react-number-format';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 
-const TotalBalance = () => {
+const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
     const dualityStore = useDualityStore();
     const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
@@ -22,7 +22,7 @@ const TotalBalance = () => {
                     prefix="$"
                     renderText={(value) => <Text style={valueBig}>{value}</Text>}
                 />
-                <Text style={cryptoName}>USDT</Text>
+                <Text style={cryptoName}>{selectedCrypto}</Text>
             </View>
         </View>
     );

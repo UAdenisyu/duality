@@ -8,27 +8,30 @@ import EarnInput from '../../screens/Earn/Input';
 
 const EarnStackScreens = ({ navigation }: { navigation: any }) => {
   const EarnStack = createStackNavigator();
+  const selectedCryptoName : string = navigation.getState().routes.find((screen : any) => screen.name === 'Earn')?.state?.routes?.find((screen : any) => screen.name === 'Earn/Input')?.params.cryptoName;
   return (
     <EarnStack.Navigator>
           <EarnStack.Screen
               options={{
                   ...mainNavigatorOptions,
                   headerTitle: 'Earn',
+                  headerLeft: ()=> null,
               }}
-              name='Earn/main'
+              name='Earn/Main'
               component={EarnMain}
+              
           />
           <EarnStack.Screen
               options={{
                   ...childNavigatorOptions,
                   headerTitleAlign: 'center',
-                  headerTitle: 'Input',
+                  headerTitle: 'Input ' + selectedCryptoName?.toUpperCase(),
                   headerLeft: () => (
-                      <Pressable onPress={() => navigation.navigate('Earn/main')}>
+                      <Pressable style={styles.goBackBtn}  onPress={() => navigation.goBack()}>
                           <View style={styles.headerBackArrow}/>
                       </Pressable>)
               }}
-              name='Earn/input'
+              name='Earn/Input'
               component={EarnInput}
           />
     </EarnStack.Navigator>
