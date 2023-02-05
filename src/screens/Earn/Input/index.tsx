@@ -4,12 +4,17 @@ import TotaLBalance from "../../../components/TotalBalance";
 import InputCryptoInfo from "../../../components/InputCryptoInfo";
 import TableList from "../../../components/TableList";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 
-export default function EarnInput() {
+export default function EarnInput({route} : any) {
 
     const navigation = useNavigation();
+    
+    useEffect(() => {
+        navigation.setOptions({ headerTitle: 'Input ' + route.params.cryptoName});
+    }, []);
 
-    const { cryptoName } = navigation.getState().routes.find(({name} : {name: string}) => name === "Earn/Input")?.params;
+    const {cryptoName} = route.params;
 
     return (
         <ScrollView>

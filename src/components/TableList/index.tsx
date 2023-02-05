@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import styles from './styles';
 import TableListItem from './TableListItem';
 import { useDualityStore } from '../../mobx/appStoreContext';

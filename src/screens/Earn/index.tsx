@@ -14,7 +14,6 @@ export default function EarnMain() {
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
     const cryptoList = useMemo(() => {
-        console.log('rendering');
         return Object.keys(cryptoCurrencyFullInfo).map(item => (
             <InputCryptoInfo key={item} cryptoName={item} yearIncomeMin={5.51} yearIncomeMax={100.17} showMoreBtn={true}/>
         ));

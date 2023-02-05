@@ -7,7 +7,7 @@ import TermsOfServiceList from "../../../components/TermsOfServiceList";
 
 const terms = Array(5).fill('You can pay with your actives, free to your sport account');
 
-export default function EarnInput2() {
+export default function InputDetails() {
     return (
         <ScrollView>
             <SetCryptocurrencyPrice/>

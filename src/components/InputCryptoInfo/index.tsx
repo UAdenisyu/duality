@@ -11,7 +11,8 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 import { SvgProps } from "react-native-svg";
 import OpenBottomModalScreenButton from "../OpenBottomModalScreenButton";
 import { useNavigation } from "@react-navigation/native";
-
+import { useRoute } from '@react-navigation/native';
+import { useDualityStore } from "../../mobx/appStoreContext";
 
 
 interface componentProps {
@@ -31,7 +32,6 @@ const cryptoNamesvgArray: SvgArray = {
     '': <LogoNotFound/>
 }
 
-
 export default function InputCryptoInfo({ cryptoName = '',
                                           yearIncomeMin = 0, 
                                           yearIncomeMax = 0, 
@@ -39,11 +39,11 @@ export default function InputCryptoInfo({ cryptoName = '',
 
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();
-
-    const { navigate } = useNavigation();
-
+    const navigation = useNavigation();
+    const {isLoggedIn} = useDualityStore();
+    console.log(isLoggedIn);
     const showMorePressed : () => void = () => {
-        navigate('Earn/Input', {cryptoName: cryptoName});
+        navigation.navigate('EarnInput', {cryptoName});
     }
 
     return (

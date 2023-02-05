@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { listItem } from './styles';
 import Arrow from '../../assets/svgs/arrow.svg';
 import generalComponentStyles from "../../styles/generalComponentStyles";
 import useThemeColors from "../../hooks/useThemeColors";
 import NumberFormat from "react-number-format";
+import { useNavigation } from "@react-navigation/native";
 
 type dataProp = { 
     incomePerYear: number;
@@ -21,6 +22,8 @@ export default function TableListItem({ backgroundColor, data } : ComponentProps
     const { markedText } = generalComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();
 
+    const navigation = useNavigation();
+
     const formattedDate = data.completionTime.getFullYear() + '-' + data.completionTime.getMonth()+1 + '-' + data.completionTime.getDate();
     const formattedIncome = <NumberFormat
                                 value={data.incomePerYear}
@@ -29,15 +32,16 @@ export default function TableListItem({ backgroundColor, data } : ComponentProps
                                 decimalSeparator=", "
                                 renderText={(value) => <Text>{value + ' %'}</Text>}/>
 
-
     return (
-        <View style={[listItem.container, {backgroundColor}]}>
+        <Pressable
+            onPress={() => navigation.navigate('EarnInputDetails')}
+            style={[listItem.container, {backgroundColor}]}>
             <Text style={[markedText, listItem.income]}>{formattedIncome}</Text>
             <Text style={[markedText, listItem.price, plainTextColor]}>{data.targetPrice}</Text>
             <View style={listItem.date}>
                 <Text style={[markedText, plainTextColor]}>{formattedDate}</Text>
                 <Arrow color={markedTextColor.color} style={listItem.arrow}/>
             </View>
-        </View>
+        </Pressable>
     );
 }

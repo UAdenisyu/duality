@@ -24,15 +24,14 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
     Screen
 >;
 
-
-
 export type EarnTabParamList = {
     EarnMain: undefined;
     EarnInput: undefined;
+    EarnInputDetails: undefined;
 }
 
 export type RootTabParamList = {
-    Earn: EarnTabParamList;
+    Earn: NavigatorScreenParams<EarnTabParamList> | undefined;
     Trade: undefined;
     Orders: undefined;
     Wallets: undefined;

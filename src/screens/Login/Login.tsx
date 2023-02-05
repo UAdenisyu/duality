@@ -33,7 +33,7 @@ const Login = () => {
     await sleep(100); // wait untill animation starts
     const isUserExists = await checkIfUserRegistered()
     if (isUserExists) {
-      navigation.navigate('Root');
+      navigation.navigate('Root', {screen: 'Earn'});
       await sleep(100); // wait untill animation finishes
       setIsLoggedIn(true);
     } else {
