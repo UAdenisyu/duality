@@ -14,7 +14,7 @@ const Orders = observer(() => {
 
     return (
 
-        <ScrollView>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <View style={[wrapper, styles.body]}>
                 {buttonTitles.map(buttonTitle => (
                     <Pressable 
@@ -67,7 +67,6 @@ const Orders = observer(() => {
                             price={1012}/>
                     </View>
             }
-            <View style={{height: 100}}/>
         </ScrollView>
     );
 });

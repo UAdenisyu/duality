@@ -7,11 +7,10 @@ import WalletsSpotAccount from "./SpotAccount";
 
  function Wallets() {
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <SummaryPrice titleText="Calculated total cost"/>
             <Portfolio/>
             <CryptocurrencyLifecycle titleLeft="Here"/>
-            <View style={{height: 100}}></View>
         </ScrollView>
     );
 }

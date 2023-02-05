@@ -20,10 +20,9 @@ export default function EarnMain() {
     }, [cryptoCurrencyFullInfo]);
 
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <TotaLBalance/>
             {cryptoList}
-            <View style={{height: 100}}/>
         </ScrollView>
     );
 }

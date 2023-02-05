@@ -17,7 +17,7 @@ export default function EarnInput({route} : any) {
     const {cryptoName} = route.params;
 
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <TotaLBalance selectedCrypto={cryptoName}/>
             <InputCryptoInfo cryptoName={cryptoName} yearIncomeMin={5.51} yearIncomeMax={100.17}/>
             <TableList target={cryptoName}/>

@@ -9,12 +9,11 @@ const terms = Array(5).fill('You can pay with your actives, free to your sport a
 
 export default function InputDetails() {
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <SetCryptocurrencyPrice/>
             <CryptocurrencyLifecycle showDetails={true} titleLeft={'Total'}/>
             <IncomeFromInvestments/>
             <TermsOfServiceList terms={terms}/>
-            <View style={{height: 100}}/>
         </ScrollView>
     );
 }

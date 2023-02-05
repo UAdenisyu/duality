@@ -8,18 +8,16 @@ import BuySellButtons from "../../components/Trade/BuySellButtons";
 
 export default () => {
     return (
-        // <LinkButton to={'/earn/input'}/>
-        <ScrollView>
-            {/* <TotalBalance/>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
+            <TotalBalance/>
             <Chart/>
             <LocalNavBar buttonTitles={["Market", "Limit", "Stop"]}/>
-            <InputVolume titleText={'Volume'}/>
-            <View style={{flexDirection: 'row', paddingHorizontal: 20}}>
+            {/* <InputVolume titleText={'Volume'}/> */}
+            {/* <View style={{flexDirection: 'row', paddingHorizontal: 20}}>
                 <InputVolume titleText={'Volume'} fullScreenWidth={false}/>
                 <InputVolume titleText={'Price'} fullScreenWidth={false}/>
-            </View>
-            <BuySellButtons/> */}
-            <View style={{height: 100}}></View>
+            </View> */}
+            <BuySellButtons/>
         </ScrollView>
     );
 }
