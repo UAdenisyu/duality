@@ -1,4 +1,4 @@
-import { View, Text, Dimensions } from "react-native";
+import { View, Text, Dimensions, StyleSheet } from "react-native";
 
 import { observer } from 'mobx-react-lite';
 
@@ -37,19 +37,28 @@ const data = [
       },
   ];
   
-
-const wrapperHeight = Dimensions.get('window').width - 48;
+const styles = StyleSheet.create({
+    checkeredBackground: {
+        position: 'absolute',
+        overflow: 'hidden',
+        zIndex: -1,
+        borderBottomColor: '#D9D9D9',
+        // borderWidth: 1,
+        height: '110%',
+        width: '110%',
+        backgroundColor: 'rgba(15, 10, 222, 0.2)',
+    }
+});
 
 const Chart = () => {
-
-      
+    const wrapperHeight = Dimensions.get('window').width - 48;
     const { wrapper } = generalComponentStyles();
 
     return (
-
-        <View style={[wrapper, { height: wrapperHeight, overflow: 'hidden'}]}>
+        <View style={[wrapper, {height: wrapperHeight, width: wrapperHeight}]}>
+            <View style={styles.checkeredBackground}/>
             <CandlestickChart.Provider data={data}>
-                <CandlestickChart width={50}>
+                <CandlestickChart width={50} height={50}>
                     <CandlestickChart.Candles/>
                 </CandlestickChart>
             </CandlestickChart.Provider>
