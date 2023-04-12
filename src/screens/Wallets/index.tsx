@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import CryptocurrencyLifecycle from "../../components/CryptocurrencyLifecycle";
 import Portfolio from "../../components/Portfolio";
