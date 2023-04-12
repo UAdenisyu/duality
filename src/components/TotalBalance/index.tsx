@@ -15,33 +15,51 @@ import Animated, {
     withDelay,
     withTiming,
     withSequence,
-    cancelAnimation
+    useDerivedValue,
+    runOnJS,
+    Value
   } from 'react-native-reanimated';
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
     const dualityStore = useDualityStore();
     const { wrapper, title, valueBig, cryptoName } = generalComponentStyles();
 
-    const opacity = useSharedValue(0);
+    const visibleCrypto =  new Value(selectedCrypto);
+    const opacity = useSharedValue(1);
+
     // starting delay of 2000ms
     // play animation 6 times
     // repeat
+
+    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
     opacity.value = withRepeat(
         withSequence(
-            withTiming(1, {duration: 1000, easing: Easing.ease}),
             withTiming(1, {duration: 2000}),
             withTiming(0, {duration: 1000, easing: Easing.ease}),
-            withTiming(0, {duration: 2000}),
+            withTiming(1, {duration: 1000}),
+            withTiming(1, {duration: 1000, easing: Easing.ease}),
         ),
         -1,
         true,
     );
 
-    const animatedBlinkingStyle = useAnimatedStyle(() => ({ opacity: opacity.value }), []);
+    const recordResult = (opacityV: number) => {
+        if (opacityV === 0) {
+            console.log('Animaton finished-', visibleCrypto);
+            visibleCrypto.setValue(visibleCrypto + '-')
+        }
+      };
+    useDerivedValue(() => {
+        runOnJS(recordResult)(opacity.value);
+    })
 
+    const animatedBlinkingStyle = useAnimatedStyle(() => ({ opacity: opacity.value }), []);
     return (
         <View style={wrapper}>
             <Text style={title}>Total balance:</Text>
+            
             <Animated.View style={[styles.body, animatedBlinkingStyle]}>
                 <NumberFormat
                     value={dualityStore.totalBalance}
@@ -50,7 +68,7 @@ const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
                     prefix="$"
                     renderText={(value) => <Text style={valueBig}>{value}</Text>}
                 />
-                <Text style={cryptoName}>{selectedCrypto}</Text>
+                <Text style={cryptoName}></Text>
             </Animated.View>
         </View>
     );
