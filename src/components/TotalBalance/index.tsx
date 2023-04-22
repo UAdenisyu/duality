@@ -19,7 +19,7 @@ import Animated, {
     runOnJS,
     Value
   } from 'react-native-reanimated';
-import { useCallback, useEffect, useRef, useState } from "react";
+
 
 const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
     const dualityStore = useDualityStore();
