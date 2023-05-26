@@ -82,6 +82,6 @@ export default function useThemeColors() {
         }
     });
     
-    return coloredItem ;
+    return coloredItem;
 }
 

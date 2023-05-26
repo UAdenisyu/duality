@@ -9,9 +9,11 @@ export default StyleSheet.create({
     btn:{
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius: 16,
     },
     btnActive: {
         backgroundColor: 'rgba(255, 255, 255, 0.16)',
+        borderRadius: 16,
     },
     btnText: {
         textAlign: 'center',

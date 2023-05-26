@@ -3,7 +3,7 @@ import styles from './styles';
 
 import useThemeColors from '../../hooks/useThemeColors';
 import generalComponentStyles from '../../styles/generalComponentStyles';
-import React from 'react';
+import React, { memo } from 'react';
 
 import {SvgProps} from 'react-native-svg';
 
@@ -15,7 +15,7 @@ type ComponentProps = {
 }
 
 
-export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressAction}: ComponentProps) {
+const ShowMoreBtn = ({leftItem, rightItem, titleText, onPressAction}: ComponentProps) => {
     const { plainTextColor } = useThemeColors();
     const { wrapper } = generalComponentStyles();
 
@@ -33,3 +33,4 @@ export default function ShowMoreBtn({leftItem, rightItem, titleText, onPressActi
     );
 }
 
+export default memo(ShowMoreBtn);

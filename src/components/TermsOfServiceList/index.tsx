@@ -4,7 +4,7 @@ import TermClause from './TermClause';
 import generalComponentStyles from '../../styles/generalComponentStyles';
 
 import Checkbox from 'expo-checkbox';
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import useThemeColors from "../../hooks/useThemeColors";
 
 import { observer } from 'mobx-react-lite';
@@ -45,4 +45,4 @@ const TermsOfServiceList = ({terms}: ComponentProps) => {
     );
 };
 
-export default observer(TermsOfServiceList);
+export default memo(observer(TermsOfServiceList));

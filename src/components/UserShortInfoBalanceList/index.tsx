@@ -5,7 +5,7 @@ import { useDualityStore } from '../../mobx/appStoreContext';
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
 import generalComponentStyles from "../../styles/generalComponentStyles";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
 
 const UserShortInfoBalanceList = () => {
@@ -27,4 +27,4 @@ const UserShortInfoBalanceList = () => {
     );
 };
 
-export default observer(UserShortInfoBalanceList);
+export default memo(observer(UserShortInfoBalanceList));

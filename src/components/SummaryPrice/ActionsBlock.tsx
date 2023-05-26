@@ -5,6 +5,7 @@ import OpenBottomModalScreenButton from "../OpenBottomModalScreenButton";
 import styles from "./styles";
 
 import InfoIcon from '../../assets/svgs/infoIcon.svg';
+import { memo } from "react";
 
 const ActionsBlock = () => {
 
@@ -44,4 +45,4 @@ const ActionsBlock = () => {
     </View>);
 };
 
-export default ActionsBlock;
+export default memo(ActionsBlock);

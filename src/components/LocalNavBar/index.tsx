@@ -1,6 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import styles from "./styles";
 import generalComponentStyles from "../../styles/generalComponentStyles";
+import { memo } from "react";
 
 interface componentProps {
     buttonTitles: string[],
@@ -26,4 +27,4 @@ const LocalNavBar = ({buttonTitles}: componentProps) => {
     );
 };
 
-export default LocalNavBar;
+export default memo(LocalNavBar);

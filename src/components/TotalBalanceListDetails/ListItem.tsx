@@ -9,6 +9,7 @@ import Arrow from '../../assets/svgs/arrow.svg';
 
 import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from "../../styles/generalComponentStyles";
+import { memo } from "react";
 
 type ComponentProps = {
     cryptoName: string, 
@@ -58,4 +59,4 @@ const ListItem = ({ cryptoName, bottomBorder = true }: ComponentProps) => {
     );
 };
 
-export default observer(ListItem);
+export default memo(observer(ListItem));

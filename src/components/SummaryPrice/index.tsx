@@ -10,7 +10,7 @@ import generalComponentStyles from '../../styles/generalComponentStyles';
 
 import ActionsBlock from "./ActionsBlock";
 import DetailsBlock from "./DetailsBlock";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
 type ComponentProps = {
     titleText?: 'Summary price' | 'Estimated cost' | 'Calculated total cost'
@@ -47,4 +47,4 @@ const SummaryPrice = ({ titleText='Summary price' }: ComponentProps) => {
     );
 };
 
-export default observer(SummaryPrice);
+export default memo(observer(SummaryPrice));

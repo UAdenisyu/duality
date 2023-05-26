@@ -8,7 +8,7 @@ import InfoIcon from '../../assets/svgs/infoIcon.svg';
 import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
 import MathSquareX from '../../assets/svgs/MathSquareX.svg';
 
-import { useState, ReactElement } from 'react';
+import { useState, ReactElement, memo } from 'react';
 
 import useThemeColors from "../../hooks/useThemeColors";
 import SliderMarker from './SliderMarker';
@@ -16,7 +16,7 @@ import SliderMarker from './SliderMarker';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 
-export default function IncomeFromInvestments() {
+const IncomeFromInvestments = () => {
 
     const { markedTextColor, titleTextColor, plainTextColor } = useThemeColors();
     const { wrapper, borderedSection, title } = generalComponentStyles();
@@ -91,3 +91,5 @@ export default function IncomeFromInvestments() {
         </View>
     );
 }
+
+export default memo(IncomeFromInvestments);

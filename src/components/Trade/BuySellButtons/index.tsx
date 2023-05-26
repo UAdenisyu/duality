@@ -4,6 +4,7 @@ import styles from "./styles";
 import { observer } from 'mobx-react-lite';
 
 import generalComponentStyles from "../../../styles/generalComponentStyles";
+import { memo } from "react";
 
 const BuySellButtons = () => {
 
@@ -31,4 +32,4 @@ const BuySellButtons = () => {
     );
 };
 
-export default observer(BuySellButtons);
+export default memo(observer(BuySellButtons));

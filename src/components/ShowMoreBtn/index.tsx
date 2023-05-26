@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
 import { useDualityStore } from '../../mobx/appStoreContext';
 import { StyleProp } from '../../types';
+import { memo } from 'react';
 
 
 interface componentProps {
@@ -27,4 +28,4 @@ const ShowMoreBtn = ({wrapperStyle, onPress} : componentProps) => {
     );
 }
 
-export default observer(ShowMoreBtn);
+export default memo(observer(ShowMoreBtn));

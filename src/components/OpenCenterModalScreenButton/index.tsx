@@ -1,19 +1,14 @@
 import React, { useState, ReactElement } from 'react';
 import { Modal, Text, Pressable, View, StyleProp, ViewStyle } from 'react-native';
-
 import useThemeColors from "../../hooks/useThemeColors";
-
 import Arrow from '../../assets/svgs/arrow.svg';
-
 import { observer } from 'mobx-react-lite';
-
 import styles from './styles';
 
 //targetContentComponent: React.ComponentType<TargetProps>
 
 const OpenCenterModalScreenButton = ({
     targetContentComponent,
-    targetStyles,
     textContent,
     showCancelButton=true,
     confirmButtonOnPress,

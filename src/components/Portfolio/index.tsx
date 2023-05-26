@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ViewComponent } from "react-native";
 import styles from "./styles";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import { observer } from 'mobx-react-lite';
 
@@ -36,4 +36,4 @@ const Portfolio = () => {
     );
 }
 
-export default observer(Portfolio);
+export default memo(observer(Portfolio));

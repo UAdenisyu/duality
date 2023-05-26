@@ -2,11 +2,9 @@ import { View, Text } from "react-native";
 import styles from "./styles";
 
 import { observer } from 'mobx-react-lite';
-// import { useDualityStore } from ;
-
 
 import generalComponentStyles from "../../styles/generalComponentStyles";
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { useDualityStore } from "../../mobx/appStoreContext";
 
 interface ComponentProps {
@@ -51,4 +49,4 @@ const BalanceCryptoDetails = ({ currencyName }: ComponentProps) => {
     );
 }
 
-export default observer(BalanceCryptoDetails);
+export default memo(observer(BalanceCryptoDetails));

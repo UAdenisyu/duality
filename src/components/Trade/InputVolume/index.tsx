@@ -7,7 +7,7 @@ import useThemeColors from "../../../hooks/useThemeColors";
 import generalComponentStyles from "../../../styles/generalComponentStyles";
 import { TextInput } from "react-native-gesture-handler";
 import Checkbox from "expo-checkbox";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 type ComponentProps = {
     titleText: 'Volume' | 'Price',
@@ -57,4 +57,4 @@ const InputVolume = ({ titleText, fullScreenWidth=true } : ComponentProps) => {
     );
 };
 
-export default observer(InputVolume);
+export default memo(observer(InputVolume));

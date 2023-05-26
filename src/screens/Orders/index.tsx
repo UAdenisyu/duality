@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import LocalNavBar from "../../components/LocalNavBar";
 import OrderItem from "../../components/OrderItem";
@@ -12,20 +12,22 @@ const Orders = observer(() => {
 
     const [ localScreen, setLocalScreen ] = useState(buttonTitles[0]);
 
+    const buttons = useMemo(() => buttonTitles.map(buttonTitle => (
+        <Pressable 
+            key={buttonTitle} 
+            style={[styles.btn, buttonTitle === localScreen ? styles.btnActive : null]}
+            onPress={() => buttonTitle === localScreen ? null : setLocalScreen(localScreen === buttonTitles[0] ? buttonTitles[1] : buttonTitles[0])}>
+            <Text style={[titleLight, styles.btnText]}>
+                {buttonTitle}
+            </Text>
+        </Pressable>
+    )), [localScreen]);
+
     return (
 
         <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             <View style={[wrapper, styles.body]}>
-                {buttonTitles.map(buttonTitle => (
-                    <Pressable 
-                        key={buttonTitle} 
-                        style={[styles.btn]}
-                        onPress={() => buttonTitle === localScreen ? null : setLocalScreen(localScreen === buttonTitles[0] ? buttonTitles[1] : buttonTitles[0])}>
-                        <Text style={[titleLight, styles.btnText, buttonTitle === localScreen ? styles.btnActive : null]}>
-                            {buttonTitle}
-                        </Text>
-                    </Pressable>
-                ))}
+            {buttons}
             </View>
             <View>
                 

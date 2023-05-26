@@ -9,6 +9,7 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
 import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
 import UsdtLogo from '../../assets/svgs/UsdtLogoSmall.svg';
+import { memo } from "react";
 
 
 type Data = {
@@ -50,4 +51,4 @@ const ShortInfoCryptoBalance = ({ cryptoName }: ComponentProps) => {
     );
 };
 
-export default observer(ShortInfoCryptoBalance);
+export default memo(observer(ShortInfoCryptoBalance));

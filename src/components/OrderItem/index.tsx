@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite';
 import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from '../../styles/generalComponentStyles';
 import InfoBlock from "./InfoBlock";
+import { memo } from "react";
 
 
 type ComponentProps = {
@@ -47,4 +48,4 @@ const OrderItem = ({contentType, cryptoNameTitle, dateTime, limitBuy, sum, price
     );
 };
 
-export default observer(OrderItem);
+export default memo(observer(OrderItem));

@@ -1,13 +1,14 @@
 import { Text } from "react-native";
 import styles from './styles';
 import useThemeColors from "../../hooks/useThemeColors";
+import { memo } from "react";
 
 type ComponentProps = {
     textContent: string, 
     index: number,
 }
 
-export default function TermClause({ textContent, index }: ComponentProps) {
+const TermClause = ({ textContent, index }: ComponentProps) => {
 
     const { plainTextColor } = useThemeColors();
 
@@ -17,3 +18,5 @@ export default function TermClause({ textContent, index }: ComponentProps) {
         <Text style={textStyle}>{index.toString()}. {textContent}</Text>
     );
 }
+
+export default memo(TermClause);
