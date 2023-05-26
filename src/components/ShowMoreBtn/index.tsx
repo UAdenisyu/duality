@@ -4,6 +4,9 @@ import Arrow from '../../assets/svgs/arrow.svg';
 
 import useThemeColors from '../../hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
+import { useDualityStore } from '../../mobx/appStoreContext';
+import { StyleProp } from '../../types';
+import { memo } from 'react';
 
 
 interface componentProps {
@@ -25,4 +28,4 @@ const ShowMoreBtn = ({wrapperStyle, onPress} : componentProps) => {
     );
 }
 
-export default observer(ShowMoreBtn);
+export default memo(observer(ShowMoreBtn));

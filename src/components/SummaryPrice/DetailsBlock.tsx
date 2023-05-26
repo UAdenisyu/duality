@@ -4,6 +4,7 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 import styles from "./styles";
 
 import Arrow from '../../assets/svgs/arrow.svg';
+import { memo } from "react";
 
 const DetailsBlock = () => {
 
@@ -32,4 +33,4 @@ const DetailsBlock = () => {
   );
 };
 
-export default DetailsBlock;
+export default memo(DetailsBlock);

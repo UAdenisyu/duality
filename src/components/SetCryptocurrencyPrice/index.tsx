@@ -2,8 +2,9 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 import styles from './styles';
 import useThemeColors from "../../hooks/useThemeColors";
 import generalComponentStyles from '../../styles/generalComponentStyles';
+import { memo } from 'react';
 
-export default function SetCryptocurrencyPrice() {
+const SetCryptocurrencyPrice = () => {
 
     const { wrapper, titleLight, title, borderedSection, markedText } = generalComponentStyles();
     const { inputColors, inputBorderColor } = useThemeColors();
@@ -53,3 +54,5 @@ export default function SetCryptocurrencyPrice() {
         </View>
     );
 }
+
+export default memo(SetCryptocurrencyPrice);

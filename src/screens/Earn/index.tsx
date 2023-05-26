@@ -2,11 +2,9 @@ import { ScrollView } from "react-native";
 import TotalBalance from "../../components/TotalBalance";
 import InputCryptoInfo from "../../components/InputCryptoInfo";
 import { useDualityStore } from "../../mobx/appStoreContext";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
-
-
-export default function EarnMain() {
+const EarnMain = () => {
 
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
@@ -23,3 +21,5 @@ export default function EarnMain() {
         </ScrollView>
     );
 }
+
+export default EarnMain;

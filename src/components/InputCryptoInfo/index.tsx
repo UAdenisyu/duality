@@ -1,18 +1,17 @@
-import { View, Text, StyleSheet, Pressable, Button } from "react-native";
-import ShowMoreBtn from '../ShowMoreBtn';
-import styles from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
+import { Text, View } from "react-native";
 import EthLogo from '../../assets/svgs/EthLogo.svg';
 import UsdtLogo from '../../assets/svgs/UsdtLogo.svg';
+import Arrow from '../../assets/svgs/arrow.svg';
+import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
+import ShowMoreBtn from '../ShowMoreBtn';
+import styles from './styles';
  
-import useThemeColors from "../../hooks/useThemeColors";
-import generalComponentStyles from "../../styles/generalComponentStyles";
-import { SvgProps } from "react-native-svg";
-import OpenBottomModalScreenButton from "../OpenBottomModalScreenButton";
 import { useNavigation } from "@react-navigation/native";
-import { useRoute } from '@react-navigation/native';
+import useThemeColors from "../../hooks/useThemeColors";
 import { useDualityStore } from "../../mobx/appStoreContext";
+import generalComponentStyles from "../../styles/generalComponentStyles";
+import { RootStackScreenProps } from "../../types";
+import { memo } from "react";
 
 
 interface componentProps {
@@ -32,10 +31,10 @@ const cryptoNamesvgArray: SvgArray = {
     '': <LogoNotFound/>
 }
 
-export default function InputCryptoInfo({ cryptoName = '',
+const InputCryptoInfo = ({ cryptoName = '',
                                           yearIncomeMin = 0, 
                                           yearIncomeMax = 0, 
-                                          showMoreBtn = false} : componentProps) {
+                                          showMoreBtn = false} : componentProps) => {
 
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();
@@ -62,3 +61,4 @@ export default function InputCryptoInfo({ cryptoName = '',
     );
 }
 
+export default memo(InputCryptoInfo);

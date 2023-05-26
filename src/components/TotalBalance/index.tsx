@@ -12,14 +12,13 @@ import Animated, {
     useAnimatedStyle,
     useSharedValue,
     withRepeat,
-    withDelay,
     withTiming,
     withSequence,
     useDerivedValue,
     runOnJS,
     Value
   } from 'react-native-reanimated';
-
+import { memo } from "react";
 
 const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
     const dualityStore = useDualityStore();
@@ -47,13 +46,12 @@ const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
 
     const recordResult = (opacityV: number) => {
         if (opacityV === 0) {
-            console.log('Animaton finished-', visibleCrypto);
             visibleCrypto.setValue(visibleCrypto + '-')
         }
       };
     useDerivedValue(() => {
         runOnJS(recordResult)(opacity.value);
-    })
+    });
 
     const animatedBlinkingStyle = useAnimatedStyle(() => ({ opacity: opacity.value }), []);
     return (
@@ -74,4 +72,4 @@ const TotalBalance = ({selectedCrypto} : {selectedCrypto?: string}) => {
     );
 };
 
-export default observer(TotalBalance);
+export default memo(observer(TotalBalance));

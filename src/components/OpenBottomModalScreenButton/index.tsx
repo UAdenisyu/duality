@@ -1,12 +1,8 @@
 import React, { useState, ReactElement } from 'react';
 import { Modal, Text, Pressable, View, ScrollView, StyleSheet } from 'react-native';
-
 import useThemeColors from "../../hooks/useThemeColors";
-
-
 import { Ionicons } from '@expo/vector-icons';
 import Arrow from '../../assets/svgs/arrow.svg';
-
 import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
 import UsdtLogo from '../../assets/svgs/UsdtLogoSmall.svg';
 

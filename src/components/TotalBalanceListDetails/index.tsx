@@ -6,6 +6,7 @@ import { useDualityStore } from '../../mobx/appStoreContext';
 
 import ListItem from './ListItem';
 import generalComponentStyles from "../../styles/generalComponentStyles";
+import { memo } from "react";
 
 const TotalBalanceListDetails = () => {
     const { cryptoCurrencyFullInfo } = useDualityStore();
@@ -23,4 +24,4 @@ const TotalBalanceListDetails = () => {
     );
 };
 
-export default observer(TotalBalanceListDetails);
+export default memo(observer(TotalBalanceListDetails));

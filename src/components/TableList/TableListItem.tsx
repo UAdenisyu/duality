@@ -5,6 +5,7 @@ import generalComponentStyles from "../../styles/generalComponentStyles";
 import useThemeColors from "../../hooks/useThemeColors";
 import NumberFormat from "react-number-format";
 import { useNavigation } from "@react-navigation/native";
+import { memo } from "react";
 
 type dataProp = { 
     incomePerYear: number;
@@ -17,7 +18,7 @@ type ComponentProps = {
     data : dataProp,
 }
 
-export default function TableListItem({ backgroundColor, data } : ComponentProps) {
+const TableListItem = ({ backgroundColor, data } : ComponentProps) => {
 
     const { markedText } = generalComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();
@@ -45,3 +46,5 @@ export default function TableListItem({ backgroundColor, data } : ComponentProps
         </Pressable>
     );
 }
+
+export default memo(TableListItem);
