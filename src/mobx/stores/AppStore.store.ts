@@ -37,7 +37,7 @@ export function createDualityStore() {
         setTotalBalance(value: number) {
             this.totalBalance = value;
         },
-        isLoggedIn: true,
+        isLoggedIn: false,
         setIsLoggedIn(newLoggedInValue) {
             this.isLoggedIn = newLoggedInValue;
         },

@@ -21,9 +21,13 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
     Screen
 >;
 
+interface CryptoName {
+    cryptoName: string,
+};
+
 export type EarnTabParamList = {
     EarnMain: undefined;
-    EarnInput: undefined;
+    EarnInput: CryptoName;
     EarnInputDetails: undefined;
 }
 
@@ -34,9 +38,6 @@ export type RootTabParamList = {
     Wallets: undefined;
     Profile: undefined;
 };
-
-export type EarnStackParamList<Screen extends keyof EarnTabParamList> = NativeStackScreenProps<RootStackParamList>;
-
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
     BottomTabScreenProps<RootTabParamList, Screen>,

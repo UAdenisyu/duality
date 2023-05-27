@@ -4,13 +4,13 @@ import TotalBalance from "../../../components/TotalBalance";
 import InputCryptoInfo from "../../../components/InputCryptoInfo";
 import TableList from "../../../components/TableList";
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 export default function EarnInput({route} : any) {
 
     const navigation = useNavigation();
     
-    useEffect(() => {
+    useLayoutEffect(() => {
         navigation.setOptions({ headerTitle: 'Input ' + route.params.cryptoName});
     }, []);
 

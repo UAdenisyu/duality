@@ -1,17 +1,15 @@
 import { observer } from 'mobx-react-lite';
 import { StyleSheet, TouchableOpacity, Text, View  } from 'react-native';
-import { useDualityStore } from '../mobx/appStoreContext';
+import { useNavigation } from '@react-navigation/native';
 
-import { RootStackScreenProps } from '../types';
-
-//TODO: make this screen more custom. Create login screen
+//TODO: make this screen more custom.
 
 function NotFoundScreen() {
-  const { setIsLoggedIn } = useDualityStore();
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
-      <TouchableOpacity onPress={() => setIsLoggedIn(true)} style={styles.link}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.link}>
         <Text style={styles.linkText}>Go to home screen!</Text>
       </TouchableOpacity>
     </View>

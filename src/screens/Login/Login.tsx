@@ -31,16 +31,18 @@ const Login = () => {
   const loginPressed = async () => {
     toggleLoading(true);
     await sleep(100); // wait untill animation starts
-    const isUserExists = await checkIfUserRegistered()
+    const isUserExists = await checkIfUserRegistered();
     if (isUserExists) {
-      navigation.navigate('Root', {screen: 'Earn'});
-      await sleep(100); // wait untill animation finishes
       setIsLoggedIn(true);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Root' }],
+      });
+      await sleep(100); // wait untill animation finishes
     } else {
       console.log(inputUserName);
       console.log(inputPassword);
       Alert.alert('Wrong username or password');
-      setIsLoggedIn(false);
     }
     toggleLoading(false);
   }

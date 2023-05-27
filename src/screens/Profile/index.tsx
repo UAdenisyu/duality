@@ -74,7 +74,10 @@ function Earn() {
                         titleText={'Logout'} 
                         onPressAction={() =>{ 
                             setIsLoggedIn(false);
-                            navigation.navigate("GetStarted");
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'GetStarted' }],
+                              });
                         }}/>
                 </View>
             </View>

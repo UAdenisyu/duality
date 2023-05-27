@@ -6,6 +6,8 @@ import useThemeColors from "../../hooks/useThemeColors";
 import NumberFormat from "react-number-format";
 import { useNavigation } from "@react-navigation/native";
 import { memo } from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { EarnTabParamList } from "../../types";
 
 type dataProp = { 
     incomePerYear: number;
@@ -18,12 +20,14 @@ type ComponentProps = {
     data : dataProp,
 }
 
+type RootStackNavigationProp = StackNavigationProp<EarnTabParamList>;
+
 const TableListItem = ({ backgroundColor, data } : ComponentProps) => {
 
     const { markedText } = generalComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<RootStackNavigationProp>();
 
     const formattedDate = data.completionTime.getFullYear() + '-' + data.completionTime.getMonth()+1 + '-' + data.completionTime.getDate();
     const formattedIncome = <NumberFormat

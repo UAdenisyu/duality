@@ -1,5 +1,5 @@
 export const LIGHT_COLORS = {
-    plainText: 'yellow',
+    plainText: '#fff',
     extraLight: '#fff',
     extraDark: '#202226',
     componentBackground: 'rgba(255, 255, 255, 0.07)',

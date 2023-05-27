@@ -10,8 +10,9 @@ import { useNavigation } from "@react-navigation/native";
 import useThemeColors from "../../hooks/useThemeColors";
 import { useDualityStore } from "../../mobx/appStoreContext";
 import generalComponentStyles from "../../styles/generalComponentStyles";
-import { RootStackScreenProps } from "../../types";
+import { EarnTabParamList } from "../../types";
 import { memo } from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 
 interface componentProps {
@@ -31,6 +32,8 @@ const cryptoNamesvgArray: SvgArray = {
     '': <LogoNotFound/>
 }
 
+type RootStackNavigationProp = StackNavigationProp<EarnTabParamList>;
+
 const InputCryptoInfo = ({ cryptoName = '',
                                           yearIncomeMin = 0, 
                                           yearIncomeMax = 0, 
@@ -38,9 +41,9 @@ const InputCryptoInfo = ({ cryptoName = '',
 
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } = generalComponentStyles();
-    const navigation = useNavigation();
+    const navigation = useNavigation<RootStackNavigationProp>();
     const {isLoggedIn} = useDualityStore();
-    console.log(isLoggedIn);
+    console.log('isLoggedIn', isLoggedIn);
     const showMorePressed : () => void = () => {
         navigation.navigate('EarnInput', {cryptoName});
     }
