@@ -1,12 +1,15 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import {
+    CompositeScreenProps,
+    NavigatorScreenParams,
+} from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
     namespace ReactNavigation {
-      interface RootParamList extends RootStackParamList {}
+        interface RootParamList extends RootStackParamList {}
     }
-};
+}
 
 export type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -16,20 +19,18 @@ export type RootStackParamList = {
     Login: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-    RootStackParamList,
-    Screen
->;
+export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
+    NativeStackScreenProps<RootStackParamList, Screen>;
 
 interface CryptoName {
-    cryptoName: string,
-};
+    cryptoName: string;
+}
 
 export type EarnTabParamList = {
     EarnMain: undefined;
     EarnInput: CryptoName;
     EarnInputDetails: undefined;
-}
+};
 
 export type RootTabParamList = {
     Earn: NavigatorScreenParams<EarnTabParamList> | undefined;
@@ -39,25 +40,26 @@ export type RootTabParamList = {
     Profile: undefined;
 };
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-    BottomTabScreenProps<RootTabParamList, Screen>,
-    NativeStackScreenProps<RootStackParamList>
->;
+export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
+    CompositeScreenProps<
+        BottomTabScreenProps<RootTabParamList, Screen>,
+        NativeStackScreenProps<RootStackParamList>
+    >;
 
 export type CryptoCurrencyFullInfo = {
-    [key: string]: { 
-                    depositCurrency? : number 
-                    incomePerYear: number;
-                    targetPrice: number; 
-                    completionTime: Date;
-                    subscriptionDate: Date;
-                    status?: 'Hold' | 'Sold';
-                    logoSvgBig: any;
-                    logoSvgSmall: any;
-                } []
-}
+    [key: string]: {
+        depositCurrency?: number;
+        incomePerYear: number;
+        targetPrice: number;
+        completionTime: Date;
+        subscriptionDate: Date;
+        status?: 'Hold' | 'Sold';
+        logoSvgBig: any;
+        logoSvgSmall: any;
+    }[];
+};
 
 export type optionDarkMode = 'dark' | 'light' | undefined | null;
 
-export type StyleValue = {[key: string]: Object} | number | false | null;
-export type StyleProp = StyleValue | Array<StyleValue>;
+export type StyleValue = { [key: string]: object } | number | false | null;
+export type StyleProp = StyleValue | StyleValue[];

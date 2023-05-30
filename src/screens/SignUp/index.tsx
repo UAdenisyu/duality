@@ -1,2 +1,2 @@
-import GetStarted from "./GetStarted";
+import GetStarted from './GetStarted';
 export default GetStarted;

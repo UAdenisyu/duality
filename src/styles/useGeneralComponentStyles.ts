@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
+
 import useThemeColors from '../hooks/useThemeColors';
 
-export default function generalComponentStyles() {
+export default function useGeneralComponentStyles() {
+    const {
+        componentBackgroundColor,
+        titleTextColor,
+        plainTextColor,
+        dividingLineColor,
+        markedTextColor,
+        inputBorderColor,
+    } = useThemeColors();
 
-    const { componentBackgroundColor,
-            titleTextColor,
-            plainTextColor,
-            dividingLineColor,
-            markedTextColor,
-            inputBorderColor } = useThemeColors();
-    
     return StyleSheet.create({
         _testStyle: {
             height: 100,
@@ -39,7 +41,7 @@ export default function generalComponentStyles() {
             lineHeight: 18,
             ...titleTextColor,
         },
-        titleLight:{
+        titleLight: {
             fontFamily: 'poppins-regular',
             fontSize: 14,
             fontWeight: '400',
@@ -62,7 +64,7 @@ export default function generalComponentStyles() {
             justifyContent: 'center',
             marginLeft: 8,
         },
-        cryptoName:{
+        cryptoName: {
             marginLeft: 7,
             textAlignVertical: 'center',
             fontFamily: 'poppins-regular',
@@ -75,7 +77,7 @@ export default function generalComponentStyles() {
             borderBottomWidth: 1,
             ...dividingLineColor,
         },
-        markedText:{
+        markedText: {
             includeFontPadding: false,
             fontFamily: 'poppins-semibold',
             fontSize: 14,
@@ -83,13 +85,13 @@ export default function generalComponentStyles() {
             height: 13,
             ...markedTextColor,
         },
-        input:{
+        input: {
             borderWidth: 1,
             borderRadius: 16,
             paddingVertical: 10,
             paddingHorizontal: 32,
             marginVertical: 8,
             ...inputBorderColor,
-        }
+        },
     });
-} 
+}

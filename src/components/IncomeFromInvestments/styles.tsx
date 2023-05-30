@@ -17,7 +17,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    markerTitleTop:{
+    markerTitleTop: {
         position: 'absolute',
         bottom: 115,
     },
@@ -39,7 +39,7 @@ export default StyleSheet.create({
         borderTopColor: 'transparent',
         borderRightColor: 'transparent',
         borderLeftColor: 'transparent',
-        transform: [{ rotate: '180deg'}],
+        transform: [{ rotate: '180deg' }],
         marginTop: 4,
         marginBottom: 8,
     },

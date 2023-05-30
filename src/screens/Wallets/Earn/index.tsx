@@ -1,12 +1,15 @@
-import { View } from "react-native";
-import Portfolio from "../../../components/Portfolio";
-import SummaryPrice from "../../../components/SummaryPrice";
+import { View } from 'react-native';
 
-export default function WalletsEarn() {
+import Portfolio from '../../../components/Portfolio';
+import SummaryPrice from '../../../components/SummaryPrice';
+
+const WalletsEarn = () => {
     return (
         <View>
-            {/* <SummaryPrice titleText="Estimated cost"/>
-            <Portfolio/> */}
+            <SummaryPrice titleText="Estimated cost" />
+            <Portfolio />
         </View>
     );
-}
+};
+
+export default WalletsEarn;

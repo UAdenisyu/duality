@@ -1,10 +1,11 @@
-import { View } from "react-native";
-import BalanceCryptoDetails from "../../../components/BalanceCryptoDetails";
+import { View } from 'react-native';
+
+import BalanceCryptoDetails from '../../../components/BalanceCryptoDetails';
 
 export default function Wallets() {
     return (
         <View>
-            <BalanceCryptoDetails currencyName="Eth"/>
+            <BalanceCryptoDetails currencyName="Eth" />
         </View>
     );
 }

@@ -7,9 +7,9 @@ export default StyleSheet.create({
     },
     avaibleTitle: {
         fontFamily: 'poppins-regular',
-        marginTop: 8
+        marginTop: 8,
     },
-    warningText:{
+    warningText: {
         fontSize: 12,
     },
     highlightedText: {
@@ -22,7 +22,7 @@ export default StyleSheet.create({
         paddingHorizontal: 32,
         marginVertical: 8,
     },
-    availableValue:{
+    availableValue: {
         fontFamily: 'poppins-semibold',
         fontSize: 16,
     },
@@ -35,6 +35,6 @@ export default StyleSheet.create({
         backgroundColor: '#4A4B4E',
     },
     priceLimit: {
-        marginTop: 16 
+        marginTop: 16,
     },
 });

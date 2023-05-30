@@ -1,28 +1,38 @@
-import { View, Text, Pressable } from "react-native";
-import styles from './styles';
+import { useMemo } from 'react';
+import { View, Text } from 'react-native';
+
 import TableListItem from './TableListItem';
+import styles from './styles';
+import useThemeColors from '../../hooks/useThemeColors';
 import { useDualityStore } from '../../mobx/appStoreContext';
-import generalComponentStyles from "../../styles/generalComponentStyles";
-import useThemeColors from "../../hooks/useThemeColors";
-import { useMemo } from "react";
+import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
-    target: string,
-}
+    target: string;
+};
 
 export default function TableList({ target }: ComponentProps) {
-
     const { tableColumnTitleColor, darkTextColor } = useThemeColors();
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
-    const items = useMemo(() => cryptoCurrencyFullInfo[target].map((item, i) => (
-        <TableListItem key={Math.random()} backgroundColor={i % 2 ? darkTextColor.color : '#34363A'} data={item}/>
-    )), [target]);
+    const items = useMemo(
+        () =>
+            cryptoCurrencyFullInfo[target].map((item, i) => (
+                <TableListItem
+                    key={Math.random()}
+                    backgroundColor={i % 2 ? darkTextColor.color : '#34363A'}
+                    data={item}
+                />
+            )),
+        [target]
+    );
 
-    const { wrapper } = generalComponentStyles();
+    const { wrapper } = useGeneralComponentStyles();
 
     const columnTitle = (textContent: string) => (
-        <Text style={[styles.headerText, tableColumnTitleColor]}>{textContent}</Text>
+        <Text style={[styles.headerText, tableColumnTitleColor]}>
+            {textContent}
+        </Text>
     );
 
     return (

@@ -19,5 +19,5 @@ export default StyleSheet.create({
         fontFamily: 'poppins-regular',
         fontSize: 14,
         lineHeight: 20,
-    }
+    },
 });

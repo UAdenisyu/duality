@@ -4,7 +4,7 @@ export const LIGHT_COLORS = {
     extraDark: '#202226',
     componentBackground: 'rgba(255, 255, 255, 0.07)',
     modalBackground: '#fff',
-    selectedItemColor: "#E2FF9D",
+    selectedItemColor: '#E2FF9D',
     modalWindowElementsColor: '#282A2F',
     componentDividingLine: '#4A4B4E',
     grey: '#767676',
@@ -19,7 +19,7 @@ export const LIGHT_COLORS = {
     buttonBackground: {
         success: '#67A563',
         danger: '#D96354',
-    }
+    },
 };
 
 export const DARK_COLORS = {
@@ -43,5 +43,5 @@ export const DARK_COLORS = {
     buttonBackground: {
         success: '#67A563',
         danger: '#D96354',
-    }
+    },
 };

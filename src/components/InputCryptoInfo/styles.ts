@@ -1,6 +1,4 @@
 import { StyleSheet } from 'react-native';
-import useThemeColors from "../../hooks/useThemeColors";
-
 
 export default StyleSheet.create({
     section: {
@@ -8,11 +6,11 @@ export default StyleSheet.create({
         paddingTop: 16,
         alignItems: 'center',
     },
-    titleSection:{
+    titleSection: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    title:{
+    title: {
         marginLeft: 16,
         fontFamily: 'trap-semibold',
     },
@@ -22,6 +20,6 @@ export default StyleSheet.create({
     arrow: {
         marginLeft: 12,
         marginTop: 6,
-        transform: [{ rotate: "-45deg" }],
-    }
+        transform: [{ rotate: '-45deg' }],
+    },
 });

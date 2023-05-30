@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     body: {
@@ -6,7 +6,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         padding: 6,
     },
-    btn:{
+    btn: {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 16,
@@ -21,5 +21,5 @@ export default StyleSheet.create({
         borderRadius: 45,
         paddingHorizontal: 20,
         paddingVertical: 3,
-    }
+    },
 });

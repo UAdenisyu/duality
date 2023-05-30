@@ -1,5 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
-
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -18,7 +17,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
 
-    titleSection:{
+    titleSection: {
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -34,8 +33,8 @@ export default StyleSheet.create({
         lineHeight: 18,
     },
 
-    timeDeposits:{
-        justifyContent: 'flex-start', 
+    timeDeposits: {
+        justifyContent: 'flex-start',
         flex: 6,
     },
 
@@ -50,5 +49,5 @@ export default StyleSheet.create({
     },
     contentValues: {
         flex: 1,
-    }
+    },
 });

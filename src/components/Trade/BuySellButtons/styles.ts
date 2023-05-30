@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     section: {
@@ -13,13 +13,13 @@ export default StyleSheet.create({
         borderRadius: 71,
         paddingVertical: 6,
     },
-    btnBuy:{
+    btnBuy: {
         backgroundColor: '#67A563',
     },
-    btnSell:{
+    btnSell: {
         backgroundColor: '#D96354',
     },
-    btnTitle:{
+    btnTitle: {
         fontFamily: 'poppins-medium',
         marginBottom: -6,
     },
@@ -27,5 +27,5 @@ export default StyleSheet.create({
         fontFamily: 'poppins-extrabold',
         fontSize: 18,
         lineHeight: 27,
-    }
+    },
 });

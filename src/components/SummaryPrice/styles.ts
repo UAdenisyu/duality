@@ -1,5 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
-
+import { StyleSheet, Dimensions } from 'react-native';
 
 const PhysicalScreenWidth = Dimensions.get('window').width;
 
@@ -10,12 +9,12 @@ export default StyleSheet.create({
     detailsWrapper: {
         marginTop: 16,
     },
-    detailsTitle:{
+    detailsTitle: {
         fontSize: 12,
     },
-    detailsTitle2:{
-        fontSize: 12, 
-        marginLeft: 5, 
+    detailsTitle2: {
+        fontSize: 12,
+        marginLeft: 5,
         textDecorationLine: 'underline',
     },
     button: {
@@ -23,7 +22,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 10,
         borderRadius: 8,
-        width: PhysicalScreenWidth / 2 - 24 - 16 - 3
+        width: PhysicalScreenWidth / 2 - 24 - 16 - 3,
     },
     buttonText: {
         fontFamily: 'trap-semibold',
@@ -33,7 +32,7 @@ export default StyleSheet.create({
         paddingHorizontal: 10,
     },
 
-    subscribeToEarnBtn:{
+    subscribeToEarnBtn: {
         borderRadius: 16,
         marginHorizontal: 0,
     },
@@ -42,22 +41,22 @@ export default StyleSheet.create({
     },
 
     transactionsHistory: {
-        padding: 16, 
+        padding: 16,
         borderRadius: 16,
         borderWidth: 1.5,
         marginTop: 8,
     },
 
     depositAndWithdraw: {
-        marginTop: 14, 
-        justifyContent: 'space-between'
+        marginTop: 14,
+        justifyContent: 'space-between',
     },
 
     linesPadding: {
         marginTop: 4,
     },
 
-    withdrawBtn:{
+    withdrawBtn: {
         backgroundColor: 'rgba(100, 100, 104, 0.34)',
     },
 });

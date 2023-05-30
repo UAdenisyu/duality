@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     wrapper: {
@@ -18,8 +18,8 @@ export default StyleSheet.create({
         left: 0,
         right: 0,
         flex: 1,
-        position: 'absolute', 
-        justifyContent: 'center', 
+        position: 'absolute',
+        justifyContent: 'center',
         alignContent: 'center',
     },
     generalText: {
@@ -40,7 +40,7 @@ export default StyleSheet.create({
         height: 10,
         width: 10,
         borderRadius: 2,
-        transform:  [{ rotate: '45deg'}],
+        transform: [{ rotate: '45deg' }],
     },
     leftIconWrapper: {
         backgroundColor: '#35363A',
@@ -49,5 +49,5 @@ export default StyleSheet.create({
         height: 38,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
 });

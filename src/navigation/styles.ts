@@ -1,10 +1,9 @@
-import { StyleSheet, StatusBar, ImageBackground, View } from 'react-native';
-import { Platform } from "react-native";
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
     navigationWrapper: {
-        overflow: "hidden",
-        display: "flex",  
+        overflow: 'hidden',
+        display: 'flex',
         borderRadius: 29,
         height: 73,
         backgroundColor: 'rgba(32,34,38,0.96)',
@@ -13,7 +12,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         position: 'absolute',
         marginHorizontal: 14,
-        borderTopWidth:0,
+        borderTopWidth: 0,
     },
     activeTint: {
         height: 3,
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
             height: 5,
         },
         shadowOpacity: 0.58,
-        shadowRadius: 5.00,
+        shadowRadius: 5.0,
     },
     iconShadow: {
         ...Platform.select({
@@ -45,8 +44,7 @@ const styles = StyleSheet.create({
                 marginTop: -15,
                 alignSelf: 'center',
             },
-            ios: {
-            },
+            ios: {},
         }),
     },
     flex: {
@@ -59,7 +57,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    headerBackArrow:{
+    headerBackArrow: {
         borderColor: 'white',
         marginLeft: 20,
         borderLeftWidth: 3,
@@ -67,9 +65,8 @@ const styles = StyleSheet.create({
         height: 10,
         width: 10,
         borderRadius: 2,
-        transform:  [{ rotate: '45deg'}],
-    }
-
+        transform: [{ rotate: '45deg' }],
+    },
 });
 
 export default styles;
@@ -77,7 +74,7 @@ export default styles;
 export const mainNativeNavigatorOptions = {
     tabBarHideOnKeyboard: true,
     tabBarStyle: styles.navigationWrapper,
-    tabBarLabelStyle: { fontSize: 12, },
+    tabBarLabelStyle: { fontSize: 12 },
     headerStyle: {
         height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
         backgroundColor: 'transparent',
@@ -89,12 +86,12 @@ export const mainNativeNavigatorOptions = {
         fontFamily: 'trap-semibold',
         fontSize: 40,
         marginLeft: 8,
-    }
-} 
+    },
+};
 
 export const mainNavigatorOptions = {
     headerShown: true,
-    headerStyle: { 
+    headerStyle: {
         backgroundColor: 'transparent',
         height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
     },
@@ -104,13 +101,12 @@ export const mainNavigatorOptions = {
         fontFamily: 'trap-semibold',
         fontSize: 40,
         marginLeft: 12,
-    }
-}
-
+    },
+};
 
 export const childNavigatorOptions = {
     headerShown: true,
-    headerStyle: { 
+    headerStyle: {
         backgroundColor: 'transparent',
         height: StatusBar.currentHeight ? 100 + StatusBar.currentHeight : 100,
     },
@@ -120,4 +116,4 @@ export const childNavigatorOptions = {
         fontFamily: 'trap-semibold',
         fontSize: 24,
     },
-} 
+};

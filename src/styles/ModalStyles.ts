@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
+
 import useThemeColors from '../hooks/useThemeColors';
 
 export default function ModalStyles() {
     const colors = useThemeColors();
     return StyleSheet.create({
-
         center: {
             padding: 24,
             marginHorizontal: 24,
@@ -21,6 +21,6 @@ export default function ModalStyles() {
         bottomModalItems: {
             padding: 16,
             backgroundColor: colors.componentBackground,
-        }
+        },
     });
-} 
+}

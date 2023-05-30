@@ -1,34 +1,27 @@
-import React from 'react';
-import { useObserver } from 'mobx-react-lite';
-
-import { CryptoCurrencyFullInfo } from '../../types';
-
 import EthLogoBig from '../../assets/svgs/EthLogo.svg';
 import EthLogoSmall from '../../assets/svgs/EthLogoSmall.svg';
 import UsdtLogoBig from '../../assets/svgs/UsdtLogo.svg';
 import UsdtLogoSmall from '../../assets/svgs/UsdtLogoSmall.svg';
-
-
-
+import { CryptoCurrencyFullInfo } from '../../types';
 
 interface DualityStore {
-    appTheme: 'dark' | 'light',
-    setAppTheme: (value: 'dark' | 'light') => void,
-    totalBalance: number,
-    setTotalBalance: (value: number) => void,
-    cryptoCurrencyFullInfo : CryptoCurrencyFullInfo,
-    isLoggedIn: boolean,
-    setIsLoggedIn: (newLoggedInValue: boolean) => void,
-    isLoading: boolean,
-    toggleLoading: (newLoggedInValue: boolean) => void,
+    appTheme: 'dark' | 'light';
+    setAppTheme: (value: 'dark' | 'light') => void;
+    totalBalance: number;
+    setTotalBalance: (value: number) => void;
+    cryptoCurrencyFullInfo: CryptoCurrencyFullInfo;
+    isLoggedIn: boolean;
+    setIsLoggedIn: (newLoggedInValue: boolean) => void;
+    isLoading: boolean;
+    toggleLoading: (newLoggedInValue: boolean) => void;
     registeredUsers: {
-        userName: string,
-        password: string,
+        userName: string;
+        password: string;
     }[];
 }
 
 export function createDualityStore() {
-    const data : DualityStore = {
+    const data: DualityStore = {
         appTheme: 'light',
         setAppTheme(value) {
             this.appTheme = value;
@@ -48,15 +41,15 @@ export function createDualityStore() {
         registeredUsers: [
             {
                 userName: 'Demo Trader 1',
-                password: 'trademe1'
+                password: 'trademe1',
             },
             {
                 userName: 'Demo Trader 2',
-                password: 'trademe2'
+                password: 'trademe2',
             },
         ],
         cryptoCurrencyFullInfo: {
-            'Eth': [
+            Eth: [
                 {
                     depositCurrency: 0.004,
                     incomePerYear: 2.38,
@@ -96,7 +89,7 @@ export function createDualityStore() {
                     logoSvgSmall: EthLogoSmall,
                 },
             ],
-            'Usdt': [
+            Usdt: [
                 {
                     depositCurrency: 0.004,
                     incomePerYear: 2.38,
@@ -134,7 +127,7 @@ export function createDualityStore() {
                     logoSvgSmall: UsdtLogoSmall,
                 },
             ],
-        }
+        },
     };
     return data;
 }

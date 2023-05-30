@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    body:{
+    body: {
         flex: 1,
         marginHorizontal: 4,
     },
@@ -15,9 +15,9 @@ export default StyleSheet.create({
     inputText: {
         fontFamily: 'poppins-semibold',
         fontSize: 16,
-        marginBottom: -5
+        marginBottom: -5,
     },
-    checkboxWrapper:{
+    checkboxWrapper: {
         marginTop: 16,
     },
     checkbox: {

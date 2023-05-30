@@ -1,9 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
-
-    },
+    container: {},
     section: {
         flexDirection: 'row',
     },
@@ -30,7 +28,7 @@ export default StyleSheet.create({
     iconTitle: {
         marginLeft: 8,
     },
-    balanceCryptoValue:{
+    balanceCryptoValue: {
         fontFamily: 'poppins-semibold',
         fontSize: 16,
         marginBottom: -5,

@@ -22,7 +22,7 @@ export default StyleSheet.create({
         fontWeight: '400',
         fontSize: 12,
         lineHeight: 18,
-    }
+    },
 });
 
 export const listItem = StyleSheet.create({
@@ -45,5 +45,5 @@ export const listItem = StyleSheet.create({
     arrow: {
         alignSelf: 'center',
         marginLeft: 12,
-    }
+    },
 });

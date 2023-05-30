@@ -11,7 +11,7 @@ export default StyleSheet.create({
         backgroundColor: 'rgba(18, 18, 18, 0.82)',
     },
     modalView: {
-        height: PhysicalScreenHeight/2 - 30,
+        height: PhysicalScreenHeight / 2 - 30,
         padding: 24,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
@@ -31,13 +31,12 @@ export default StyleSheet.create({
     buttonText: {
         fontFamily: 'poppins-medium',
         fontSize: 14,
-        fontWeight: "500",
+        fontWeight: '500',
         lineHeight: 21,
         marginLeft: 7,
         flex: 1,
     },
-    cryptoLogo:{
-    },
+    cryptoLogo: {},
     titleBlock: {
         marginBottom: 24,
     },
@@ -51,7 +50,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginLeft: 7,
     },
-
 
     closeIcon: {
         width: '100%',

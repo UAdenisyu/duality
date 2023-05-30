@@ -1,7 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
-
-
-const PhysicalScreenWidth = Dimensions.get('window').width;
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     section: {
@@ -18,7 +15,7 @@ export default StyleSheet.create({
     infoBlock: {
         marginTop: 8,
     },
-    btn:{
+    btn: {
         marginTop: 19,
         justifyContent: 'center',
         alignItems: 'center',
@@ -28,5 +25,5 @@ export default StyleSheet.create({
         paddingVertical: 15,
         fontFamily: 'trap-semibold',
         fontSize: 16,
-    }
+    },
 });

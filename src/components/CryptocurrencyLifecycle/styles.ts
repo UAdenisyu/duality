@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     section: {
@@ -27,7 +27,7 @@ export default StyleSheet.create({
         marginRight: 10,
     },
     titles: {
-        flex:1,
+        flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
@@ -37,7 +37,7 @@ export default StyleSheet.create({
         paddingTop: 5,
         justifyContent: 'center',
         alignItems: 'flex-end',
-    }, 
+    },
     bottomSection: {
         marginTop: 8,
     },
@@ -47,5 +47,5 @@ export default StyleSheet.create({
     },
     titlesBottom: {
         marginTop: 8,
-    }
+    },
 });

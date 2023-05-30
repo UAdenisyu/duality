@@ -20,13 +20,13 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     showCancelButton: {
-        backgroundColor: 'transparent', 
+        backgroundColor: 'transparent',
         marginTop: 10,
     },
     buttonText: {
         fontFamily: 'trap-semibold',
         fontSize: 16,
-        fontWeight: "600",
+        fontWeight: '600',
         lineHeight: 16,
     },
     modalTextWrapper: {
@@ -40,5 +40,5 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 21,
-    }
+    },
 });

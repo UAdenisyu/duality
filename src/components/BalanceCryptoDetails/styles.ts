@@ -1,16 +1,12 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
-
-    },
+    container: {},
     section: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    titleLogo: {
-
-    },
+    titleLogo: {},
     title: {
         paddingTop: 5,
         fontFamily: 'trap-semibold',
@@ -24,13 +20,13 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
     },
     detailName: {
-        fontSize: 12, 
+        fontSize: 12,
         lineHeight: 16,
         flex: 0.4,
     },
     value: {
         textAlign: 'right',
-        lineHeight: 16, 
+        lineHeight: 16,
         flex: 0.6,
     },
 });

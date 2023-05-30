@@ -1,9 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    container: {
-
-    },
+    container: {},
     section: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -15,7 +13,7 @@ export default StyleSheet.create({
     logoContainer: {
         justifyContent: 'center',
     },
-    cryptoName:{
+    cryptoName: {
         fontFamily: 'poppins-medium',
     },
     valueCrypto: {
@@ -23,9 +21,9 @@ export default StyleSheet.create({
         fontSize: 16,
         lineHeight: 18,
     },
-    valueDollar:{
+    valueDollar: {
         textAlign: 'right',
         paddingRight: 8,
         lineHeight: 21,
-    }
+    },
 });
