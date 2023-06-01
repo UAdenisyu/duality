@@ -20,6 +20,8 @@ export default function useThemeColors() {
         cancel,
         buttonBackground,
         warning,
+        candleGreen,
+        candleRed,
     } = useColorScheme() === 'dark' ? DARK_COLORS : LIGHT_COLORS;
 
     const coloredItem = StyleSheet.create({
@@ -80,6 +82,12 @@ export default function useThemeColors() {
         inputColors: {
             borderColor: componentDividingLine,
             color: plainText,
+        },
+        candleRed: {
+            backgroundColor: candleRed,
+        },
+        candleGreen: {
+            backgroundColor: candleGreen,
         },
     });
 

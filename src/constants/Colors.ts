@@ -20,6 +20,8 @@ export const LIGHT_COLORS = {
         success: '#67A563',
         danger: '#D96354',
     },
+    candleRed: '#F84E43',
+    candleGreen: '#67A563',
 };
 
 export const DARK_COLORS = {
@@ -44,4 +46,6 @@ export const DARK_COLORS = {
         success: '#67A563',
         danger: '#D96354',
     },
+    candleRed: '#F84E43',
+    candleGreen: '#67A563',
 };
