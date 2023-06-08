@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { ReactElement, useMemo } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import LogoutSvg from '../../assets/svgs/settingsScreen/Logout.svg';
 import SettingsSvg from '../../assets/svgs/settingsScreen/Settings.svg';
@@ -30,13 +32,21 @@ const styles = StyleSheet.create({
     },
 });
 
-const profileButtonsList = [
+interface ButtonData {
+    title: string;
+    logoIcon: ReactElement<SvgProps>;
+    rightItem: (color: string) => ReactElement;
+    screenName?: 'Settings';
+}
+
+const profileButtonsList: ButtonData[] = [
     {
         title: 'Settings',
         logoIcon: <SettingsSvg />,
         rightItem: (color: string) => (
             <View style={[styles.arrow, { borderColor: color }]} />
         ),
+        screenName: 'Settings',
     },
     {
         title: 'Terms & Conditions',
@@ -54,22 +64,34 @@ const profileButtonsList = [
     },
 ];
 
-function Earn() {
+// type ProfileStackNavigationProp = StackNavigationProp<ProfileTabParamList>;
+
+const ProfileMain = () => {
     const { plainTextColor } = useThemeColors();
 
     const { setIsLoggedIn } = useDualityStore();
 
-    const mainPageComponentList = profileButtonsList.map((item) => (
-        <SettingComponent
-            key={item.title}
-            leftItem={item.logoIcon}
-            rightItem={item.rightItem(plainTextColor.color)}
-            titleText={item.title}
-            onPressAction={() => console.log('pressed')}
-        />
-    ));
+    const navigation = useNavigation<any>();
 
-    const navigation = useNavigation();
+    const mainPageComponentList = useMemo(
+        () =>
+            profileButtonsList.map((item) => (
+                <SettingComponent
+                    key={item.title}
+                    leftItem={item.logoIcon}
+                    rightItem={item.rightItem(plainTextColor.color)}
+                    titleText={item.title}
+                    onPressAction={() => {
+                        if (item.screenName) {
+                            navigation.navigate('Settings');
+                        } else {
+                            console.log('pressed');
+                        }
+                    }}
+                />
+            )),
+        []
+    );
 
     return (
         <View>
@@ -92,6 +114,6 @@ function Earn() {
             <View style={{ height: 100 }} />
         </View>
     );
-}
+};
 
-export default observer(Earn);
+export default observer(ProfileMain);

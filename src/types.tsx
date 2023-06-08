@@ -32,12 +32,16 @@ export type EarnTabParamList = {
     EarnInputDetails: undefined;
 };
 
+export type ProfileTabParamList = {
+    Settings: undefined;
+};
+
 export type RootTabParamList = {
     Earn: NavigatorScreenParams<EarnTabParamList> | undefined;
     Trade: undefined;
     Orders: undefined;
     Wallets: undefined;
-    Profile: undefined;
+    Profile: NavigatorScreenParams<ProfileTabParamList> | undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

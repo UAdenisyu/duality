@@ -58,10 +58,10 @@ const linking: LinkingOptions<RootStackParamList> = {
                     },
                     Profile: {
                         screens: {
-                            LogOut: 'logOut',
-                            PrivacyPolicy: 'privacy',
+                            Profile: 'profile',
                             Settings: 'settings',
                             TermsAndConditions: 'terms',
+                            PrivacyPolicy: 'privacy',
                         },
                     },
                 },

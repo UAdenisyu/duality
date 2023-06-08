@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo, ReactElement } from 'react';
 import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
@@ -7,13 +7,13 @@ import useThemeColors from '../../hooks/useThemeColors';
 import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
-    leftItem: React.ReactElement<SvgProps>;
-    rightItem?: React.ReactElement;
+    leftItem: ReactElement<SvgProps>;
+    rightItem?: ReactElement;
     titleText: string;
     onPressAction: (event: GestureResponderEvent) => void;
 };
 
-const ShowMoreBtn = ({
+const SettingComponent = ({
     leftItem,
     rightItem,
     titleText,
@@ -52,4 +52,4 @@ const ShowMoreBtn = ({
     );
 };
 
-export default memo(ShowMoreBtn);
+export default memo(SettingComponent);

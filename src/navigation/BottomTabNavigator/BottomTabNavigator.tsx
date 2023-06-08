@@ -8,10 +8,10 @@ import SvgComponentTrade from '../../assets/svgs/SvgComponentTrade';
 import SvgComponentWallet from '../../assets/svgs/SvgComponentWallet';
 import useThemeColors from '../../hooks/useThemeColors';
 import Orders from '../../screens/Orders';
-import Profile from '../../screens/Profile';
 import Trade from '../../screens/Trade';
 import { RootTabParamList } from '../../types';
 import EarnStackScreens from '../EarnStackScreens';
+import ProfileStackScreens from '../ProfileStackScreens/ProfileStackScreens';
 import WalletsStackScreens from '../WalletsStackScreens';
 import styles, { mainNativeNavigatorOptions } from '../styles';
 
@@ -113,8 +113,9 @@ const BottomTabNavigator = () => {
             />
             <BottomTab.Screen
                 name="Profile"
-                component={Profile}
+                component={ProfileStackScreens}
                 options={{
+                    headerShown: false,
                     title: 'Profile',
                     tabBarIcon: (props) =>
                         setTabBarIcon({ ...props, index: 4 }),
