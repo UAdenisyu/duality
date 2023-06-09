@@ -1,16 +1,14 @@
-// import { useNavigation } from '@react-navigation/native';
+import BellSvg from 'assets/svgs/settingsScreen/Bell.svg';
+import EditSvg from 'assets/svgs/settingsScreen/Edit.svg';
+import GlobeSvg from 'assets/svgs/settingsScreen/Globe.svg';
+import ArrowIcon from 'components/ArrowIcon';
+import SettingComponent from 'components/SettingComponent';
+import SwithToggler from 'components/SwitchToggler';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import { useMemo } from 'react';
+import { useMemo, FC } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-
-import BellSvg from '../../assets/svgs/settingsScreen/Bell.svg';
-import EditSvg from '../../assets/svgs/settingsScreen/Edit.svg';
-import GlobeSvg from '../../assets/svgs/settingsScreen/Globe.svg';
-import ArrowIcon from '../../components/ArrowIcon';
-import SettingComponent from '../../components/SettingComponent';
-import SwithToggler from '../../components/SwitchToggler';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 const screenHeight = Dimensions.get('window').height;
 
@@ -66,11 +64,9 @@ const settingsSwitchesListData = [
     },
 ];
 
-const Settings = () => {
+const Settings: FC = () => {
     const { plainTextColor } = useThemeColors();
     const { borderedSection } = useGeneralComponentStyles();
-
-    // const navigation = useNavigation();
 
     const settingsButtonsList = useMemo(
         () =>

@@ -1,13 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Pressable, View } from 'react-native';
+import HeaderBackButton from 'components/HeaderBackButton/HeaderBackButton';
+import WalletsMain from 'screens/Wallets';
+import WalletsBalance from 'screens/Wallets/WalletsBalance';
+import WalletsEarn from 'screens/Wallets/WalletsEarn';
+import WalletsSpotAccount from 'screens/Wallets/WalletsSpotAccount';
 
-import WalletsMain from '../../screens/Wallets';
-import WalletsBalance from '../../screens/Wallets/Balance';
-import WalletsEarn from '../../screens/Wallets/Earn';
-import WalletsSpotAccount from '../../screens/Wallets/SpotAccount';
-import styles, { childNavigatorOptions, mainNavigatorOptions } from '../styles';
+import { childNavigatorOptions, mainNavigatorOptions } from '../styles';
 
-const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
+const WalletsStackScreens = () => {
     const WalletsStackScreens = createStackNavigator();
     return (
         <WalletsStackScreens.Navigator>
@@ -24,12 +24,7 @@ const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Spot-account',
-                    headerLeft: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate('Wallets/main')}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="Wallets/spotAccount"
                 component={WalletsSpotAccount}
@@ -39,12 +34,7 @@ const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Earn',
-                    headerLeft: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate('Wallets/main')}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="Wallets/earn"
                 component={WalletsEarn}
@@ -54,12 +44,7 @@ const WalletsStackScreens = ({ navigation }: { navigation: any }) => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Balance',
-                    headerLeft: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate('Wallets/main')}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="Wallets/balance"
                 component={WalletsBalance}

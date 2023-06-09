@@ -1,13 +1,13 @@
-import { memo } from 'react';
+import InfoIcon from 'assets/svgs/infoIcon.svg';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo, useMemo } from 'react';
 import { Text, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import InfoIcon from '../../assets/svgs/infoIcon.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 import OpenBottomModalScreenButton from '../OpenBottomModalScreenButton';
 
-const ActionsBlock = () => {
+const ActionsBlock: FC = () => {
     const { title, infoIcon } = useGeneralComponentStyles();
     const {
         warningText,
@@ -16,6 +16,26 @@ const ActionsBlock = () => {
         plainTextColor,
         titleTextColor,
     } = useThemeColors();
+
+    const depositComponent = useMemo(
+        () => (
+            <View style={[styles.button, markedItemBackgroundColor]}>
+                <Text style={[styles.buttonText, darkTextColor]}>Deposit</Text>
+            </View>
+        ),
+        []
+    );
+
+    const withdrawComponent = useMemo(
+        () => (
+            <View style={[styles.button, styles.withdrawBtn]}>
+                <Text style={[styles.buttonText, plainTextColor]}>
+                    Withdraw
+                </Text>
+            </View>
+        ),
+        []
+    );
 
     return (
         <View style={styles.detailsWrapper}>
@@ -31,25 +51,12 @@ const ActionsBlock = () => {
             <View style={[styles.section, styles.depositAndWithdraw]}>
                 <OpenBottomModalScreenButton
                     // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
-                    targetContentComponent={
-                        <View
-                            style={[styles.button, markedItemBackgroundColor]}>
-                            <Text style={[styles.buttonText, darkTextColor]}>
-                                Deposit
-                            </Text>
-                        </View>
-                    }
+                    targetContentComponent={depositComponent}
                     titleText="Choose a currency"
                 />
                 <OpenBottomModalScreenButton
                     // targetContentComponent={<View style={{height: 50, width: 50, backgroundColor: 'blue'}}><Text>Show more</Text></View>}
-                    targetContentComponent={
-                        <View style={[styles.button, styles.withdrawBtn]}>
-                            <Text style={[styles.buttonText, plainTextColor]}>
-                                Withdraw
-                            </Text>
-                        </View>
-                    }
+                    targetContentComponent={withdrawComponent}
                     titleText="Choose a network"
                     promptText={
                         'Make sure the network you choose for input matches the network for output\n Otherwise, all assets will be lost'

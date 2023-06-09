@@ -1,7 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import DualityLogo from 'assets/svgs/duality.svg';
+import useThemeColors from 'hooks/useThemeColors';
+import { useAuthStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import {
     Image,
     Pressable,
@@ -10,16 +13,12 @@ import {
     Text,
     View,
 } from 'react-native';
-
-import DualityLogo from '../../assets/svgs/duality.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
-import { RootStackParamList } from '../../types';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
+import { RootStackParamList } from 'types/navigationStacks';
 
 type RootStackNavigationProp = StackNavigationProp<RootStackParamList>;
 
-const GetStarted = () => {
+const GetStarted: FC = () => {
     const { markedItemBackgroundColor, plainTextColor, markedTextColor } =
         useThemeColors();
     const generalStyles = useGeneralComponentStyles();
@@ -34,7 +33,7 @@ const GetStarted = () => {
         navigation.navigate('NotFound');
     };
 
-    const { isLoggedIn } = useDualityStore();
+    const { isLoggedIn } = useAuthStore();
 
     useEffect(() => {
         console.log('isLoggedIn', isLoggedIn);
@@ -49,12 +48,12 @@ const GetStarted = () => {
                 <View style={styles.demoScreenhotsWrapper}>
                     <View style={styles.screenshot1}>
                         <Image
-                            source={require('../../assets/images/demoScreenshot1.png')}
+                            source={require('assets/images/demoScreenshot1.png')}
                         />
                     </View>
                     <View style={styles.screenshot2}>
                         <Image
-                            source={require('../../assets/images/demoScreenshot2.png')}
+                            source={require('assets/images/demoScreenshot2.png')}
                         />
                     </View>
                 </View>

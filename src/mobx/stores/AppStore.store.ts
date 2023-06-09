@@ -1,8 +1,8 @@
-import EthLogoBig from '../../assets/svgs/EthLogo.svg';
-import EthLogoSmall from '../../assets/svgs/EthLogoSmall.svg';
-import UsdtLogoBig from '../../assets/svgs/UsdtLogo.svg';
-import UsdtLogoSmall from '../../assets/svgs/UsdtLogoSmall.svg';
-import { CryptoCurrencyFullInfo } from '../../types';
+import EthLogoBig from 'assets/svgs/EthLogo.svg';
+import EthLogoSmall from 'assets/svgs/EthLogoSmall.svg';
+import UsdtLogoBig from 'assets/svgs/UsdtLogo.svg';
+import UsdtLogoSmall from 'assets/svgs/UsdtLogoSmall.svg';
+import { CryptoCurrencyFullInfo } from 'types/types';
 
 interface DualityStore {
     appTheme: 'dark' | 'light';
@@ -10,14 +10,6 @@ interface DualityStore {
     totalBalance: number;
     setTotalBalance: (value: number) => void;
     cryptoCurrencyFullInfo: CryptoCurrencyFullInfo;
-    isLoggedIn: boolean;
-    setIsLoggedIn: (newLoggedInValue: boolean) => void;
-    isLoading: boolean;
-    toggleLoading: (newLoggedInValue: boolean) => void;
-    registeredUsers: {
-        userName: string;
-        password: string;
-    }[];
 }
 
 export function createDualityStore() {
@@ -30,24 +22,6 @@ export function createDualityStore() {
         setTotalBalance(value: number) {
             this.totalBalance = value;
         },
-        isLoggedIn: true,
-        setIsLoggedIn(newLoggedInValue) {
-            this.isLoggedIn = newLoggedInValue;
-        },
-        isLoading: false,
-        toggleLoading(value: boolean) {
-            this.isLoading = value;
-        },
-        registeredUsers: [
-            {
-                userName: 'Demo Trader 1',
-                password: 'trademe1',
-            },
-            {
-                userName: 'Demo Trader 2',
-                password: 'trademe2',
-            },
-        ],
         cryptoCurrencyFullInfo: {
             Eth: [
                 {
@@ -132,4 +106,4 @@ export function createDualityStore() {
     return data;
 }
 
-export type TStore = ReturnType<typeof createDualityStore>;
+export type DualityStoreType = ReturnType<typeof createDualityStore>;

@@ -1,8 +1,9 @@
-import { Text, View } from 'react-native';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, useMemo } from 'react';
+import { Text, View, ViewStyle } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     titleName: string;
@@ -10,17 +11,22 @@ type ComponentProps = {
     alignRight?: boolean;
 };
 
-const InfoBlock = ({ titleName, value, alignRight }: ComponentProps) => {
+const InfoBlock: FC<ComponentProps> = ({ titleName, value, alignRight }) => {
     const { title } = useGeneralComponentStyles();
     const { cancelText, plainTextColor } = useThemeColors();
 
+    const wrapperStyle = useMemo<ViewStyle>(
+        () => ({ alignItems: alignRight ? 'flex-end' : 'flex-start' }),
+        [alignRight]
+    );
+
     return (
-        <View style={alignRight ? { alignItems: 'flex-end' } : null}>
-            <Text style={[title, { fontSize: 12 }]}>{titleName}</Text>
+        <View style={wrapperStyle}>
+            <Text style={[title, styles.tinyFontSize]}>{titleName}</Text>
             <Text
                 style={[
                     styles.componentTitle,
-                    { fontSize: 14 },
+                    styles.smallFontSize,
                     value === 'Canceled' ? cancelText : plainTextColor,
                 ]}>
                 {value}

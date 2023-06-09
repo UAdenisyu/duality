@@ -1,2 +1,1 @@
-import BottomTabNavigator from './BottomTabNavigator';
-export default BottomTabNavigator;
+export { default } from './BottomTabNavigator';

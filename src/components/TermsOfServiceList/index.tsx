@@ -1,18 +1,18 @@
 import Checkbox from 'expo-checkbox';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import { memo, useMemo, useState } from 'react';
+import { FC, memo, useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import TermClause from './TermClause';
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     terms: string[];
 };
 
-const TermsOfServiceList = ({ terms }: ComponentProps) => {
+const TermsOfServiceList: FC<ComponentProps> = ({ terms }) => {
     const { wrapper } = useGeneralComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();
 
@@ -25,6 +25,8 @@ const TermsOfServiceList = ({ terms }: ComponentProps) => {
         [terms]
     );
 
+    const margin = useMemo(() => ({ marginLeft: 8 }), []);
+
     return (
         <View style={wrapper}>
             {termList}
@@ -35,12 +37,7 @@ const TermsOfServiceList = ({ terms }: ComponentProps) => {
                     onValueChange={setChecked}
                     color={markedTextColor.color}
                 />
-                <Text
-                    style={[
-                        styles.agreeText,
-                        { marginLeft: 8 },
-                        plainTextColor,
-                    ]}>
+                <Text style={[styles.agreeText, plainTextColor, margin]}>
                     I have read and I accept Duality's
                     <Pressable>
                         <Text style={[styles.agreeText, markedTextColor]}>

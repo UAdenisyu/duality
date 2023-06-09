@@ -57,4 +57,7 @@ export default StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
     },
+    onPressConfirm: {
+        marginTop: 8,
+    },
 });

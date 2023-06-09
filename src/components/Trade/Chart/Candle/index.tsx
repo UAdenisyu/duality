@@ -42,30 +42,21 @@ const Candle: FC<ComponentProps> = ({
         [color]
     );
     const candleOffset = useMemo(
-        () => ({ marginTop: candleOffsetTop }),
+        () => ({
+            marginTop: candleOffsetTop,
+            height: candleHeight,
+            padding: 0,
+        }),
         [candleOffsetTop]
     );
     const bodyOffset = useMemo(
-        () => ({ marginTop: bodyOffsetTop }),
+        () => ({ marginTop: bodyOffsetTop, height: candleBodyHeight }),
         [bodyOffsetTop]
     );
 
     return (
-        <View
-            style={[
-                styles.candleWrapper,
-                { height: candleHeight, padding: 0 },
-                candleOffset,
-            ]}>
-            <View
-                style={[
-                    styles.candleBody,
-                    { height: candleBodyHeight },
-                    candleColor,
-                    bodyOffset,
-                ]}
-            />
-
+        <View style={[styles.candleWrapper, candleOffset]}>
+            <View style={[styles.candleBody, candleColor, bodyOffset]} />
             <View style={[styles.candleLine, candleColor]} />
         </View>
     );

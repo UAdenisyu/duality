@@ -1,19 +1,19 @@
-import { memo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-interface componentProps {
+interface ComponentProps {
     buttonTitles: string[];
 }
 
-const LocalNavBar = ({ buttonTitles }: componentProps) => {
+const LocalNavBar: FC<ComponentProps> = ({ buttonTitles }) => {
     const { wrapper, titleLight } = useGeneralComponentStyles();
 
-    return (
-        <View style={[wrapper, styles.body]}>
-            {buttonTitles.map((buttonTitle) => (
+    const buttons = useMemo(
+        () =>
+            buttonTitles.map((buttonTitle) => (
                 <Pressable
                     key={buttonTitle}
                     style={[styles.btn]}
@@ -23,9 +23,11 @@ const LocalNavBar = ({ buttonTitles }: componentProps) => {
                         {buttonTitle}
                     </Text>
                 </Pressable>
-            ))}
-        </View>
+            )),
+        []
     );
+
+    return <View style={[wrapper, styles.body]}>{buttons}</View>;
 };
 
 export default memo(LocalNavBar);

@@ -1,5 +1,6 @@
+import { useDualityStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
-import { memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { View, Text } from 'react-native';
 import Animated, {
     Easing,
@@ -13,12 +14,15 @@ import Animated, {
     Value,
 } from 'react-native-reanimated';
 import NumberFormat from 'react-number-format';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const TotalBalance = ({ selectedCrypto }: { selectedCrypto?: string }) => {
+interface ComponentProps {
+    selectedCrypto?: string;
+}
+
+const TotalBalance: FC<ComponentProps> = ({ selectedCrypto }) => {
     const dualityStore = useDualityStore();
     const { wrapper, title, valueBig, cryptoName } =
         useGeneralComponentStyles();
@@ -46,6 +50,7 @@ const TotalBalance = ({ selectedCrypto }: { selectedCrypto?: string }) => {
             visibleCrypto.setValue(visibleCrypto + '-');
         }
     };
+
     useDerivedValue(() => {
         runOnJS(recordResult)(opacity.value);
     });
@@ -54,19 +59,22 @@ const TotalBalance = ({ selectedCrypto }: { selectedCrypto?: string }) => {
         () => ({ opacity: opacity.value }),
         []
     );
+
+    const renderText = useCallback(
+        (value: string) => <Text style={valueBig}>{value}</Text>,
+        [dualityStore.totalBalance]
+    );
+
     return (
         <View style={wrapper}>
             <Text style={title}>Total balance:</Text>
-
             <Animated.View style={[styles.body, animatedBlinkingStyle]}>
                 <NumberFormat
                     value={dualityStore.totalBalance}
                     displayType="text"
                     thousandSeparator
                     prefix="$"
-                    renderText={(value) => (
-                        <Text style={valueBig}>{value}</Text>
-                    )}
+                    renderText={renderText}
                 />
                 <Text style={cryptoName} />
             </Animated.View>

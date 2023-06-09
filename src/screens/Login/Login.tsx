@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
+import useThemeColors from 'hooks/useThemeColors';
+import { useAuthStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import {
     Pressable,
     SafeAreaView,
@@ -9,15 +11,13 @@ import {
     TextInput,
     Alert,
 } from 'react-native';
-
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
+import { RootScreenNavigationProp } from 'types/navigationStacks';
 
 //use LinearGradient for background colors
 
-const Login = () => {
-    const { toggleLoading, setIsLoggedIn, registeredUsers } = useDualityStore();
-    const navigation = useNavigation();
+const Login: FC = () => {
+    const { toggleLoading, setIsLoggedIn, registeredUsers } = useAuthStore();
+    const navigation = useNavigation<RootScreenNavigationProp>();
     const { markedItemBackgroundColor, inputColors, inputBorderColor } =
         useThemeColors();
 

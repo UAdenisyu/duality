@@ -1,17 +1,17 @@
+import Arrow from 'assets/svgs/arrow.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { Pressable, Text, ViewStyle } from 'react-native';
 
 import styles from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import useThemeColors from '../../hooks/useThemeColors';
 
-interface componentProps {
+interface ComponentProps {
     wrapperStyle: ViewStyle;
     onPress: () => void;
 }
 
-const ShowMoreBtn = ({ wrapperStyle, onPress }: componentProps) => {
+const ShowMoreBtn: FC<ComponentProps> = ({ wrapperStyle, onPress }) => {
     const { plainTextColor } = useThemeColors();
 
     return (

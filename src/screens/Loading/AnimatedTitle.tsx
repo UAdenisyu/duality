@@ -1,3 +1,4 @@
+import SplashScreenTitle from 'assets/svgs/SplashScreenTitle.svg';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
     Easing,
@@ -7,7 +8,11 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 
-import SplashScreenTitle from '../../assets/svgs/SplashScreenTitle.svg';
+const styles = StyleSheet.create({
+    splashScreenTitle: {
+        position: 'absolute',
+    },
+});
 
 const AnimatedTitle = () => {
     const AnimatedTitle = Animated.createAnimatedComponent(View);
@@ -32,11 +37,5 @@ const AnimatedTitle = () => {
         </AnimatedTitle>
     );
 };
-
-const styles = StyleSheet.create({
-    splashScreenTitle: {
-        position: 'absolute',
-    },
-});
 
 export default AnimatedTitle;

@@ -1,10 +1,10 @@
+import Arrow from 'assets/svgs/arrow.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { memo } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 const DetailsBlock = () => {
     const { title, wrapper } = useGeneralComponentStyles();

@@ -1,28 +1,28 @@
 import { Ionicons } from '@expo/vector-icons';
+import EthLogo from 'assets/svgs/EthLogoSmall.svg';
+import UsdtLogo from 'assets/svgs/UsdtLogoSmall.svg';
+import Arrow from 'assets/svgs/arrow.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import React, { useState, ReactElement } from 'react';
+import React, { useState, ReactElement, FC } from 'react';
 import { Modal, Text, Pressable, View, ScrollView } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
-import UsdtLogo from '../../assets/svgs/UsdtLogoSmall.svg';
-import Arrow from '../../assets/svgs/arrow.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-interface componentProps {
+interface ComponentProps {
     targetContentComponent: ReactElement;
     titleText: string;
     promptText?: string;
     confirmButtonOnPressAction?: () => void;
 }
 
-const OpenBottomModalScreenButton = ({
+const OpenBottomModalScreenButton: FC<ComponentProps> = ({
     targetContentComponent,
     titleText,
     promptText,
     confirmButtonOnPressAction,
-}: componentProps) => {
+}) => {
     const { wrapper, title } = useGeneralComponentStyles();
     const { modalBottomFillColor, plainTextColor } = useThemeColors();
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,6 +34,14 @@ const OpenBottomModalScreenButton = ({
             {targetContentComponent}
         </Pressable>
     );
+
+    const onPressConfirm = () => {
+        setModalVisible(!modalVisible);
+        confirmButtonOnPressAction?.();
+    };
+
+    // TODO: Create buttons from store cryptolist
+
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -66,12 +74,7 @@ const OpenBottomModalScreenButton = ({
                         <ScrollView>
                             <Pressable
                                 style={[wrapper, styles.button]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    confirmButtonOnPressAction
-                                        ? confirmButtonOnPressAction()
-                                        : null;
-                                }}>
+                                onPress={onPressConfirm}>
                                 <View style={styles.cryptoLogo}>
                                     <EthLogo />
                                 </View>
@@ -87,14 +90,9 @@ const OpenBottomModalScreenButton = ({
                                 style={[
                                     wrapper,
                                     styles.button,
-                                    { marginTop: 8 },
+                                    styles.onPressConfirm,
                                 ]}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                    confirmButtonOnPressAction
-                                        ? confirmButtonOnPressAction()
-                                        : null;
-                                }}>
+                                onPress={onPressConfirm}>
                                 <View style={styles.cryptoLogo}>
                                     <UsdtLogo />
                                 </View>

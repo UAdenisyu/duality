@@ -1,2 +1,1 @@
-import EarnStackScreens from './EarnStackScreens';
-export default EarnStackScreens;
+export { default } from './EarnStackScreens';

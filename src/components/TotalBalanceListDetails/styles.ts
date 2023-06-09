@@ -3,10 +3,16 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         marginHorizontal: 0,
-        // borderBottomEndRadius: 0,
-        // borderBottomStartRadius: 0,
         padding: 0,
         paddingHorizontal: 24,
+    },
+
+    amountWrapperMargin: {
+        marginTop: 13,
+    },
+
+    detailsWrapper: {
+        marginTop: 4,
     },
 
     itemContainer: {

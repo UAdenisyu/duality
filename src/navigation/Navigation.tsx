@@ -5,7 +5,7 @@ import { ImageBackground } from 'react-native';
 import LinkingConfiguration from './LinkingConfiguration';
 import RootNavigator from './RootNavigator';
 
-function Navigation() {
+const Navigation = () => {
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -24,6 +24,6 @@ function Navigation() {
             </ImageBackground>
         </NavigationContainer>
     );
-}
+};
 
 export default observer(Navigation);

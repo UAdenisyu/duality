@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { View, Text } from 'react-native';
 
 import styles from './styles';
@@ -24,7 +24,7 @@ type ComponentProps = {
     cryptoName: string;
 };
 
-const ShortInfoCryptoBalance = ({ cryptoName }: ComponentProps) => {
+const ShortInfoCryptoBalance: FC<ComponentProps> = ({ cryptoName }) => {
     const { valueSmall, valueBig, title } = useGeneralComponentStyles();
 
     const { cryptoCurrencyFullInfo } = useDualityStore();
@@ -33,11 +33,11 @@ const ShortInfoCryptoBalance = ({ cryptoName }: ComponentProps) => {
     return (
         <View style={[styles.section]}>
             <View style={styles.logoContainer}>{item.logoSvgSmall()}</View>
-            <View style={{ flex: 0.45 }}>
+            <View style={styles.flex}>
                 <Text style={[valueSmall, styles.cryptoName]}>
                     {cryptoName.toUpperCase()}
                 </Text>
-                <Text style={[title, { fontSize: 10 }]}>{cryptoName}</Text>
+                <Text style={[title, styles.tinyFontSize]}>{cryptoName}</Text>
             </View>
             <View style={styles.values}>
                 <Text style={[valueBig, styles.valueCrypto]}>23,000.00</Text>

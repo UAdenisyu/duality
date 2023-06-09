@@ -1,11 +1,10 @@
-import { useMemo } from 'react';
+import InputCryptoInfo from 'components/InputCryptoInfo';
+import TotalBalance from 'components/TotalBalance';
+import { useDualityStore } from 'mobx/appStoreContext';
+import { FC, useMemo } from 'react';
 import { ScrollView } from 'react-native';
 
-import InputCryptoInfo from '../../components/InputCryptoInfo';
-import TotalBalance from '../../components/TotalBalance';
-import { useDualityStore } from '../../mobx/appStoreContext';
-
-const EarnMain = () => {
+const EarnMain: FC = () => {
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
     const cryptoList = useMemo(() => {

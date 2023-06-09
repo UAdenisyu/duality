@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import { useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import styles from './styles';
 import OrderItem from '../../components/OrderItem';
 import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const Orders = observer(() => {
+const Orders: FC = () => {
     const { wrapper, titleLight } = useGeneralComponentStyles();
     const buttonTitles = ['Open orders', 'Order History'];
 
@@ -38,11 +38,9 @@ const Orders = observer(() => {
         [localScreen]
     );
 
-    return (
-        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-            <View style={[wrapper, styles.body]}>{buttons}</View>
-            <View />
-            {localScreen === buttonTitles[0] ? (
+    const subScreen = useMemo(
+        () =>
+            localScreen === buttonTitles[0] ? (
                 <View>
                     <OrderItem
                         contentType="list"
@@ -80,9 +78,17 @@ const Orders = observer(() => {
                         price={1012}
                     />
                 </View>
-            )}
+            ),
+        [localScreen]
+    );
+
+    return (
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+            <View style={[wrapper, styles.body]}>{buttons}</View>
+            {subScreen}
+            <View />
         </ScrollView>
     );
-});
+};
 
-export default Orders;
+export default observer(Orders);

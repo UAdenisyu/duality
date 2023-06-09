@@ -3,6 +3,17 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "jsx": "react-native",
+        "paths": {
+            "assets/*": ["./src/assets/*"],
+            "components/*": ["./src/components/*"],
+            "constants/*": ["./src/constants/*"],
+            "hooks/*": ["./src/hooks/*"],
+            "mobx/*": ["./src/mobx/*"],
+            "navigation/*": ["./src/navigation/*"],
+            "screens/*": ["./src/screens/*"],
+            "styles/*": ["./src/styles/*"],
+            "types/*": ["./src/types/*"],
+          },
         "strict": true
     },
     "include": ["src", "custom.d.ts"],

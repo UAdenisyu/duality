@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import { memo } from 'react';
-import { Text, View } from 'react-native';
+import { FC, memo, useMemo } from 'react';
+import { Text, View, ViewStyle } from 'react-native';
 
 import styles from './styles';
 import Arrow from '../../assets/svgs/arrow.svg';
@@ -14,7 +14,7 @@ type ComponentProps = {
     bottomBorder?: boolean;
 };
 
-const ListItem = ({ cryptoName, bottomBorder = true }: ComponentProps) => {
+const ListItem: FC<ComponentProps> = ({ cryptoName, bottomBorder = true }) => {
     const { cryptoCurrencyFullInfo } = useDualityStore();
     const cryptoInfo = cryptoCurrencyFullInfo[cryptoName][0];
     const cryptoNameBeautified = cryptoName.toUpperCase();
@@ -28,9 +28,11 @@ const ListItem = ({ cryptoName, bottomBorder = true }: ComponentProps) => {
         dividingLineColor,
     } = useThemeColors();
 
-    const borderedItemStyle = bottomBorder
-        ? [dividingLineColor, { borderBottomWidth: 1 }]
-        : null;
+    const borderedItemStyle = useMemo<ViewStyle>(
+        () =>
+            bottomBorder ? [dividingLineColor, { borderBottomWidth: 1 }] : {},
+        [bottomBorder]
+    );
 
     return (
         <View style={[styles.itemContainer, borderedItemStyle]}>
@@ -51,16 +53,16 @@ const ListItem = ({ cryptoName, bottomBorder = true }: ComponentProps) => {
                     <Arrow color={markedTextColor.color} />
                 </View>
             </View>
-            <View style={[styles.section, { marginTop: 13 }]}>
+            <View style={[styles.section, styles.amountWrapperMargin]}>
                 <Text style={[title, styles.contentTitles]}>
-                    Amount ({cryptoNameBeautified})
+                    Amount {cryptoNameBeautified}
                 </Text>
                 <Text style={[title, styles.contentTitles]}>
                     Estimated yield
                 </Text>
                 <Text style={[title, styles.contentTitles]}>Cumulative %</Text>
             </View>
-            <View style={[styles.section, { marginTop: 4 }]}>
+            <View style={[styles.section, styles.detailsWrapper]}>
                 <Text style={[valueSmall, styles.contentValues]}>6492,518</Text>
                 <Text style={[valueSmall, styles.contentValues]}>1 %</Text>
                 <Text

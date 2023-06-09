@@ -1,15 +1,15 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useAuthStore } from 'mobx/appStoreContext';
+import Login from 'screens/Login';
+import NotFoundScreen from 'screens/NotFoundScreen';
+import GetStarted from 'screens/SignUp';
+import { RootStackParamList } from 'types/navigationStacks';
 
-import { useDualityStore } from '../../mobx/appStoreContext';
-import Login from '../../screens/Login';
-import NotFoundScreen from '../../screens/NotFoundScreen';
-import GetStarted from '../../screens/SignUp';
-import { RootStackParamList } from '../../types';
 import BottomTabNavigator from '../BottomTabNavigator';
 
 const RootNavigator = () => {
     const TabStack = createNativeStackNavigator<RootStackParamList>();
-    const { isLoggedIn } = useDualityStore();
+    const { isLoggedIn } = useAuthStore();
 
     return (
         <TabStack.Navigator

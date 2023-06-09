@@ -1,19 +1,13 @@
 import { observer } from 'mobx-react-lite';
+import { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import AnimatedTitle from './AnimatedTitle';
-import { useDualityStore } from '../../mobx/appStoreContext';
+import { useAuthStore } from '../../mobx/appStoreContext';
 
-//usex LinearGradient for background colors
-
-// type ScreenProps = {
-//   isLoading: boolean,
-//   toggleLoading: (isLoading: boolean) => void,
-// }
-
-const Loading = () => {
-    const { isLoading } = useDualityStore();
+const Loading: FC = () => {
+    const { isLoading } = useAuthStore();
 
     return (
         <Modal
@@ -37,8 +31,6 @@ const Loading = () => {
 
 const styles = StyleSheet.create({
     modal: {
-        // flex: 1,
-        // backgroundColor: 'green',
         justifyContent: 'center',
         alignItems: 'center',
     },

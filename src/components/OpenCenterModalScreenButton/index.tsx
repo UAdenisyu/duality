@@ -1,5 +1,7 @@
+import Arrow from 'assets/svgs/arrow.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import React, { useState, ReactElement } from 'react';
+import React, { useState, ReactElement, FC, useMemo } from 'react';
 import {
     Modal,
     Text,
@@ -10,24 +12,22 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import useThemeColors from '../../hooks/useThemeColors';
 
-//targetContentComponent: React.ComponentType<TargetProps>
-
-const OpenCenterModalScreenButton = ({
-    targetContentComponent,
-    textContent,
-    showCancelButton = true,
-    confirmButtonOnPress,
-    cancelButtonOnPress,
-}: {
+interface ComponentProps {
     targetContentComponent: ReactElement;
     targetStyles?: StyleProp<ViewStyle>;
     textContent: string | string[];
     showCancelButton?: boolean;
     confirmButtonOnPress?: () => void;
     cancelButtonOnPress?: () => void;
+}
+
+const OpenCenterModalScreenButton: FC<ComponentProps> = ({
+    targetContentComponent,
+    textContent,
+    showCancelButton = true,
+    confirmButtonOnPress,
+    cancelButtonOnPress,
 }) => {
     const {
         plainTextColor,
@@ -38,31 +38,35 @@ const OpenCenterModalScreenButton = ({
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const textContentBeautified =
-        typeof textContent === 'string' ? (
-            <Text
-                style={[
-                    styles.modalTextContent,
-                    modalTextDarkColor,
-                    { textAlign: 'center' },
-                ]}>
-                {textContent}
-            </Text>
-        ) : (
-            textContent.map((item, i) => {
-                return (
-                    <Text
-                        key={i.toString()}
-                        style={[
-                            styles.modalTextContent,
-                            modalTextDarkColor,
-                            { marginTop: i === 0 ? 0 : 16 },
-                        ]}>
-                        {i + 1}. {item}
-                    </Text>
-                );
-            })
-        );
+    const textContentBeautified = useMemo(
+        () =>
+            typeof textContent === 'string' ? (
+                <Text
+                    style={[
+                        styles.modalTextContent,
+                        modalTextDarkColor,
+                        { textAlign: 'center' },
+                    ]}>
+                    {textContent}
+                </Text>
+            ) : (
+                textContent.map((item, i) => {
+                    // TODO: keys should be another, performance now is bad
+                    return (
+                        <Text
+                            key={i}
+                            style={[
+                                styles.modalTextContent,
+                                modalTextDarkColor,
+                                { marginTop: i === 0 ? 0 : 16 },
+                            ]}>
+                            {i + 1}. {item}
+                        </Text>
+                    );
+                })
+            ),
+        []
+    );
 
     // doesn't copy component children
     // const Btn = React.cloneElement(<Pressable/>, { ...targetContentComponent.props, onPress: () => setModalVisible(true)});
@@ -72,6 +76,17 @@ const OpenCenterModalScreenButton = ({
             {targetContentComponent}
         </Pressable>
     );
+
+    const cancelOnPress = () => {
+        setModalVisible(false);
+        cancelButtonOnPress?.();
+    };
+
+    const confirmOnPress = () => {
+        setModalVisible(false);
+        confirmButtonOnPress?.();
+    };
+
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -87,29 +102,19 @@ const OpenCenterModalScreenButton = ({
                         </View>
                         <Pressable
                             style={[styles.button, modalOkButtonDarkColor]}
-                            onPress={() => {
-                                setModalVisible(false);
-                                if (confirmButtonOnPress) {
-                                    confirmButtonOnPress();
-                                }
-                            }}>
+                            onPress={confirmOnPress}>
                             <Text style={[styles.buttonText]}>OK</Text>
                             <View style={styles.arrowIcon}>
                                 <Arrow color={plainTextColor.color} />
                             </View>
                         </Pressable>
-                        {showCancelButton ? (
+                        {showCancelButton && (
                             <Pressable
                                 style={[styles.button, styles.showCancelButton]}
-                                onPress={() => {
-                                    setModalVisible(false);
-                                    if (cancelButtonOnPress) {
-                                        cancelButtonOnPress();
-                                    }
-                                }}>
+                                onPress={cancelOnPress}>
                                 <Text style={styles.buttonText}>Cancel</Text>
                             </Pressable>
-                        ) : null}
+                        )}
                     </View>
                 </View>
             </Modal>

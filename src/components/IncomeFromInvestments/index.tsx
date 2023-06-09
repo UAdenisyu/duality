@@ -1,20 +1,18 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import { useState, ReactElement, memo } from 'react';
-import { View, Text } from 'react-native';
+import InfoIcon from 'assets/svgs/infoIcon.svg';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { Text, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
+import BottomTipsSection from './BottomTipsSection';
 import SliderMarker from './SliderMarker';
 import styles from './styles';
-import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
-import MathSquareX from '../../assets/svgs/MathSquareX.svg';
-import InfoIcon from '../../assets/svgs/infoIcon.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const IncomeFromInvestments = () => {
-    const { markedTextColor, titleTextColor, plainTextColor } =
-        useThemeColors();
+const IncomeFromInvestments: FC = () => {
+    const { markedItemBackgroundColor, sliderSelectedStyle } = useThemeColors();
     const { wrapper, borderedSection, title } = useGeneralComponentStyles();
-    const greyColor = titleTextColor.color;
+    const greyColor = sliderSelectedStyle.backgroundColor;
 
     const [sliderLength, setSliderLength] = useState(0);
     const [userTargetPrice, setUserTargetPrice] = useState({
@@ -22,21 +20,48 @@ const IncomeFromInvestments = () => {
         price: 2,
     });
 
-    const logo = <EthLogo />;
-
-    const bottomTipsSection = (logo: ReactElement, textContent: string) => (
-        <View style={styles.incomeInfo}>
-            <View style={styles.section}>
-                <View style={styles.icon}>{logo}</View>
-                <Text style={[styles.textInfo, plainTextColor]}>
-                    {textContent}
-                </Text>
-                <View style={styles.icon}>
-                    <MathSquareX color={markedTextColor.color} />
-                </View>
-            </View>
-        </View>
+    const sliderTrackStyle = useMemo(
+        () => ({
+            ...markedItemBackgroundColor,
+            height: 4,
+        }),
+        []
     );
+
+    const customMarkerLeft = useCallback(
+        () => (
+            <SliderMarker
+                enabled
+                title="Target price"
+                value={userTargetPrice.price}
+                footer="Take USDT"
+            />
+        ),
+        []
+    );
+
+    const customMarkerRight = useCallback(
+        () => (
+            <SliderMarker
+                enabled={false}
+                title="Approximately spot price"
+                value={6}
+                footer="Take ETH"
+            />
+        ),
+        []
+    );
+
+    const onValuesChange = (values: number[]) => {
+        setUserTargetPrice({
+            cryptoName: 'Eth',
+            price: values[0],
+        });
+    };
+
+    const onLayoutChange = (e: any) => {
+        setSliderLength(e.nativeEvent.layout.width);
+    };
 
     return (
         <View style={wrapper}>
@@ -48,62 +73,25 @@ const IncomeFromInvestments = () => {
             </View>
             <View
                 style={[borderedSection, styles.sliderWrapper]}
-                onLayout={(e) => {
-                    setSliderLength(e.nativeEvent.layout.width);
-                }}>
+                onLayout={onLayoutChange}>
                 <MultiSlider
-                    containerStyle={{
-                        backgroundColor: 'transparent',
-                        height: 150,
-                    }}
+                    containerStyle={styles.sliderContainerStyle}
                     values={[2, 8]}
                     sliderLength={sliderLength}
-                    trackStyle={{
-                        backgroundColor: markedTextColor.color,
-                        height: 4,
-                    }}
-                    selectedStyle={{ backgroundColor: greyColor }}
-                    customMarkerLeft={() => (
-                        <SliderMarker
-                            logo={() => logo}
-                            enabled
-                            title="Target price"
-                            value={userTargetPrice.price}
-                            footer="Take USDT"
-                            bottomIcon={() => <InfoIcon color={greyColor} />}
-                        />
-                    )}
-                    customMarkerRight={() => (
-                        <SliderMarker
-                            logo={() => logo}
-                            enabled={false}
-                            title="Approximately spot price"
-                            value={6}
-                            footer="Take ETH"
-                            bottomIcon={() => <InfoIcon color={greyColor} />}
-                        />
-                    )}
+                    trackStyle={sliderTrackStyle}
+                    selectedStyle={sliderSelectedStyle}
+                    customMarkerLeft={customMarkerLeft}
+                    customMarkerRight={customMarkerRight}
                     isMarkersSeparated
                     enabledTwo={false}
                     enabledOne
-                    onValuesChange={(values) =>
-                        setUserTargetPrice({
-                            cryptoName: 'Eth',
-                            price: values[0],
-                        })
-                    }
+                    onValuesChange={onValuesChange}
                     onValuesChangeStart={() => {}}
                     onValuesChangeFinish={() => {}}
                 />
             </View>
-            {bottomTipsSection(
-                logo,
-                'When the final price of ETH is equal to or greater than $1500, you will receive $1,110,120 (your net income is $10,200)'
-            )}
-            {bottomTipsSection(
-                logo,
-                'When the final price of ETH is equal to or greater than $1500, you will receive $1,110,120 (your net income is $10,200)'
-            )}
+            <BottomTipsSection textContent="When the final price of ETH is equal to or greater than $1500, you will receive $1,110,120 (your net income is $10,200)" />
+            <BottomTipsSection textContent="When the final price of ETH is equal to or greater than $1500, you will receive $1,110,120 (your net income is $10,200)" />
         </View>
     );
 };

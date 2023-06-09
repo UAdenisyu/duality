@@ -1,16 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { memo } from 'react';
+import Arrow from 'assets/svgs/arrow.svg';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import NumberFormat from 'react-number-format';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
+import { EarnInputScreenNavigationProp } from 'types/navigationStacks';
 
 import { listItem } from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
-import { EarnTabParamList } from '../../types';
 
-type dataProp = {
+type DataProp = {
     incomePerYear: number;
     targetPrice: number;
     completionTime: Date;
@@ -18,16 +17,14 @@ type dataProp = {
 
 type ComponentProps = {
     backgroundColor: string;
-    data: dataProp;
+    data: DataProp;
 };
 
-type RootStackNavigationProp = StackNavigationProp<EarnTabParamList>;
-
-const TableListItem = ({ backgroundColor, data }: ComponentProps) => {
+const TableListItem: FC<ComponentProps> = ({ backgroundColor, data }) => {
     const { markedText } = useGeneralComponentStyles();
     const { markedTextColor, plainTextColor } = useThemeColors();
 
-    const navigation = useNavigation<RootStackNavigationProp>();
+    const navigation = useNavigation<EarnInputScreenNavigationProp>();
 
     const formattedDate =
         data.completionTime.getFullYear() +
@@ -46,9 +43,11 @@ const TableListItem = ({ backgroundColor, data }: ComponentProps) => {
         />
     );
 
+    const goToEarnInputDetails = () => navigation.navigate('EarnInputDetails');
+
     return (
         <Pressable
-            onPress={() => navigation.navigate('EarnInputDetails')}
+            onPress={goToEarnInputDetails}
             style={[listItem.container, { backgroundColor }]}>
             <Text style={[markedText, listItem.income]}>{formattedIncome}</Text>
             <Text style={[markedText, listItem.price, plainTextColor]}>

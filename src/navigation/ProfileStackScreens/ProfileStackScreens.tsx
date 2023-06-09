@@ -1,23 +1,22 @@
-import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Pressable, View } from 'react-native';
+import HeaderBackButton from 'components/HeaderBackButton';
+import Profile from 'screens/Profile';
+import Settings from 'screens/Profile/Settings';
+import { ProfileStackParamList } from 'types/navigationStacks';
 
-import Profile from '../../screens/Profile';
-import Settings from '../../screens/Settings';
-import styles, { mainNavigatorOptions, childNavigatorOptions } from '../styles';
+import { childNavigatorOptions, mainNavigatorOptions } from '../styles';
 
 const ProfileStackScreens = () => {
-    const navigation = useNavigation();
-    const ProfileStack = createStackNavigator();
+    const ProfileStack = createStackNavigator<ProfileStackParamList>();
     return (
         <ProfileStack.Navigator>
             <ProfileStack.Screen
                 options={{
                     ...mainNavigatorOptions,
-                    headerTitle: 'ProfileMain',
+                    headerTitle: 'Profile',
                     headerLeft: () => null,
                 }}
-                name="ProfileMain"
+                name="Profile"
                 component={Profile}
             />
             <ProfileStack.Screen
@@ -25,13 +24,7 @@ const ProfileStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitle: 'Settings',
                     headerTitleAlign: 'center',
-                    headerLeft: () => (
-                        <Pressable
-                            style={styles.goBackBtn}
-                            onPress={() => navigation.goBack()}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="Settings"
                 component={Settings}

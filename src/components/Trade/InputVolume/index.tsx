@@ -1,6 +1,6 @@
 import Checkbox from 'expo-checkbox';
 import { observer } from 'mobx-react-lite';
-import { memo, useState } from 'react';
+import { FC, memo, useMemo, useState } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -13,7 +13,10 @@ type ComponentProps = {
     fullScreenWidth?: boolean;
 };
 
-const InputVolume = ({ titleText, fullScreenWidth = true }: ComponentProps) => {
+const InputVolume: FC<ComponentProps> = ({
+    titleText,
+    fullScreenWidth = true,
+}) => {
     const { wrapper, title, titleLight, input } = useGeneralComponentStyles();
 
     const { inputColors, plainTextColor, modalLightBackgroundColor } =
@@ -22,8 +25,17 @@ const InputVolume = ({ titleText, fullScreenWidth = true }: ComponentProps) => {
     const [isTakeProfit, setTakeProfit] = useState(false);
     const [isStopLoss, setStopLoss] = useState(false);
 
+    const mainWrapper = useMemo(
+        () => !fullScreenWidth && styles.body,
+        [fullScreenWidth]
+    );
+    const nestedWrapper = useMemo(
+        () => fullScreenWidth && styles.section,
+        [fullScreenWidth]
+    );
+
     return (
-        <View style={[wrapper, fullScreenWidth ? null : styles.body]}>
+        <View style={[wrapper, mainWrapper]}>
             <Text style={title}>{titleText}</Text>
             <View style={[input, styles.inputWrapper]}>
                 <TextInput
@@ -33,7 +45,7 @@ const InputVolume = ({ titleText, fullScreenWidth = true }: ComponentProps) => {
                     selectionColor={plainTextColor.color}
                 />
             </View>
-            <View style={fullScreenWidth ? styles.section : null}>
+            <View style={nestedWrapper}>
                 <View style={[styles.section, styles.checkboxWrapper]}>
                     <Checkbox
                         style={styles.checkbox}

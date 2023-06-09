@@ -1,16 +1,16 @@
+import { useDualityStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
-import React, { memo, useMemo } from 'react';
+import React, { FC, memo, useMemo } from 'react';
 import { View, Text } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 interface ComponentProps {
     currencyName: string;
 }
 
-const BalanceCryptoDetails = ({ currencyName }: ComponentProps) => {
+const BalanceCryptoDetails: FC<ComponentProps> = ({ currencyName }) => {
     const { wrapper, valueBig, valueSmall, title } =
         useGeneralComponentStyles();
 

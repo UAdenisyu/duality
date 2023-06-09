@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import { memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import { View } from 'react-native';
 
 import ShortInfoCryptoBalance from './ShortInfoCryptoBalance';
 import { useDualityStore } from '../../mobx/appStoreContext';
 import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const UserShortInfoBalanceList = () => {
+const UserShortInfoBalanceList: FC = () => {
     const { cryptoCurrencyFullInfo } = useDualityStore();
     const { wrapper, borderedSection } = useGeneralComponentStyles();
 

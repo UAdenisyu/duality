@@ -6,6 +6,9 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    flex: {
+        flex: 0.45,
+    },
     values: {
         flex: 0.45,
         alignItems: 'flex-end',
@@ -20,6 +23,9 @@ export default StyleSheet.create({
         textAlign: 'right',
         fontSize: 16,
         lineHeight: 18,
+    },
+    tinyFontSize: {
+        fontSize: 10,
     },
     valueDollar: {
         textAlign: 'right',

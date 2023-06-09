@@ -26,4 +26,10 @@ export default StyleSheet.create({
         fontFamily: 'trap-semibold',
         fontSize: 16,
     },
+    tinyFontSize: {
+        fontSize: 12,
+    },
+    smallFontSize: {
+        fontSize: 14,
+    },
 });

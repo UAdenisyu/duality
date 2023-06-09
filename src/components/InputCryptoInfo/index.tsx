@@ -1,20 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { memo } from 'react';
+import EthLogo from 'assets/svgs/EthLogo.svg';
+import UsdtLogo from 'assets/svgs/UsdtLogo.svg';
+import Arrow from 'assets/svgs/arrow.svg';
+import LogoNotFound from 'assets/svgs/logoNotFound.svg';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo, useMemo } from 'react';
 import { Text, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
+import { EarnScreenNavigationProp } from 'types/navigationStacks';
 
 import styles from './styles';
-import EthLogo from '../../assets/svgs/EthLogo.svg';
-import UsdtLogo from '../../assets/svgs/UsdtLogo.svg';
-import Arrow from '../../assets/svgs/arrow.svg';
-import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
-import { EarnTabParamList } from '../../types';
 import ShowMoreBtn from '../ShowMoreBtn';
 
-interface componentProps {
+interface ComponentProps {
     cryptoName: string;
     yearIncomeMin: number;
     yearIncomeMax: number;
@@ -31,23 +29,27 @@ const cryptoNamesvgArray: SvgArray = {
     '': <LogoNotFound />,
 };
 
-type RootStackNavigationProp = StackNavigationProp<EarnTabParamList>;
-
-const InputCryptoInfo = ({
+const InputCryptoInfo: FC<ComponentProps> = ({
     cryptoName = '',
     yearIncomeMin = 0,
     yearIncomeMax = 0,
     showMoreBtn = false,
-}: componentProps) => {
+}) => {
     const { plainTextColor, markedItemBorderColor } = useThemeColors();
     const { wrapper, valueBig, titleLight, markedText, borderedSection } =
         useGeneralComponentStyles();
-    const navigation = useNavigation<RootStackNavigationProp>();
-    const { isLoggedIn } = useDualityStore();
-    console.log('isLoggedIn', isLoggedIn);
-    const showMorePressed: () => void = () => {
+    const navigation = useNavigation<EarnScreenNavigationProp>();
+
+    const showMorePressed = () => {
         navigation.navigate('EarnInput', { cryptoName });
     };
+
+    const showMoreBtnStyle = useMemo(
+        () => ({
+            marginTop: 19,
+        }),
+        []
+    );
 
     return (
         <View style={wrapper}>
@@ -70,7 +72,7 @@ const InputCryptoInfo = ({
             {!showMoreBtn || (
                 <ShowMoreBtn
                     onPress={showMorePressed}
-                    wrapperStyle={{ marginTop: 19 }}
+                    wrapperStyle={showMoreBtnStyle}
                 />
             )}
         </View>

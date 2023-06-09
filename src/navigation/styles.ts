@@ -50,23 +50,6 @@ const styles = StyleSheet.create({
     flex: {
         flex: 1,
     },
-
-    goBackBtn: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-    },
-
-    headerBackArrow: {
-        borderColor: 'white',
-        marginLeft: 20,
-        borderLeftWidth: 3,
-        borderBottomWidth: 3,
-        height: 10,
-        width: 10,
-        borderRadius: 2,
-        transform: [{ rotate: '45deg' }],
-    },
 });
 
 export default styles;

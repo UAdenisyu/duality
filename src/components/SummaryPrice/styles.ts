@@ -3,6 +3,9 @@ import { StyleSheet, Dimensions } from 'react-native';
 const PhysicalScreenWidth = Dimensions.get('window').width;
 
 export default StyleSheet.create({
+    wrapper: {
+        marginTop: 0,
+    },
     section: {
         flexDirection: 'row',
     },

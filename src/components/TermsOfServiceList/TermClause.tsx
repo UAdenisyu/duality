@@ -1,22 +1,21 @@
-import { memo } from 'react';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo, useMemo } from 'react';
 import { Text } from 'react-native';
 
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
 
 type ComponentProps = {
     textContent: string;
     index: number;
 };
 
-const TermClause = ({ textContent, index }: ComponentProps) => {
+const TermClause: FC<ComponentProps> = ({ textContent, index }) => {
     const { plainTextColor } = useThemeColors();
 
-    const textStyle = [
-        styles.text,
-        plainTextColor,
-        index > 0 ? { marginTop: 16 } : null,
-    ];
+    const textStyle = useMemo(
+        () => [styles.text, plainTextColor, index > 0 && { marginTop: 16 }],
+        [index]
+    );
 
     return (
         <Text style={textStyle}>

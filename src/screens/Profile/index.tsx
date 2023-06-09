@@ -1,36 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
+import LogoutSvg from 'assets/svgs/settingsScreen/Logout.svg';
+import SettingsSvg from 'assets/svgs/settingsScreen/Settings.svg';
+import WarningSvg from 'assets/svgs/settingsScreen/Warning.svg';
+import SettingComponent from 'components/SettingComponent';
+import useThemeColors from 'hooks/useThemeColors';
+import { useAuthStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
-import { ReactElement, useMemo } from 'react';
+import { FC, ReactElement, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
-
-import LogoutSvg from '../../assets/svgs/settingsScreen/Logout.svg';
-import SettingsSvg from '../../assets/svgs/settingsScreen/Settings.svg';
-import WarningSvg from '../../assets/svgs/settingsScreen/Warning.svg';
-import SettingComponent from '../../components/SettingComponent';
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
+import { RootScreenNavigationProp } from 'types/navigationStacks';
 
 const screenHeight = Dimensions.get('window').height;
-
-const styles = StyleSheet.create({
-    arrow: {
-        marginLeft: 20,
-        borderRightWidth: 3,
-        borderTopWidth: 3,
-        height: 10,
-        width: 10,
-        borderRadius: 2,
-        transform: [{ rotate: '45deg' }],
-    },
-    screenWrapper: {
-        height: screenHeight - 200,
-    },
-    logOutButtonWrapper: {
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
-});
 
 interface ButtonData {
     title: string;
@@ -64,14 +45,12 @@ const profileButtonsList: ButtonData[] = [
     },
 ];
 
-// type ProfileStackNavigationProp = StackNavigationProp<ProfileTabParamList>;
-
-const ProfileMain = () => {
+const Profile: FC = () => {
     const { plainTextColor } = useThemeColors();
 
-    const { setIsLoggedIn } = useDualityStore();
+    const { setIsLoggedIn } = useAuthStore();
 
-    const navigation = useNavigation<any>();
+    const navigation = useNavigation<RootScreenNavigationProp>();
 
     const mainPageComponentList = useMemo(
         () =>
@@ -116,4 +95,23 @@ const ProfileMain = () => {
     );
 };
 
-export default observer(ProfileMain);
+const styles = StyleSheet.create({
+    arrow: {
+        marginLeft: 20,
+        borderRightWidth: 3,
+        borderTopWidth: 3,
+        height: 10,
+        width: 10,
+        borderRadius: 2,
+        transform: [{ rotate: '45deg' }],
+    },
+    screenWrapper: {
+        height: screenHeight - 200,
+    },
+    logOutButtonWrapper: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+});
+
+export default observer(Profile);

@@ -60,4 +60,11 @@ export default StyleSheet.create({
     icon: {
         justifyContent: 'center',
     },
+    centeredText: {
+        textAlign: 'center',
+    },
+    sliderContainerStyle: {
+        backgroundColor: 'transparent',
+        height: 150,
+    },
 });

@@ -1,14 +1,14 @@
 import Checkbox from 'expo-checkbox';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import { memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { View, Text } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import PortfolioOption from './PortfolioOption';
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const Portfolio = () => {
+const Portfolio: FC = () => {
     const { wrapper, title, cryptoName, borderedSection } =
         useGeneralComponentStyles();
     const { titleTextColor, plainTextColor } = useThemeColors();

@@ -1,13 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Pressable, View } from 'react-native';
+import HeaderBackButton from 'components/HeaderBackButton/HeaderBackButton';
+import EarnMain from 'screens/Earn';
+import EarnInput from 'screens/Earn/EarnInput';
+import EarnInputDetails from 'screens/Earn/EarnInputDetails';
+import { EarnStackParamList } from 'types/navigationStacks';
 
-import EarnMain from '../../screens/Earn';
-import EarnInput from '../../screens/Earn/Input';
-import InputDetails from '../../screens/Earn/InputDetails';
-import styles, { childNavigatorOptions, mainNavigatorOptions } from '../styles';
+import { childNavigatorOptions, mainNavigatorOptions } from '../styles';
 
-const EarnStackScreens = ({ navigation }: { navigation: any }) => {
-    const EarnStack = createStackNavigator();
+const EarnStackScreens = () => {
+    const EarnStack = createStackNavigator<EarnStackParamList>();
     return (
         <EarnStack.Navigator>
             <EarnStack.Screen
@@ -16,7 +17,7 @@ const EarnStackScreens = ({ navigation }: { navigation: any }) => {
                     headerTitle: 'Earn',
                     headerLeft: () => null,
                 }}
-                name="EarnMain"
+                name="Earn"
                 component={EarnMain}
             />
             <EarnStack.Screen
@@ -24,13 +25,7 @@ const EarnStackScreens = ({ navigation }: { navigation: any }) => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Input',
-                    headerLeft: () => (
-                        <Pressable
-                            style={styles.goBackBtn}
-                            onPress={() => navigation.goBack()}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="EarnInput"
                 component={EarnInput}
@@ -39,16 +34,10 @@ const EarnStackScreens = ({ navigation }: { navigation: any }) => {
                 options={{
                     ...mainNavigatorOptions,
                     headerTitle: 'Input',
-                    headerLeft: () => (
-                        <Pressable
-                            style={styles.goBackBtn}
-                            onPress={() => navigation.goBack()}>
-                            <View style={styles.headerBackArrow} />
-                        </Pressable>
-                    ),
+                    headerLeft: HeaderBackButton,
                 }}
                 name="EarnInputDetails"
-                component={InputDetails}
+                component={EarnInputDetails}
             />
         </EarnStack.Navigator>
     );

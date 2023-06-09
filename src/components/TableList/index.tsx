@@ -1,18 +1,19 @@
-import { useMemo } from 'react';
-import { View, Text } from 'react-native';
+import useThemeColors from 'hooks/useThemeColors';
+import { useDualityStore } from 'mobx/appStoreContext';
+import { useMemo, memo, FC } from 'react';
+import { View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
+import ColumnTitle from './ColumnTitle';
 import TableListItem from './TableListItem';
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     target: string;
 };
 
-export default function TableList({ target }: ComponentProps) {
-    const { tableColumnTitleColor, darkTextColor } = useThemeColors();
+const TableList: FC<ComponentProps> = ({ target }) => {
+    const { darkTextColor } = useThemeColors();
     const { cryptoCurrencyFullInfo } = useDualityStore();
 
     const items = useMemo(
@@ -29,20 +30,16 @@ export default function TableList({ target }: ComponentProps) {
 
     const { wrapper } = useGeneralComponentStyles();
 
-    const columnTitle = (textContent: string) => (
-        <Text style={[styles.headerText, tableColumnTitleColor]}>
-            {textContent}
-        </Text>
-    );
-
     return (
         <View style={[wrapper, styles.container]}>
             <View style={styles.headerWrapper}>
-                {columnTitle('% Per year')}
-                {columnTitle('Target price')}
-                {columnTitle('Completion time')}
+                <ColumnTitle textContent="% Per year" />
+                <ColumnTitle textContent="Target price" />
+                <ColumnTitle textContent="Completion time" />
             </View>
             {items}
         </View>
     );
-}
+};
+
+export default memo(TableList);

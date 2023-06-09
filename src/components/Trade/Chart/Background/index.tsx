@@ -50,9 +50,7 @@ const styles = StyleSheet.create({
     },
 });
 
-interface ComponentProps {}
-
-const ChartBackground: FC<ComponentProps> = () => {
+const ChartBackground: FC = () => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.verticalLinesWrapper}>

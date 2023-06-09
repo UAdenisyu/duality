@@ -1,22 +1,22 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SvgComponentEarn from 'assets/svgs/SvgComponentEarn';
+import SvgComponentOrders from 'assets/svgs/SvgComponentOrders';
+import SvgComponentProfile from 'assets/svgs/SvgComponentProfile';
+import SvgComponentTrade from 'assets/svgs/SvgComponentTrade';
+import SvgComponentWallet from 'assets/svgs/SvgComponentWallet';
+import useThemeColors from 'hooks/useThemeColors';
 import { Platform, StyleSheet, View } from 'react-native';
+import Orders from 'screens/Orders';
+import Trade from 'screens/Trade';
+import { RootStackParamList } from 'types/navigationStacks';
 
-import SvgComponentEarn from '../../assets/svgs/SvgComponentEarn';
-import SvgComponentOrders from '../../assets/svgs/SvgComponentOrders';
-import SvgComponentProfile from '../../assets/svgs/SvgComponentProfile';
-import SvgComponentTrade from '../../assets/svgs/SvgComponentTrade';
-import SvgComponentWallet from '../../assets/svgs/SvgComponentWallet';
-import useThemeColors from '../../hooks/useThemeColors';
-import Orders from '../../screens/Orders';
-import Trade from '../../screens/Trade';
-import { RootTabParamList } from '../../types';
 import EarnStackScreens from '../EarnStackScreens';
 import ProfileStackScreens from '../ProfileStackScreens/ProfileStackScreens';
 import WalletsStackScreens from '../WalletsStackScreens';
 import styles, { mainNativeNavigatorOptions } from '../styles';
 
 const BottomTabNavigator = () => {
-    const BottomTab = createBottomTabNavigator<RootTabParamList>();
+    const BottomTab = createBottomTabNavigator<RootStackParamList>();
 
     const selectedItemColor = useThemeColors().markedTextColor.color;
     const inActiveColor = useThemeColors().plainTextColor.color;

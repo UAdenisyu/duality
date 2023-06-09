@@ -1,13 +1,17 @@
-import { useNavigation } from '@react-navigation/native';
-import { useLayoutEffect } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import InputCryptoInfo from 'components/InputCryptoInfo';
+import TableList from 'components/TableList';
+import TotalBalance from 'components/TotalBalance';
+import { FC, useLayoutEffect } from 'react';
 import { ScrollView } from 'react-native';
+import {
+    EarnInputScreenNavigationProp,
+    EarnInputScreenRouteProp,
+} from 'types/navigationStacks';
 
-import InputCryptoInfo from '../../../components/InputCryptoInfo';
-import TableList from '../../../components/TableList';
-import TotalBalance from '../../../components/TotalBalance';
-
-export default function EarnInput({ route }: any) {
-    const navigation = useNavigation();
+const EarnInput: FC = () => {
+    const navigation = useNavigation<EarnInputScreenNavigationProp>();
+    const route = useRoute<EarnInputScreenRouteProp>();
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -28,4 +32,6 @@ export default function EarnInput({ route }: any) {
             <TableList target={cryptoName} />
         </ScrollView>
     );
-}
+};
+
+export default EarnInput;

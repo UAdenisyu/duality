@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { View, Text } from 'react-native';
 
 import InfoBlock from './InfoBlock';
@@ -16,14 +16,14 @@ type ComponentProps = {
     price: number;
 };
 
-const OrderItem = ({
+const OrderItem: FC<ComponentProps> = ({
     contentType,
     cryptoNameTitle,
     dateTime,
     limitBuy,
     sum,
     price,
-}: ComponentProps) => {
+}) => {
     const { wrapper, title } = useGeneralComponentStyles();
     const { dividingLineColor, plainTextColor, cancelButton } =
         useThemeColors();
@@ -44,9 +44,7 @@ const OrderItem = ({
             <View style={[styles.section, styles.infoBlock]}>
                 <InfoBlock
                     titleName="Limit/Buy"
-                    value={
-                        limitBuy !== 'Canceled' ? limitBuy + '%' : 'Canceled'
-                    }
+                    value={'Canceled' + limitBuy === 'Canceled' ? '' : '%'}
                 />
                 <InfoBlock titleName="Sum" value={sum} />
                 <InfoBlock
@@ -55,11 +53,11 @@ const OrderItem = ({
                     alignRight
                 />
             </View>
-            {contentType === 'list' ? (
+            {contentType === 'list' && (
                 <View style={[styles.btn, cancelButton]}>
                     <Text style={[styles.btnText, plainTextColor]}>Cancel</Text>
                 </View>
-            ) : null}
+            )}
         </View>
     );
 };

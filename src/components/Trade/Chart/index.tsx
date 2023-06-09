@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 
 import Background from './Background';
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const Chart = () => {
+const Chart: FC = () => {
     const wrapperHeight = Dimensions.get('window').width - 48;
     const { wrapper } = useGeneralComponentStyles();
 
@@ -35,12 +35,13 @@ const Chart = () => {
         []
     );
 
+    const wrapperStyle = useMemo(
+        () => ({ height: wrapperHeight, width: wrapperHeight, padding: 0 }),
+        [wrapperHeight]
+    );
+
     return (
-        <View
-            style={[
-                wrapper,
-                { height: wrapperHeight, width: wrapperHeight, padding: 0 },
-            ]}>
+        <View style={[wrapper, wrapperStyle]}>
             <Background />
             <View style={styles.candlesWrapper}>{candles}</View>
         </View>

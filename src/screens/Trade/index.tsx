@@ -1,11 +1,11 @@
+import LocalNavBar from 'components/LocalNavBar';
+import TotalBalance from 'components/TotalBalance';
+import BuySellButtons from 'components/Trade/BuySellButtons';
+import Chart from 'components/Trade/Chart';
+import { FC } from 'react';
 import { ScrollView } from 'react-native';
 
-import LocalNavBar from '../../components/LocalNavBar';
-import TotalBalance from '../../components/TotalBalance';
-import BuySellButtons from '../../components/Trade/BuySellButtons';
-import Chart from '../../components/Trade/Chart';
-
-export default () => {
+const Trade: FC = () => {
     return (
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
             <TotalBalance />
@@ -20,3 +20,5 @@ export default () => {
         </ScrollView>
     );
 };
+
+export default Trade;

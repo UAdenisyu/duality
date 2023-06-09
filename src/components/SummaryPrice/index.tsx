@@ -1,19 +1,19 @@
+import InfoIcon from 'assets/svgs/infoIcon.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
-import { memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import { View, Text } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import ActionsBlock from './ActionsBlock';
 import DetailsBlock from './DetailsBlock';
 import styles from './styles';
-import InfoIcon from '../../assets/svgs/infoIcon.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     titleText?: 'Summary price' | 'Estimated cost' | 'Calculated total cost';
 };
 
-const SummaryPrice = ({ titleText = 'Summary price' }: ComponentProps) => {
+const SummaryPrice: FC<ComponentProps> = ({ titleText = 'Summary price' }) => {
     const {
         wrapper,
         title,
@@ -32,13 +32,17 @@ const SummaryPrice = ({ titleText = 'Summary price' }: ComponentProps) => {
             ) : titleText === 'Calculated total cost' ? (
                 <DetailsBlock />
             ) : null,
-        []
+        [titleText]
+    );
+
+    const wrapperDynamicStyle = useMemo(
+        () => titleText !== 'Summary price' && borderedSection,
+        [titleText]
     );
 
     return (
-        <View style={[wrapper, { marginTop: 0 }]}>
-            <View
-                style={titleText !== 'Summary price' ? borderedSection : null}>
+        <View style={[wrapper, styles.wrapper]}>
+            <View style={wrapperDynamicStyle}>
                 <Text style={title}>{titleText}</Text>
                 <View style={styles.section}>
                     <Text style={valueBig}>1,04500</Text>

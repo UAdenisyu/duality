@@ -1,13 +1,6 @@
-/**
- * Learn more about deep linking with React Navigation
- * https://reactnavigation.org/docs/deep-linking
- * https://reactnavigation.org/docs/configuring-links
- */
-
 import { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
-
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from 'types/navigationStacks';
 
 const linking: LinkingOptions<RootStackParamList> = {
     prefixes: [Linking.createURL('/')],
@@ -16,57 +9,73 @@ const linking: LinkingOptions<RootStackParamList> = {
             Root: {
                 screens: {
                     Earn: {
-                        path: 'Earn',
                         screens: {
-                            EarnScreen: {
-                                path: 'main',
+                            Earn: {
+                                path: 'earn',
                             },
-                            InputCryptocurrency: {
-                                path: 'input',
+                            EarnInput: {
+                                path: 'earn/input',
+                            },
+                            EarnInputDetails: {
+                                path: 'earn/details',
                             },
                         },
                     },
                     Trade: {
                         screens: {
-                            Market: 'market',
-                            Limit: 'limit',
-                            Stop: 'stop',
+                            Trade: {
+                                path: 'trade',
+                            },
                         },
                     },
                     Orders: {
                         screens: {
-                            OpenOrders: 'main',
-                            OrderHistory: 'history',
+                            Orders: {
+                                path: 'orders',
+                            },
                         },
                     },
                     Wallets: {
-                        path: 'Wallets',
                         screens: {
-                            WalletsScreen: {
-                                path: 'main',
+                            Wallets: {
+                                path: 'wallets',
                             },
-                            Earn: {
-                                path: 'earn',
+                            WalletsEarn: {
+                                path: 'wallets/earn',
                             },
                             SpotAccount: {
-                                path: 'spotAccount',
+                                path: 'wallets/spot-account',
                             },
                             Balance: {
-                                path: 'balance',
+                                path: 'wallets/balance',
                             },
                         },
                     },
                     Profile: {
                         screens: {
-                            Profile: 'profile',
-                            Settings: 'settings',
-                            TermsAndConditions: 'terms',
-                            PrivacyPolicy: 'privacy',
+                            Profile: {
+                                path: 'profile',
+                            },
+                            Settings: {
+                                path: 'profile/settings',
+                            },
+                            TermsAndConditions: {
+                                path: 'profile/terms',
+                            },
+                            PrivacyPolicy: {
+                                path: 'profile/privacy',
+                            },
                         },
                     },
                 },
             },
             NotFound: '*',
+            GetStarted: {
+                path: 'get-started',
+            },
+            Login: {
+                path: 'login',
+            },
         },
     },
 };

@@ -1,10 +1,16 @@
-import { memo, ReactElement } from 'react';
-import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo, ReactElement, useMemo } from 'react';
+import {
+    GestureResponderEvent,
+    Pressable,
+    Text,
+    View,
+    ViewStyle,
+} from 'react-native';
 import { SvgProps } from 'react-native-svg';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     leftItem: ReactElement<SvgProps>;
@@ -13,36 +19,50 @@ type ComponentProps = {
     onPressAction: (event: GestureResponderEvent) => void;
 };
 
-const SettingComponent = ({
+const SettingComponent: FC<ComponentProps> = ({
     leftItem,
     rightItem,
     titleText,
     onPressAction,
-}: ComponentProps) => {
+}) => {
     const { plainTextColor } = useThemeColors();
     const { wrapper } = useGeneralComponentStyles();
 
+    const wrapperDynamicStyle = useMemo(
+        () => !rightItem && styles.logOutBackGround,
+        []
+    );
+
+    const leftItemDynamicStyle = useMemo(
+        () => !rightItem && styles.logOutIcon,
+        []
+    );
+
+    const rightItemWrapperDynamicStyle = useMemo(
+        () => (rightItem ? styles.generalText : styles.logOutText),
+        []
+    );
+
+    const rightItemTextDynamicStyle = useMemo<ViewStyle>(
+        () => ({
+            alignSelf: rightItem ? 'center' : 'auto',
+        }),
+        []
+    );
+
     return (
         <Pressable
-            style={[
-                wrapper,
-                styles.wrapper,
-                rightItem ? null : styles.logOutBackGround,
-            ]}
+            style={[wrapper, styles.wrapper, wrapperDynamicStyle]}
             onPress={onPressAction}>
-            <View
-                style={[
-                    styles.leftIconWrapper,
-                    rightItem ? null : styles.logOutIcon,
-                ]}>
+            <View style={[styles.leftIconWrapper, leftItemDynamicStyle]}>
                 {leftItem}
             </View>
-            <View style={rightItem ? styles.generalText : styles.logOutText}>
+            <View style={rightItemWrapperDynamicStyle}>
                 <Text
                     style={[
                         styles.text,
                         plainTextColor,
-                        rightItem ? null : { alignSelf: 'center' },
+                        rightItemTextDynamicStyle,
                     ]}>
                     {titleText}
                 </Text>

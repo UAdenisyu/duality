@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import useThemeColors from 'hooks/useThemeColors';
+import { FC, memo } from 'react';
 import { TextInput, View, Text } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
-const SetCryptocurrencyPrice = () => {
+const SetCryptocurrencyPrice: FC = () => {
     const { wrapper, titleLight, title, borderedSection, markedText } =
         useGeneralComponentStyles();
     const { inputColors, inputBorderColor } = useThemeColors();

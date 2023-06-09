@@ -1,6 +1,5 @@
+import { LIGHT_COLORS, DARK_COLORS } from 'constants/Colors';
 import { useColorScheme, StyleSheet } from 'react-native';
-
-import { LIGHT_COLORS, DARK_COLORS } from '../constants/Colors';
 
 // The useColorScheme value is always either light or dark, but the built-in
 // type suggests that it can be null. This will not happen in practice, so this
@@ -88,6 +87,9 @@ export default function useThemeColors() {
         },
         candleGreen: {
             backgroundColor: candleGreen,
+        },
+        sliderSelectedStyle: {
+            backgroundColor: grey,
         },
     });
 
