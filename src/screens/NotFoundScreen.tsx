@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { RootStackNavigationProp } from 'types/navigationStacks';
 
 //TODO: make this screen more custom.
 
 function NotFoundScreen() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<RootStackNavigationProp>();
     return (
         <View style={styles.container}>
             <Text style={styles.title}>This screen doesn't exist.</Text>

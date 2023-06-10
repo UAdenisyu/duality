@@ -1,12 +1,12 @@
 import Checkbox from 'expo-checkbox';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
 import { FC, memo, useMemo, useState } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useThemeColors from '../../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     titleText: 'Volume' | 'Price';

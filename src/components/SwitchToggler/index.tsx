@@ -1,7 +1,6 @@
+import useThemeColors from 'hooks/useThemeColors';
 import { useRef, memo, useState, FC } from 'react';
 import { Animated, Pressable, StyleSheet } from 'react-native';
-
-import useThemeColors from '../../hooks/useThemeColors';
 
 const styles = StyleSheet.create({
     wrapper: {

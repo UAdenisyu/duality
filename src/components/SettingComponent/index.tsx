@@ -1,12 +1,6 @@
 import useThemeColors from 'hooks/useThemeColors';
 import { FC, memo, ReactElement, useMemo } from 'react';
-import {
-    GestureResponderEvent,
-    Pressable,
-    Text,
-    View,
-    ViewStyle,
-} from 'react-native';
+import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
@@ -43,29 +37,15 @@ const SettingComponent: FC<ComponentProps> = ({
         []
     );
 
-    const rightItemTextDynamicStyle = useMemo<ViewStyle>(
-        () => ({
-            alignSelf: rightItem ? 'center' : 'auto',
-        }),
-        []
-    );
-
     return (
         <Pressable
-            style={[wrapper, styles.wrapper, wrapperDynamicStyle]}
+            style={[wrapper, wrapperDynamicStyle, styles.wrapper]}
             onPress={onPressAction}>
             <View style={[styles.leftIconWrapper, leftItemDynamicStyle]}>
                 {leftItem}
             </View>
             <View style={rightItemWrapperDynamicStyle}>
-                <Text
-                    style={[
-                        styles.text,
-                        plainTextColor,
-                        rightItemTextDynamicStyle,
-                    ]}>
-                    {titleText}
-                </Text>
+                <Text style={[styles.text, plainTextColor]}>{titleText}</Text>
             </View>
             {rightItem}
         </Pressable>

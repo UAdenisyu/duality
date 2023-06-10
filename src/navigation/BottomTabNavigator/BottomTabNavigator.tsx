@@ -8,7 +8,7 @@ import useThemeColors from 'hooks/useThemeColors';
 import { Platform, StyleSheet, View } from 'react-native';
 import Orders from 'screens/Orders';
 import Trade from 'screens/Trade';
-import { RootStackParamList } from 'types/navigationStacks';
+import { BottomTabStackParamList } from 'types/navigationStacks';
 
 import EarnStackScreens from '../EarnStackScreens';
 import ProfileStackScreens from '../ProfileStackScreens/ProfileStackScreens';
@@ -16,7 +16,7 @@ import WalletsStackScreens from '../WalletsStackScreens';
 import styles, { mainNativeNavigatorOptions } from '../styles';
 
 const BottomTabNavigator = () => {
-    const BottomTab = createBottomTabNavigator<RootStackParamList>();
+    const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
 
     const selectedItemColor = useThemeColors().markedTextColor.color;
     const inActiveColor = useThemeColors().plainTextColor.color;
@@ -66,7 +66,7 @@ const BottomTabNavigator = () => {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="Earn"
+            initialRouteName="EarnStack"
             sceneContainerStyle={{ backgroundColor: 'transparent' }}
             screenOptions={{
                 ...mainNativeNavigatorOptions,
@@ -74,7 +74,7 @@ const BottomTabNavigator = () => {
                 tabBarInactiveTintColor: inActiveColor,
             }}>
             <BottomTab.Screen
-                name="Earn"
+                name="EarnStack"
                 component={EarnStackScreens}
                 options={{
                     headerShown: false,
@@ -84,7 +84,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Trade"
+                name="TradeStack"
                 component={Trade}
                 options={{
                     title: 'Trade',
@@ -93,7 +93,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Orders"
+                name="OrdersStack"
                 component={Orders}
                 options={{
                     title: 'Orders',
@@ -102,7 +102,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Wallets"
+                name="WalletsStack"
                 component={WalletsStackScreens}
                 options={{
                     headerShown: false,
@@ -112,7 +112,7 @@ const BottomTabNavigator = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Profile"
+                name="ProfileStack"
                 component={ProfileStackScreens}
                 options={{
                     headerShown: false,

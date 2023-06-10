@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import HeaderBackButton from 'components/HeaderBackButton/HeaderBackButton';
+import HeaderBackButton from 'components/HeaderBackButton';
 import WalletsMain from 'screens/Wallets';
 import WalletsBalance from 'screens/Wallets/WalletsBalance';
 import WalletsEarn from 'screens/Wallets/WalletsEarn';
@@ -24,7 +24,7 @@ const WalletsStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Spot-account',
-                    headerLeft: HeaderBackButton,
+                    headerLeft: () => <HeaderBackButton />,
                 }}
                 name="Wallets/spotAccount"
                 component={WalletsSpotAccount}
@@ -34,7 +34,7 @@ const WalletsStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Earn',
-                    headerLeft: HeaderBackButton,
+                    headerLeft: () => <HeaderBackButton />,
                 }}
                 name="Wallets/earn"
                 component={WalletsEarn}
@@ -44,7 +44,7 @@ const WalletsStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitleAlign: 'center',
                     headerTitle: 'Balance',
-                    headerLeft: HeaderBackButton,
+                    headerLeft: () => <HeaderBackButton />,
                 }}
                 name="Wallets/balance"
                 component={WalletsBalance}

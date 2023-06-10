@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import { FC, memo } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import useGeneralComponentStyles from '../../../styles/useGeneralComponentStyles';
 
 const BuySellButtons: FC = () => {
     const { wrapper, valueBig, titleLight } = useGeneralComponentStyles();

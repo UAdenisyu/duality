@@ -17,7 +17,7 @@ const Navigation = () => {
     return (
         <NavigationContainer theme={MyTheme} linking={LinkingConfiguration}>
             <ImageBackground
-                source={require('../assets/images/mainBackground.png')}
+                source={require('assets/images/mainBackground.png')}
                 resizeMode="cover"
                 style={{ width: '100%', height: '100%' }}>
                 <RootNavigator />

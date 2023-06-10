@@ -1,11 +1,11 @@
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
 import { FC, memo } from 'react';
 import { View, Text } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import InfoBlock from './InfoBlock';
 import styles from './styles';
-import useThemeColors from '../../hooks/useThemeColors';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     contentType: 'list' | 'history';

@@ -1,13 +1,13 @@
+import Arrow from 'assets/svgs/arrow.svg';
+import InfoIcon from 'assets/svgs/infoIcon.svg';
+import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
 import { FC, memo, useMemo } from 'react';
 import { Text, View, ViewStyle } from 'react-native';
+import { useDualityStore } from 'stores/appStoreContext';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import Arrow from '../../assets/svgs/arrow.svg';
-import InfoIcon from '../../assets/svgs/infoIcon.svg';
-import useThemeColors from '../../hooks/useThemeColors';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type ComponentProps = {
     cryptoName: string;

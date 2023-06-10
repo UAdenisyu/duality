@@ -1,8 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import DualityLogo from 'assets/svgs/duality.svg';
 import useThemeColors from 'hooks/useThemeColors';
-import { useAuthStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
 import { FC, useEffect } from 'react';
 import {
@@ -13,10 +11,9 @@ import {
     Text,
     View,
 } from 'react-native';
+import { useAuthStore } from 'stores/appStoreContext';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
-import { RootStackParamList } from 'types/navigationStacks';
-
-type RootStackNavigationProp = StackNavigationProp<RootStackParamList>;
+import { RootStackNavigationProp } from 'types/navigationStacks';
 
 const GetStarted: FC = () => {
     const { markedItemBackgroundColor, plainTextColor, markedTextColor } =

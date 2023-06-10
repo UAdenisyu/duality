@@ -8,12 +8,12 @@
             "components/*": ["./src/components/*"],
             "constants/*": ["./src/constants/*"],
             "hooks/*": ["./src/hooks/*"],
-            "mobx/*": ["./src/mobx/*"],
+            "stores/*": ["./src/stores/*"],
             "navigation/*": ["./src/navigation/*"],
             "screens/*": ["./src/screens/*"],
             "styles/*": ["./src/styles/*"],
-            "types/*": ["./src/types/*"],
-          },
+            "types/*": ["./src/types/*"]
+        },
         "strict": true
     },
     "include": ["src", "custom.d.ts"],

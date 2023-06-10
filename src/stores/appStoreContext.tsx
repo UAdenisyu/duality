@@ -1,10 +1,8 @@
-import {
-    createDualityStore,
-    DualityStoreType,
-} from 'mobx/stores/AppStore.store';
-import { AuthStoreType, createAuthStore } from 'mobx/stores/AuthStore.store';
 import { useLocalObservable } from 'mobx-react-lite';
 import { createContext, useContext } from 'react';
+
+import { createDualityStore, DualityStoreType } from './AppStore.store';
+import { AuthStoreType, createAuthStore } from './AuthStore.store';
 
 const DualityContext = createContext<DualityStoreType | null>(null);
 const AuthContext = createContext<AuthStoreType | null>(null);

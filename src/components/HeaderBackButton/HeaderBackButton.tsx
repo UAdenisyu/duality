@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo, FC } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { RootScreenNavigationProp } from 'types/navigationStacks';
+import { RootStackNavigationProp } from 'types/navigationStacks';
 
 const styles = StyleSheet.create({
     goBackBtn: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 const HeaderBackButton: FC = () => {
-    const navigation = useNavigation<RootScreenNavigationProp>();
+    const navigation = useNavigation<RootStackNavigationProp>();
 
     const goBack = () => navigation.goBack();
 

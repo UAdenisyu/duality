@@ -13,6 +13,7 @@ export default StyleSheet.create({
         fontFamily: 'trap-medium',
         fontSize: 16,
         paddingTop: 2,
+        alignSelf: 'center',
     },
     logOutText: {
         left: 0,

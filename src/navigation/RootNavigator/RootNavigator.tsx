@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAuthStore } from 'mobx/appStoreContext';
 import Login from 'screens/Login';
 import NotFoundScreen from 'screens/NotFoundScreen';
 import GetStarted from 'screens/SignUp';
+import { useAuthStore } from 'stores/appStoreContext';
 import { RootStackParamList } from 'types/navigationStacks';
 
 import BottomTabNavigator from '../BottomTabNavigator';

@@ -34,20 +34,33 @@ export type OrdersStackParamList = {
     Orders: undefined;
 };
 
+export type BottomTabStackParamList = {
+    EarnStack: EarnStackParamList;
+    WalletsStack: WalletsStackParamList;
+    ProfileStack: ProfileStackParamList;
+    TradeStack: TradeStackParamList;
+    OrdersStack: OrdersStackParamList;
+};
+
 // Define the root stack parameters
 export type RootStackParamList = {
-    Root: undefined;
+    Root: BottomTabStackParamList;
     NotFound: undefined;
     GetStarted: undefined;
     Login: undefined;
-} & EarnStackParamList &
-    WalletsStackParamList &
-    ProfileStackParamList &
-    TradeStackParamList &
-    OrdersStackParamList;
-
+};
 // Define the navigation props for each screen
-export type RootScreenNavigationProp = StackNavigationProp<
+export type RootStackNavigationProp = StackNavigationProp<
+    RootStackParamList &
+        BottomTabStackParamList &
+        EarnStackParamList &
+        WalletsStackParamList &
+        ProfileStackParamList &
+        TradeStackParamList &
+        OrdersStackParamList
+>;
+
+export type BottomTabNavigationProp = StackNavigationProp<
     RootStackParamList,
     'Root'
 >;
@@ -83,12 +96,12 @@ export type EarnInputDetailsScreenNavigationProp = StackNavigationProp<
 >;
 
 export type TradeScreenNavigationProp = StackNavigationProp<
-    RootStackParamList,
+    TradeStackParamList,
     'Trade'
 >;
 
 export type OrdersScreenNavigationProp = StackNavigationProp<
-    RootStackParamList,
+    OrdersStackParamList,
     'Orders'
 >;
 
@@ -156,9 +169,9 @@ export type EarnInputDetailsScreenRouteProp = RouteProp<
     'EarnInputDetails'
 >;
 
-export type TradeScreenRouteProp = RouteProp<RootStackParamList, 'Trade'>;
+export type TradeScreenRouteProp = RouteProp<TradeStackParamList, 'Trade'>;
 
-export type OrdersScreenRouteProp = RouteProp<RootStackParamList, 'Orders'>;
+export type OrdersScreenRouteProp = RouteProp<OrdersStackParamList, 'Orders'>;
 
 export type WalletsScreenRouteProp = RouteProp<
     WalletsStackParamList,

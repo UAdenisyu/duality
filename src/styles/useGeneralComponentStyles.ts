@@ -1,6 +1,5 @@
+import useThemeColors from 'hooks/useThemeColors';
 import { StyleSheet } from 'react-native';
-
-import useThemeColors from '../hooks/useThemeColors';
 
 export default function useGeneralComponentStyles() {
     const {

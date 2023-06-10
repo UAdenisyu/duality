@@ -24,7 +24,7 @@ const ProfileStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitle: 'Settings',
                     headerTitleAlign: 'center',
-                    headerLeft: HeaderBackButton,
+                    headerLeft: () => <HeaderBackButton />,
                 }}
                 name="Settings"
                 component={Settings}

@@ -3,9 +3,9 @@ import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './src/hooks/useCachedResources';
-import { DualityProvider } from './src/mobx/appStoreContext';
 import Navigation from './src/navigation';
 import Loading from './src/screens/Loading';
+import { DualityProvider } from './src/stores/appStoreContext';
 
 // useMemo везде, где map и conditional rendering (условный рендеринг)
 
@@ -14,7 +14,7 @@ import Loading from './src/screens/Loading';
 // создавать функции отдельно и заворачивать в useCallback
 // onLayout = useCallback((e) => {
 //     setSliderLength(e.nativeEvent.layout.width)
-// }, [setSliderLength]);
+// }, [setSliderLength]); - [done]
 
 // динамические стайлы хранить в хуках - [done]
 
@@ -37,7 +37,7 @@ import Loading from './src/screens/Loading';
 // не использовать классы из mobx - [done]
 // разбить на state на каждую задачу
 
-// useNavigation вместо передачи navigation
+// useNavigation вместо передачи navigation - [done]
 
 // реализовать логику
 

@@ -4,12 +4,12 @@ import SettingsSvg from 'assets/svgs/settingsScreen/Settings.svg';
 import WarningSvg from 'assets/svgs/settingsScreen/Warning.svg';
 import SettingComponent from 'components/SettingComponent';
 import useThemeColors from 'hooks/useThemeColors';
-import { useAuthStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
 import { FC, ReactElement, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
-import { RootScreenNavigationProp } from 'types/navigationStacks';
+import { useAuthStore } from 'stores/appStoreContext';
+import { RootStackNavigationProp } from 'types/navigationStacks';
 
 const screenHeight = Dimensions.get('window').height;
 
@@ -50,7 +50,7 @@ const Profile: FC = () => {
 
     const { setIsLoggedIn } = useAuthStore();
 
-    const navigation = useNavigation<RootScreenNavigationProp>();
+    const navigation = useNavigation<RootStackNavigationProp>();
 
     const mainPageComponentList = useMemo(
         () =>
@@ -72,6 +72,14 @@ const Profile: FC = () => {
         []
     );
 
+    const logOut = () => {
+        setIsLoggedIn(false);
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'GetStarted' }],
+        });
+    };
+
     return (
         <View>
             <View style={styles.screenWrapper}>
@@ -80,13 +88,7 @@ const Profile: FC = () => {
                     <SettingComponent
                         leftItem={<LogoutSvg />}
                         titleText="Logout"
-                        onPressAction={() => {
-                            setIsLoggedIn(false);
-                            navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'GetStarted' }],
-                            });
-                        }}
+                        onPressAction={logOut}
                     />
                 </View>
             </View>

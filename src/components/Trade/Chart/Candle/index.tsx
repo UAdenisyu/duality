@@ -1,7 +1,6 @@
+import useThemeColors from 'hooks/useThemeColors';
 import { FC, memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-
-import useThemeColors from '../../../../hooks/useThemeColors';
 
 const styles = StyleSheet.create({
     candleWrapper: {

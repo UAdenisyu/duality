@@ -1,4 +1,3 @@
-import { useDualityStore } from 'mobx/appStoreContext';
 import { observer } from 'mobx-react-lite';
 import { FC, memo, useCallback } from 'react';
 import { View, Text } from 'react-native';
@@ -14,6 +13,7 @@ import Animated, {
     Value,
 } from 'react-native-reanimated';
 import NumberFormat from 'react-number-format';
+import { useDualityStore } from 'stores/appStoreContext';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';

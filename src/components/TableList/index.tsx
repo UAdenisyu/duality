@@ -1,7 +1,7 @@
 import useThemeColors from 'hooks/useThemeColors';
-import { useDualityStore } from 'mobx/appStoreContext';
 import { useMemo, memo, FC } from 'react';
 import { View } from 'react-native';
+import { useDualityStore } from 'stores/appStoreContext';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import ColumnTitle from './ColumnTitle';

@@ -1,10 +1,10 @@
+import OrderItem from 'components/OrderItem';
 import { observer } from 'mobx-react-lite';
 import { FC, useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import OrderItem from '../../components/OrderItem';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 const Orders: FC = () => {
     const { wrapper, titleLight } = useGeneralComponentStyles();

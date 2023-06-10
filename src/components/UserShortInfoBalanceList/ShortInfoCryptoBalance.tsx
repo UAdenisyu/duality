@@ -1,13 +1,13 @@
+import EthLogo from 'assets/svgs/EthLogoSmall.svg';
+import UsdtLogo from 'assets/svgs/UsdtLogoSmall.svg';
+import LogoNotFound from 'assets/svgs/logoNotFound.svg';
 import { observer } from 'mobx-react-lite';
 import { FC, memo } from 'react';
 import { View, Text } from 'react-native';
+import { useDualityStore } from 'stores/appStoreContext';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import styles from './styles';
-import EthLogo from '../../assets/svgs/EthLogoSmall.svg';
-import UsdtLogo from '../../assets/svgs/UsdtLogoSmall.svg';
-import LogoNotFound from '../../assets/svgs/logoNotFound.svg';
-import { useDualityStore } from '../../mobx/appStoreContext';
-import useGeneralComponentStyles from '../../styles/useGeneralComponentStyles';
 
 type Data = {
     [key: string]: JSX.Element;

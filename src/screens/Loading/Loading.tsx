@@ -2,9 +2,9 @@ import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
+import { useAuthStore } from 'stores/appStoreContext';
 
 import AnimatedTitle from './AnimatedTitle';
-import { useAuthStore } from '../../mobx/appStoreContext';
 
 const Loading: FC = () => {
     const { isLoading } = useAuthStore();
@@ -20,7 +20,7 @@ const Loading: FC = () => {
             animationOutTiming={800}>
             <View style={styles.modal}>
                 <Image
-                    source={require('../../assets/images/SplashScreenBackground.png')}
+                    source={require('assets/images/SplashScreenBackground.png')}
                     style={styles.splashScreenImage}
                 />
                 <AnimatedTitle />

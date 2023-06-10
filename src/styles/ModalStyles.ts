@@ -1,9 +1,8 @@
+import useThemeColors from 'hooks/useThemeColors';
 import { StyleSheet } from 'react-native';
 
-import useThemeColors from '../hooks/useThemeColors';
-
 export default function ModalStyles() {
-    const colors = useThemeColors();
+    const colors: any = useThemeColors();
     return StyleSheet.create({
         center: {
             padding: 24,

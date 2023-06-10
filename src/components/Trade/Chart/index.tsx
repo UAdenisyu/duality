@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import { FC, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
+import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 import Background from './Background';
 import Candle from './Candle';
 import mockCandlesData from './mockData';
-import useGeneralComponentStyles from '../../../styles/useGeneralComponentStyles';
 
 const styles = StyleSheet.create({
     candlesWrapper: {
