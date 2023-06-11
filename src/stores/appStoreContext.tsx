@@ -1,54 +1,64 @@
 import { useLocalObservable } from 'mobx-react-lite';
-import { createContext, useContext } from 'react';
+import { createContext, FC, useContext } from 'react';
 
 import { createDualityStore, DualityStoreType } from './AppStore.store';
 import { AuthStoreType, createAuthStore } from './AuthStore.store';
 import { createSettingsStore, SettingsStoreType } from './SettingsStore.store';
 
-const DualityContext = createContext<DualityStoreType | null>(null);
-const AuthContext = createContext<AuthStoreType | null>(null);
-const SettingContext = createContext<SettingsStoreType | null>(null);
+interface CompositeStore {
+    dualityStore: DualityStoreType;
+    authStore: AuthStoreType;
+    settingsStore: SettingsStoreType;
+}
 
-export const DualityProvider = ({ children }: any) => {
+const CompositeContext = createContext<CompositeStore | null>(null);
+
+export const CompositeProvider: FC<{ children: JSX.Element }> = ({
+    children,
+}) => {
     const dualityStore = useLocalObservable(createDualityStore);
     const authStore = useLocalObservable(createAuthStore);
     const settingsStore = useLocalObservable(createSettingsStore);
 
+    const compositeStore: CompositeStore = {
+        dualityStore,
+        authStore,
+        settingsStore,
+    };
+
     return (
-        <DualityContext.Provider value={dualityStore}>
-            <SettingContext.Provider value={settingsStore}>
-                <AuthContext.Provider value={authStore}>
-                    {children}
-                </AuthContext.Provider>
-            </SettingContext.Provider>
-        </DualityContext.Provider>
+        <CompositeContext.Provider value={compositeStore}>
+            {children}
+        </CompositeContext.Provider>
     );
 };
 
-export const useDualityStore = () => {
-    const store = useContext(DualityContext);
-    if (!store) {
-        throw new Error('useDualityStore must be used within a StoreProvider.');
-    }
-    return store;
-};
-
-export const useAuthStore = () => {
-    const store = useContext(AuthContext);
+export const useDualityStore = (): DualityStoreType => {
+    const store = useContext(CompositeContext);
     if (!store) {
         throw new Error(
-            'useAuthStore must be used within an AppStoreProvider.'
+            'useDualityStore must be used within a CompositeProvider.'
         );
     }
-    return store;
+    return store.dualityStore;
 };
 
-export const useSettingsStore = () => {
-    const store = useContext(SettingContext);
+export const useAuthStore = (): AuthStoreType => {
+    const store = useContext(CompositeContext);
     if (!store) {
         throw new Error(
-            'useSettingsStore must be used within an AppStoreProvider.'
+            'useAuthStore must be used within a CompositeProvider.'
         );
     }
-    return store;
+    return store.authStore;
+};
+
+export const useSettingsStore = (): SettingsStoreType => {
+    const store = useContext(CompositeContext);
+    if (!store) {
+        throw new Error(
+            'useSettingsStore must be used within a CompositeProvider.'
+        );
+    }
+    return store.settingsStore;
 };

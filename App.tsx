@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './src/hooks/useCachedResources';
 import Navigation from './src/navigation';
 import Loading from './src/screens/Loading';
-import { DualityProvider } from './src/stores/appStoreContext';
+import { CompositeProvider } from './src/stores/appStoreContext';
 
 // useMemo везде, где map и conditional rendering (условный рендеринг)
 
@@ -51,13 +51,13 @@ const App: FC = () => {
         return null;
     } else {
         return (
-            <DualityProvider>
+            <CompositeProvider>
                 <SafeAreaProvider>
                     <StatusBar translucent backgroundColor="transparent" />
                     <Navigation />
                     <Loading />
                 </SafeAreaProvider>
-            </DualityProvider>
+            </CompositeProvider>
         );
     }
 };
