@@ -13,20 +13,14 @@ export default StyleSheet.create({
         fontFamily: 'trap-medium',
         fontSize: 16,
         paddingTop: 2,
-        alignSelf: 'center',
     },
     logOutText: {
-        left: 0,
-        right: 0,
         flex: 1,
-        position: 'absolute',
-        justifyContent: 'center',
-        alignContent: 'center',
+        alignItems: 'center',
     },
     generalText: {
         flex: 1,
         marginLeft: 16,
-        alignContent: 'flex-start',
     },
     logOutBackGround: {
         backgroundColor: '#37383C',
@@ -50,5 +44,8 @@ export default StyleSheet.create({
         height: 38,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    centerText: {
+        alignSelf: 'center',
     },
 });

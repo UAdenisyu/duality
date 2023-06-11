@@ -10,7 +10,7 @@ type ComponentProps = {
     leftItem: ReactElement<SvgProps>;
     rightItem?: ReactElement;
     titleText: string;
-    onPressAction: (event: GestureResponderEvent) => void;
+    onPressAction?: (event: GestureResponderEvent) => void;
 };
 
 const SettingComponent: FC<ComponentProps> = ({
@@ -32,7 +32,7 @@ const SettingComponent: FC<ComponentProps> = ({
         []
     );
 
-    const rightItemWrapperDynamicStyle = useMemo(
+    const buttonTitleWrapperDynamicStyle = useMemo(
         () => (rightItem ? styles.generalText : styles.logOutText),
         []
     );
@@ -44,7 +44,7 @@ const SettingComponent: FC<ComponentProps> = ({
             <View style={[styles.leftIconWrapper, leftItemDynamicStyle]}>
                 {leftItem}
             </View>
-            <View style={rightItemWrapperDynamicStyle}>
+            <View style={buttonTitleWrapperDynamicStyle}>
                 <Text style={[styles.text, plainTextColor]}>{titleText}</Text>
             </View>
             {rightItem}

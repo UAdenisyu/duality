@@ -23,7 +23,7 @@ interface ComponentProps {
 }
 
 const TotalBalance: FC<ComponentProps> = ({ selectedCrypto }) => {
-    const dualityStore = useDualityStore();
+    const { totalBalance } = useDualityStore();
     const { wrapper, title, valueBig, cryptoName } =
         useGeneralComponentStyles();
 
@@ -62,7 +62,7 @@ const TotalBalance: FC<ComponentProps> = ({ selectedCrypto }) => {
 
     const renderText = useCallback(
         (value: string) => <Text style={valueBig}>{value}</Text>,
-        [dualityStore.totalBalance]
+        [totalBalance]
     );
 
     return (
@@ -70,7 +70,7 @@ const TotalBalance: FC<ComponentProps> = ({ selectedCrypto }) => {
             <Text style={title}>Total balance:</Text>
             <Animated.View style={[styles.body, animatedBlinkingStyle]}>
                 <NumberFormat
-                    value={dualityStore.totalBalance}
+                    value={totalBalance}
                     displayType="text"
                     thousandSeparator
                     prefix="$"

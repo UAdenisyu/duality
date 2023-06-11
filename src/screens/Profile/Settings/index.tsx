@@ -5,12 +5,31 @@ import ArrowIcon from 'components/ArrowIcon';
 import SettingComponent from 'components/SettingComponent';
 import SwithToggler from 'components/SwitchToggler';
 import useThemeColors from 'hooks/useThemeColors';
-import { observer } from 'mobx-react-lite';
-import { useMemo, FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
 
 const screenHeight = Dimensions.get('window').height;
+
+type settingTogglerId =
+    | 'dark-mode'
+    | 'face-id'
+    | 'push-notifications'
+    | 'sms-notifications'
+    | 'email-notifications';
+interface SettingTogglerButton {
+    id: settingTogglerId;
+    title: string;
+    logoIcon: JSX.Element;
+    rightItem: () => JSX.Element;
+}
+
+interface SettingNavigateButton {
+    id: string;
+    title: string;
+    logoIcon: JSX.Element;
+    rightItem: (color: string) => JSX.Element;
+}
 
 const styles = StyleSheet.create({
     screenWrapper: {
@@ -23,44 +42,61 @@ const styles = StyleSheet.create({
     },
 });
 
-const settingsButtonsListData = [
+const settingsButtonsListData: SettingNavigateButton[] = [
     {
+        id: '11111111a',
         title: 'Language',
         logoIcon: <GlobeSvg />,
         rightItem: (color: string) => <ArrowIcon color={color} />,
     },
     {
+        id: '22222222a',
         title: 'Change Password',
         logoIcon: <EditSvg />,
         rightItem: (color: string) => <ArrowIcon color={color} />,
     },
 ];
 
-const settingsSwitchesListData = [
+const settingsSwitchesListData: SettingTogglerButton[] = [
     {
+        id: 'dark-mode',
         title: 'Dark Mode',
         logoIcon: <BellSvg />,
-        rightItem: () => <SwithToggler />,
+        rightItem() {
+            return <SwithToggler targetId={this.id} />;
+        },
     },
     {
+        id: 'face-id',
         title: 'Face Id',
         logoIcon: <BellSvg />,
-        rightItem: () => <SwithToggler />,
+        rightItem() {
+            return <SwithToggler targetId={this.id} />;
+        },
     },
     {
+        id: 'push-notifications',
         title: 'Push notifications',
         logoIcon: <BellSvg />,
-        rightItem: () => <SwithToggler />,
+        rightItem() {
+            return <SwithToggler targetId={this.id} />;
+        },
     },
     {
+        id: 'sms-notifications',
         title: 'SMS Notifications',
         logoIcon: <BellSvg />,
-        rightItem: () => <SwithToggler />,
+        rightItem() {
+            return <SwithToggler targetId={this.id} />;
+        },
     },
     {
+        id: 'email-notifications',
         title: 'Email Notifications',
         logoIcon: <BellSvg />,
-        rightItem: () => <SwithToggler />,
+        rightItem() {
+            return <SwithToggler targetId={this.id} />;
+        },
     },
 ];
 
@@ -72,7 +108,7 @@ const Settings: FC = () => {
         () =>
             settingsButtonsListData.map((item) => (
                 <SettingComponent
-                    key={item.title}
+                    key={item.id}
                     leftItem={item.logoIcon}
                     rightItem={item.rightItem(plainTextColor.color)}
                     titleText={item.title}
@@ -90,7 +126,6 @@ const Settings: FC = () => {
                     leftItem={item.logoIcon}
                     rightItem={item.rightItem()}
                     titleText={item.title}
-                    onPressAction={() => console.log('pressed')}
                 />
             )),
         []
@@ -105,4 +140,4 @@ const Settings: FC = () => {
     );
 };
 
-export default observer(Settings);
+export default Settings;

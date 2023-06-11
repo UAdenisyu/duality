@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     logOutButtonWrapper: {
         flex: 1,
         justifyContent: 'flex-end',
+        marginBottom: 42,
     },
 });
 

@@ -5,8 +5,6 @@ import UsdtLogoSmall from 'assets/svgs/UsdtLogoSmall.svg';
 import { CryptoCurrencyFullInfo } from 'types/types';
 
 interface DualityStore {
-    appTheme: 'dark' | 'light';
-    setAppTheme: (value: 'dark' | 'light') => void;
     totalBalance: number;
     setTotalBalance: (value: number) => void;
     cryptoCurrencyFullInfo: CryptoCurrencyFullInfo;
@@ -14,10 +12,6 @@ interface DualityStore {
 
 export function createDualityStore() {
     const data: DualityStore = {
-        appTheme: 'light',
-        setAppTheme(value) {
-            this.appTheme = value;
-        },
         totalBalance: 23000,
         setTotalBalance(value: number) {
             this.totalBalance = value;
