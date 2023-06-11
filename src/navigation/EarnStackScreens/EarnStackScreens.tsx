@@ -13,7 +13,7 @@ const EarnStackScreens = () => {
             <EarnStack.Screen
                 options={{
                     ...mainNavigatorOptions,
-                    headerTitle: 'EarnMain',
+                    headerTitle: 'Earn',
                     headerLeft: () => null,
                 }}
                 name="EarnMain"

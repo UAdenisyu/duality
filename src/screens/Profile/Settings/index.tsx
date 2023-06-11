@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import BellSvg from 'assets/svgs/settingsScreen/Bell.svg';
 import EditSvg from 'assets/svgs/settingsScreen/Edit.svg';
 import GlobeSvg from 'assets/svgs/settingsScreen/Globe.svg';
@@ -8,6 +9,7 @@ import useThemeColors from 'hooks/useThemeColors';
 import { FC, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
+import { SettingsScreenNavigationProp } from 'types/navigationStacks';
 
 const screenHeight = Dimensions.get('window').height;
 
@@ -44,13 +46,13 @@ const styles = StyleSheet.create({
 
 const settingsButtonsListData: SettingNavigateButton[] = [
     {
-        id: '11111111a',
+        id: 'Language',
         title: 'Language',
         logoIcon: <GlobeSvg />,
         rightItem: (color: string) => <ArrowIcon color={color} />,
     },
     {
-        id: '22222222a',
+        id: 'ChangePassword',
         title: 'Change Password',
         logoIcon: <EditSvg />,
         rightItem: (color: string) => <ArrowIcon color={color} />,
@@ -103,6 +105,7 @@ const settingsSwitchesListData: SettingTogglerButton[] = [
 const Settings: FC = () => {
     const { plainTextColor } = useThemeColors();
     const { borderedSection } = useGeneralComponentStyles();
+    const navigation = useNavigation<SettingsScreenNavigationProp>();
 
     const settingsButtonsList = useMemo(
         () =>
@@ -112,7 +115,13 @@ const Settings: FC = () => {
                     leftItem={item.logoIcon}
                     rightItem={item.rightItem(plainTextColor.color)}
                     titleText={item.title}
-                    onPressAction={() => console.log('pressed')}
+                    onPressAction={() => {
+                        if (item.id === 'ChangePassword') {
+                            navigation.navigate('ChangePassword');
+                        } else if (item.id === 'Language') {
+                            navigation.navigate('Language');
+                        }
+                    }}
                 />
             )),
         []

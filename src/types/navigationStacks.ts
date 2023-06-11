@@ -1,7 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-// Define the nested Earn stack parameters
 export type EarnStackParamList = {
     Earn: undefined;
     EarnInput: {
@@ -10,7 +9,6 @@ export type EarnStackParamList = {
     EarnInputDetails: undefined;
 };
 
-// Define the nested Wallets stack parameters
 export type WalletsStackParamList = {
     Wallets: undefined;
     WalletsEarn: undefined;
@@ -18,10 +16,15 @@ export type WalletsStackParamList = {
     Balance: undefined;
 };
 
-// Define the nested Profile stack parameters
+export type SettingsStackParamList = {
+    Settings: undefined;
+    ChangePassword: undefined;
+    Language: undefined;
+};
+
 export type ProfileStackParamList = {
     Profile: undefined;
-    Settings: undefined;
+    SettingsStack: { screen: keyof SettingsStackParamList };
     TermsAndConditions: undefined;
     PrivacyPolicy: undefined;
 };
@@ -57,7 +60,8 @@ export type RootStackNavigationProp = StackNavigationProp<
         WalletsStackParamList &
         ProfileStackParamList &
         TradeStackParamList &
-        OrdersStackParamList
+        OrdersStackParamList &
+        SettingsStackParamList
 >;
 
 export type BottomTabNavigationProp = StackNavigationProp<
@@ -131,8 +135,18 @@ export type ProfileScreenNavigationProp = StackNavigationProp<
 >;
 
 export type SettingsScreenNavigationProp = StackNavigationProp<
-    ProfileStackParamList,
+    SettingsStackParamList,
     'Settings'
+>;
+
+export type ChangePasswordScreenNavigationProp = StackNavigationProp<
+    SettingsStackParamList,
+    'ChangePassword'
+>;
+
+export type LanguageScreenNavigationProp = StackNavigationProp<
+    SettingsStackParamList,
+    'Language'
 >;
 
 export type TermsAndConditionsScreenNavigationProp = StackNavigationProp<
@@ -199,8 +213,18 @@ export type ProfileScreenRouteProp = RouteProp<
 >;
 
 export type SettingsScreenRouteProp = RouteProp<
-    ProfileStackParamList,
+    SettingsStackParamList,
     'Settings'
+>;
+
+export type LanguageScreenRouteProp = RouteProp<
+    SettingsStackParamList,
+    'Language'
+>;
+
+export type ChangePasswordScreenRouteProp = RouteProp<
+    SettingsStackParamList,
+    'ChangePassword'
 >;
 
 export type TermsAndConditionsScreenRouteProp = RouteProp<

@@ -1,15 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import HeaderBackButton from 'components/HeaderBackButton';
 import Profile from 'screens/Profile';
-import Settings from 'screens/Profile/Settings';
 import { ProfileStackParamList } from 'types/navigationStacks';
 
+import SettingsStackScreens from './SettingsStackScreens';
 import { childNavigatorOptions, mainNavigatorOptions } from '../styles';
 
 const ProfileStackScreens = () => {
     const ProfileStack = createStackNavigator<ProfileStackParamList>();
     return (
-        <ProfileStack.Navigator>
+        <ProfileStack.Navigator initialRouteName="Profile">
             <ProfileStack.Screen
                 options={{
                     ...mainNavigatorOptions,
@@ -24,10 +23,10 @@ const ProfileStackScreens = () => {
                     ...childNavigatorOptions,
                     headerTitle: 'Settings',
                     headerTitleAlign: 'center',
-                    headerLeft: () => <HeaderBackButton />,
+                    headerShown: false,
                 }}
-                name="Settings"
-                component={Settings}
+                name="SettingsStack"
+                component={SettingsStackScreens}
             />
         </ProfileStack.Navigator>
     );

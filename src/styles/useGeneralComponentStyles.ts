@@ -90,6 +90,7 @@ export default function useGeneralComponentStyles() {
             paddingVertical: 10,
             paddingHorizontal: 32,
             marginVertical: 8,
+            ...plainTextColor,
             ...inputBorderColor,
         },
     });

@@ -62,7 +62,9 @@ const Profile: FC = () => {
                     titleText={item.title}
                     onPressAction={() => {
                         if (item.screenName) {
-                            navigation.navigate('Settings');
+                            navigation.navigate('SettingsStack', {
+                                screen: 'Settings',
+                            });
                         } else {
                             console.log('pressed');
                         }
