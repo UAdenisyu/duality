@@ -17,7 +17,7 @@ const EarnMain: FC = () => {
                 showMoreBtn
             />
         ));
-    }, [cryptoCurrencyFullInfo]);
+    }, []);
 
     return (
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>

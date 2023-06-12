@@ -1,5 +1,6 @@
 import { useLocalObservable } from 'mobx-react-lite';
 import { createContext, FC, useContext } from 'react';
+import { useColorScheme } from 'react-native';
 
 import { createDualityStore, DualityStoreType } from './AppStore.store';
 import { AuthStoreType, createAuthStore } from './AuthStore.store';
@@ -19,6 +20,11 @@ export const CompositeProvider: FC<{ children: JSX.Element }> = ({
     const dualityStore = useLocalObservable(createDualityStore);
     const authStore = useLocalObservable(createAuthStore);
     const settingsStore = useLocalObservable(createSettingsStore);
+
+    const deviceColorScheme = useColorScheme();
+    if (deviceColorScheme !== settingsStore.appTheme) {
+        settingsStore.toggleAppTheme();
+    }
 
     const compositeStore: CompositeStore = {
         dualityStore,

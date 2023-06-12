@@ -62,7 +62,7 @@ const TotalBalance: FC<ComponentProps> = ({ selectedCrypto }) => {
 
     const renderText = useCallback(
         (value: string) => <Text style={valueBig}>{value}</Text>,
-        [totalBalance]
+        [totalBalance, valueBig.color]
     );
 
     return (

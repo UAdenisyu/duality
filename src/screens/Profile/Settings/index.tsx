@@ -6,6 +6,7 @@ import ArrowIcon from 'components/ArrowIcon';
 import SettingComponent from 'components/SettingComponent';
 import SwithToggler from 'components/SwitchToggler';
 import useThemeColors from 'hooks/useThemeColors';
+import { observer } from 'mobx-react-lite';
 import { FC, useMemo } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
@@ -124,7 +125,7 @@ const Settings: FC = () => {
                     }}
                 />
             )),
-        []
+        [plainTextColor.color]
     );
 
     const settingsSwitchesList = useMemo(
@@ -137,7 +138,7 @@ const Settings: FC = () => {
                     titleText={item.title}
                 />
             )),
-        []
+        [plainTextColor.color]
     );
 
     return (
@@ -149,4 +150,4 @@ const Settings: FC = () => {
     );
 };
 
-export default Settings;
+export default observer(Settings);

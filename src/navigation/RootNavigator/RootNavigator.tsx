@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { observer } from 'mobx-react-lite';
 import Login from 'screens/Login';
 import NotFoundScreen from 'screens/NotFoundScreen';
 import GetStarted from 'screens/SignUp';
@@ -38,4 +39,4 @@ const RootNavigator = () => {
     );
 };
 
-export default RootNavigator;
+export default observer(RootNavigator);

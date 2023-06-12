@@ -4,6 +4,7 @@ import UsdtLogo from 'assets/svgs/UsdtLogo.svg';
 import Arrow from 'assets/svgs/arrow.svg';
 import LogoNotFound from 'assets/svgs/logoNotFound.svg';
 import useThemeColors from 'hooks/useThemeColors';
+import { observer } from 'mobx-react-lite';
 import { FC, memo, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import useGeneralComponentStyles from 'styles/useGeneralComponentStyles';
@@ -79,4 +80,4 @@ const InputCryptoInfo: FC<ComponentProps> = ({
     );
 };
 
-export default memo(InputCryptoInfo);
+export default memo(observer(InputCryptoInfo));

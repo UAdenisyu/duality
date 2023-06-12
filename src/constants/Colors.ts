@@ -25,7 +25,7 @@ export const LIGHT_COLORS = {
 };
 
 export const DARK_COLORS = {
-    plainText: '#fff',
+    plainText: 'darkgray',
     extraLight: '#fff',
     extraDark: '#202226',
     componentBackground: 'rgba(255, 255, 255, 0.07)',

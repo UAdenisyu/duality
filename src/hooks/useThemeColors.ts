@@ -1,11 +1,13 @@
 import { LIGHT_COLORS, DARK_COLORS } from 'constants/Colors';
-import { useColorScheme, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { useSettingsStore } from 'stores/appStoreContext';
 
 // The useColorScheme value is always either light or dark, but the built-in
 // type suggests that it can be null. This will not happen in practice, so this
 // makes it a bit easier to work with.
 
 export default function useThemeColors() {
+    const { appTheme } = useSettingsStore();
     const {
         plainText,
         componentBackground,
@@ -21,7 +23,7 @@ export default function useThemeColors() {
         warning,
         candleGreen,
         candleRed,
-    } = useColorScheme() === 'dark' ? DARK_COLORS : LIGHT_COLORS;
+    } = appTheme === 'dark' ? DARK_COLORS : LIGHT_COLORS;
 
     const coloredItem = StyleSheet.create({
         plainTextColor: {

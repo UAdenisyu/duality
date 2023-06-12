@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import HeaderBackButton from 'components/HeaderBackButton';
+import { observer } from 'mobx-react-lite';
 import EarnMain from 'screens/Earn';
 import EarnInput from 'screens/Earn/EarnInput';
 import EarnInputDetails from 'screens/Earn/EarnInputDetails';
@@ -42,4 +43,4 @@ const EarnStackScreens = () => {
     );
 };
 
-export default EarnStackScreens;
+export default observer(EarnStackScreens);

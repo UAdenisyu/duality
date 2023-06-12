@@ -5,6 +5,7 @@ import SvgComponentProfile from 'assets/svgs/SvgComponentProfile';
 import SvgComponentTrade from 'assets/svgs/SvgComponentTrade';
 import SvgComponentWallet from 'assets/svgs/SvgComponentWallet';
 import useThemeColors from 'hooks/useThemeColors';
+import { observer } from 'mobx-react-lite';
 import { Platform, StyleSheet, View } from 'react-native';
 import Orders from 'screens/Orders';
 import Trade from 'screens/Trade';
@@ -125,4 +126,4 @@ const BottomTabNavigator = () => {
     );
 };
 
-export default BottomTabNavigator;
+export default observer(BottomTabNavigator);

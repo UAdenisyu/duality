@@ -1,4 +1,5 @@
 import useThemeColors from 'hooks/useThemeColors';
+import { observer } from 'mobx-react-lite';
 import { FC, memo, ReactElement, useMemo } from 'react';
 import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
@@ -52,4 +53,4 @@ const SettingComponent: FC<ComponentProps> = ({
     );
 };
 
-export default memo(SettingComponent);
+export default memo(observer(SettingComponent));

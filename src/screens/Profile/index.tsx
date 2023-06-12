@@ -71,7 +71,7 @@ const Profile: FC = () => {
                     }}
                 />
             )),
-        []
+        [plainTextColor.color]
     );
 
     const logOut = () => {
