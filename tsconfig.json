@@ -12,7 +12,8 @@
             "navigation/*": ["./src/navigation/*"],
             "screens/*": ["./src/screens/*"],
             "styles/*": ["./src/styles/*"],
-            "types/*": ["./src/types/*"]
+            "types/*": ["./src/types/*"],
+            "helpers/*": ["./src/helpers/*"]
         },
         "strict": true
     },

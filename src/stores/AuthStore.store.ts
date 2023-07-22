@@ -11,7 +11,7 @@ interface AuthStore {
 
 export function createAuthStore() {
     const data: AuthStore = {
-        isLoggedIn: true,
+        isLoggedIn: false,
         setIsLoggedIn(newLoggedInValue) {
             this.isLoggedIn = newLoggedInValue;
         },

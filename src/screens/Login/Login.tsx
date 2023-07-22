@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import sleep from 'helpers/sleep';
 import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
 import { FC, useState } from 'react';
@@ -13,6 +14,8 @@ import {
 import { useAuthStore } from 'stores/appStoreContext';
 import { RootStackNavigationProp } from 'types/navigationStacks';
 
+import FaceIDScreen from './FaceId';
+
 //use LinearGradient for background colors
 
 const Login: FC = () => {
@@ -25,9 +28,6 @@ const Login: FC = () => {
     const [inputPassword, setInputPassword] = useState('trademe1');
 
     type checkFunction = () => Promise<boolean>;
-
-    const sleep = (ms: number) =>
-        new Promise((resolve) => setTimeout(resolve, ms));
 
     const checkIfUserRegistered: checkFunction = async () => {
         // api fetch simulation. async actions
@@ -85,6 +85,7 @@ const Login: FC = () => {
                 onPress={signUpPressed}>
                 <Text style={styles.getStartedButtonText}>Sign Up</Text>
             </Pressable>
+            <FaceIDScreen onSuccess={loginPressed} />
         </SafeAreaView>
     );
 };
