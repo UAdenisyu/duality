@@ -9,8 +9,8 @@ interface ComponentProps {
     onError?: () => void;
 }
 
-const FaceIDScreen: FC<ComponentProps> = ({ onSuccess }) => {
-    const [isFaceIDAvailable, setIsFaceIDAvailable] = useState(false);
+const OpenBiomethricsButton: FC<ComponentProps> = ({ onSuccess }) => {
+    const [isBiomethricsAvailable, setIsBiomethricsAvailable] = useState(false);
 
     const colors = useThemeColors();
 
@@ -19,9 +19,10 @@ const FaceIDScreen: FC<ComponentProps> = ({ onSuccess }) => {
     }, []);
 
     const checkForBiometrics = async () => {
-        const isFaceIDAvailable = await LocalAuthentication.isEnrolledAsync();
-        console.log('isFaceIDAvailable', isFaceIDAvailable);
-        setIsFaceIDAvailable(isFaceIDAvailable);
+        const isBiomethricsAvailable =
+            await LocalAuthentication.isEnrolledAsync();
+        console.log('isBiomethricsAvailable', isBiomethricsAvailable);
+        setIsBiomethricsAvailable(isBiomethricsAvailable);
     };
 
     const handleAuthenticate = async () => {
@@ -37,7 +38,7 @@ const FaceIDScreen: FC<ComponentProps> = ({ onSuccess }) => {
 
     return (
         <View style={styles.container}>
-            {isFaceIDAvailable && (
+            {isBiomethricsAvailable && (
                 <TouchableOpacity
                     style={[styles.button, colors.candleRed]}
                     onPress={handleAuthenticate}>
@@ -48,7 +49,7 @@ const FaceIDScreen: FC<ComponentProps> = ({ onSuccess }) => {
     );
 };
 
-export default FaceIDScreen;
+export default OpenBiomethricsButton;
 
 const styles = StyleSheet.create({
     container: {

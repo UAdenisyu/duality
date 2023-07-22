@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import OpenBiomethricsButton from 'components/OpenBiomethricsButton';
 import sleep from 'helpers/sleep';
 import useThemeColors from 'hooks/useThemeColors';
 import { observer } from 'mobx-react-lite';
@@ -11,15 +12,14 @@ import {
     TextInput,
     Alert,
 } from 'react-native';
-import { useAuthStore } from 'stores/appStoreContext';
+import { useAuthStore, useSettingsStore } from 'stores/appStoreContext';
 import { RootStackNavigationProp } from 'types/navigationStacks';
-
-import FaceIDScreen from './FaceId';
 
 //use LinearGradient for background colors
 
 const Login: FC = () => {
     const { toggleLoading, setIsLoggedIn, registeredUsers } = useAuthStore();
+    const { faceIdEnabled } = useSettingsStore();
     const navigation = useNavigation<RootStackNavigationProp>();
     const { markedItemBackgroundColor, inputColors, inputBorderColor } =
         useThemeColors();
@@ -76,16 +76,18 @@ const Login: FC = () => {
                 selectionColor={inputBorderColor.borderColor}
             />
             <Pressable
-                style={[markedItemBackgroundColor, styles.getStartedButton]}
+                style={[markedItemBackgroundColor, styles.button]}
                 onPress={loginPressed}>
                 <Text style={styles.getStartedButtonText}>Login</Text>
             </Pressable>
             <Pressable
-                style={[markedItemBackgroundColor, styles.getStartedButton]}
+                style={[markedItemBackgroundColor, styles.button]}
                 onPress={signUpPressed}>
                 <Text style={styles.getStartedButtonText}>Sign Up</Text>
             </Pressable>
-            <FaceIDScreen onSuccess={loginPressed} />
+            {faceIdEnabled && (
+                <OpenBiomethricsButton onSuccess={loginPressed} />
+            )}
         </SafeAreaView>
     );
 };
@@ -96,12 +98,12 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
     },
-    getStartedButton: {
+    button: {
         width: '100%',
         borderRadius: 16,
         paddingVertical: 16,
         alignItems: 'center',
-        marginTop: 16,
+        marginTop: 32,
     },
     getStartedButtonText: {
         fontFamily: 'trap-semibold',
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingVertical: 10,
         paddingHorizontal: 32,
-        marginVertical: 16,
+        marginTop: 32,
         paddingTop: 12,
     },
     availableValue: {

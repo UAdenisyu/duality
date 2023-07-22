@@ -13,11 +13,11 @@ interface SettingsStore {
 
 export function createSettingsStore() {
     const data: SettingsStore = {
-        appTheme: 'dark',
+        appTheme: 'light',
         toggleAppTheme() {
             this.appTheme = this.appTheme === 'dark' ? 'light' : 'dark';
         },
-        faceIdEnabled: false,
+        faceIdEnabled: true,
         toggleFaceId() {
             this.faceIdEnabled = !this.faceIdEnabled;
         },
